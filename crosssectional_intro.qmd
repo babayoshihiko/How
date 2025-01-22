@@ -1,4 +1,4 @@
-# 横断研究  {#crosssectional-intro}
+# 横断研究  {#sec-crosssectional-intro}
 
 ## キーワード  {#sec-crosssectional-keyword}
 
