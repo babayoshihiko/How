@@ -1,5 +1,9 @@
 Version: 1.0
+<<<<<<< HEAD:How.Rproj
 ProjectId: 67b099fb-8a3a-4188-82f3-7cbd634bcfd8
+=======
+ProjectId: 999fb824-0fc2-4f1a-9494-7ce6d50040f5
+>>>>>>> 0783c09ccfb5cd4d607c78a7a934a79c8a8e9b90:How-private.Rproj
 
 RestoreWorkspace: Default
 SaveWorkspace: Default
