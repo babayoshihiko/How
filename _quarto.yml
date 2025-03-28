@@ -18,7 +18,6 @@ book:
     - part: observation.qmd
       chapters:
         - crosssectional_intro.qmd
-        - crosssectional_liu.qmd
     - part: critical.qmd
       chapters: 
         - letter.qmd

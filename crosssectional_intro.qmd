@@ -62,9 +62,9 @@
 - 有病率を求める
 - リスク因子のオッズ比を求める
 
-リスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。[^crosssectional-multivariable]
+リスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。
 
-[^crosssectional-multivariable]: 説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする [@hidalgo2013multivariate]
+説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする [@hidalgo2013multivariate]
 
 説明変数は、仮説や先行研究から決定することが多いようです。
 

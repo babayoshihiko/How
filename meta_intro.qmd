@@ -50,11 +50,13 @@ e メタ分析〈メタアナリシス〉
 
 :::
 
-このフォレストプロットは、研究 A 〜 研究 D という４つの研究があり、すべてをプールしたものが再下段に描かれています。つまり、正解は e となります。
+このフォレストプロットは、研究 A 〜 研究 D という 4 つの研究があり、すべてをプールしたものが再下段に描かれています。つまり、正解は e となります。
 
-フォレストプロットの中央の列では、四角く塗りつぶされている部分がそれぞれの研究での値で、四角の大きさは重みを表しています。あたいから伸びているヒゲは 95% 信頼区間を表しています。オッズ比と 95% 信頼区間の数値は一番右の列に記載されています。
+フォレストプロットの中央の列では、四角く塗りつぶされている部分がそれぞれの研究での値で、四角の大きさは重みを表しています。値から伸びているヒゲは 95% 信頼区間を表しています。オッズ比と 95% 信頼区間の数値は一番右の列に記載されています。
 
 この図から、各研究においてはオッズ比は 0.15 から 0.62 でしたが、いずれも有意差があるとは言えませんでした。プールした結果、オッズ比は 0.37 となり、有意差がありました。
+
+### 異質性
 
 さて、このようにプールされた結果はどの程度信頼できるでしょうか？その指標の一つが異質性 (heterogeneity) です。
 
@@ -69,4 +71,6 @@ e メタ分析〈メタアナリシス〉
 論文の例: Kojima G, Iliffe S, Taniguchi Y, Shimada H, Rakugi H, & Walters K (2017). Prevalence of frailty in Japan: a systematic review and meta-analysis. *Journal of Epidemiology*, 27(8), 347-353.
 
 Vetrano DL, Palmer KM, Galluzzo L, Giampaoli S, Marengoni A, Bernabei R, & Onder G (2018). Hypertension and frailty: a systematic review and meta-analysis. *BMJ open*, 8(12), e024406.
+
+Ofori-Asenso R, Chin KL, Mazidi M, Zomer E, Ilomaki J, Zullo AR, ... & Liew D (2019) Global incidence of frailty and prefrailty among community-dwelling older adults: a systematic review and meta-analysis. *JAMA network open*, 2(8), e198398-e198398.
 
