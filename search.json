@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "医学英語: フレイルで理解する臨床論文の読み方",
+    "section": "",
+    "text": "はじめに\n本書 (HTML、PDF) は、杏林大学医学部における医学英語 III および 医学英語 IV の B/C 班で行っている講義資料です。\n対象年度: 2019年度〜2024年度\nシラバス\n第3学年 シラバス p. 28 および 第4学年 シラバス p. 26\n医学英語: フレイルで理解する臨床論文の読み方 by 馬場 美彦 is licensed under CC BY-SA 4.0\n本書自体は Creative Commons で提供しています。また、本書で使用している画像素材は、ほぼ Creative Commons ライセンスで提供されています。\nライセンス上、基本的にどなたでもご利用できますが、ご連絡いただけると嬉しいです。"
+  },
+  {
+    "objectID": "index.html#著者について",
+    "href": "index.html#著者について",
+    "title": "医学英語: フレイルで理解する臨床論文の読み方",
+    "section": "著者について",
+    "text": "著者について\n馬場美彦 (医学博士) は、杏林大学医学部非常勤講師、国土交通大学校非常勤講師。介護福祉士かつ介護支援専門員。統計学を含めた多くの技術文書を翻訳している。"
+  },
+  {
+    "objectID": "design.html#論文の構成",
+    "href": "design.html#論文の構成",
+    "title": "1  臨床論文",
+    "section": "1.1 論文の構成",
+    "text": "1.1 論文の構成\n論文は形式が自由だと言われることもありますが、一方で非常に形式的であると言われることもあります。どちらが本当でしょうか？一般に、臨床論文は形式が決まっていることが多いです。さらに、研究デザインやジャーナルによる特有の形式もあります。\n出版形式としては、従来の紙ベースおよびこれを PDF 化したものから、近年ではウェブで直接読むことも可能になってきています。\n一般には、論文は「タイトル (title)」「著者 (author)」「抄録 (abstract)」「キーワード (key word)」から始まり、「本文 (full text)」が続きます。本文以外は無料で閲覧でき、本文は有料ということもあります。\n抄録は、英語では abstracrt です。「抄録」よりも abstract という表現の方が良く使われているので、abstract とします。abstract には、「構造化されている abstract」(structured abstract) と「構造化されていない abstract」(unstructrued abstract) があるます。構造化されているとは、見出しがつき、段落わけされていることです。\n本文は、通常、IMRaD 形式に従います。これは、Introduction、Methods、Results and Discussion の頭文字をとったものです。すべての臨床論文が IMRaD 形式というわけではありません。単に名称が異なるだけのこともあります。例えば以前の JAMA は、Discussion ではなく Comment としていました。\nさらに、これらに加えて「資金提供者 (Funding)」「謝辞 (Acknowledgement)」「引用 (References)」などが加わります。近年では、ウェブ上に「追加情報 (Supporting Information)」としてダウンロード可能な Word/Excel ファイル、データ、解析に用いたソースコード、査読などがあることもあります。"
+  },
+  {
+    "objectID": "design.html#論文の英文法",
+    "href": "design.html#論文の英文法",
+    "title": "1  臨床論文",
+    "section": "1.2 論文の英文法",
+    "text": "1.2 論文の英文法\n\n1.2.1 時制\n英語の時制は、日本語より複雑な点と、日本語と異なる使い方をすることがあるため、苦手としている人が多いようです。また、臨床論文を読む際は、英語の時制でニュアンスが変わることがあります。\n現在形: used to refer to recently published work indicating that it is still valid\n現在完了: used to refer to a report published in the recent past that continues to have importance\n過去形1: used to refer to the methods and results of the study being described\n過去形2: used to refer to an article published months or years ago that is not primarily of historical value\n(Style Committee et al. 2020, 432)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n現在形は、科学的事実の場合に用いられます。臨床型論文も科学です。このため、先行研究の中で広く受け入れられているものは現在形で書かれています。\n現在完了形は、過去のことと誤解されたり、あるいは訳す際の日本語としての滑らかさから過去形で訳すことがありますが、基本的には現在形の一種です。上記の説明のあるように、最近報告されてまだ科学的事実とまでいかないことは現在完了形で書かれることがあります。\n過去形は、大きく分けて二つの使い方があります。一つ目の使い方は、著者らが実際に行った方法や結果の報告です。\nもう一つの使い方は、先行研究で、それほど価値がないものに使われます。\nつまり、Introduction や Discussion では、現在形は広く知られていること、現在完了形は最近わかったことで重要だと考えられること、過去形は反対意見などに使われることがあります。\nなお、これは臨床系論文以外には当てはまりません。中山裕木子「理系の英語論文術」では、方法論では現在形と現在完了形、結果は過去形と現在完了形を使うと書かれています。実際、理工学系の論文ではそのように使われており、臨床系論文とは時制の使い方が異なります。"
+  },
+  {
+    "objectID": "design.html#論文の探し方",
+    "href": "design.html#論文の探し方",
+    "title": "1  臨床論文",
+    "section": "1.3 論文の探し方",
+    "text": "1.3 論文の探し方\n\n1.3.1 学術誌\n論文とは、大学などに提出されたものもありますが、学術誌に掲載されたものを指すことが多いでしょう。学術誌は、英語では Journal といいます。学術誌はの数は、2020年時点で 46,000 以上あると言われており、増え続けています。\n学術誌については、有田 (2022) (有田正規 2022) が Journal of Medical English Education で報告をしています。ここでは、以下の 3 点に触れたいと思います。\n\n有田正規. 2022. “学術雑誌の発祥からオープンアクセス誌まで.” Journal of Medical English Education= 日本医学英語教育学会会誌: Official Journal of Japan Society for Medical English Education/日本医学英語教育学会 企画 21 (1): 27–40.\n\nオープンアクセス (Open Access, OA) の登場\n学術誌ランキングの登場\n既存ジャーナルの OA 化\n\n臨床系の学術誌はたくさんあります。その中でも、The Lancet、New England Journal of Medicine、Journal of American Medical Association (JAMA)、British Medical Journal (BMJ) は 4 大ジャーナルと言われています。\nOA ジャーナルとは、インターネット上で誰でも無料で閲覧できる学術誌です。紙媒体では流通していません。有名どころでは、PLOS 系、BioMedCentral 系、Scientific Reports などがあります。\n学術誌ランキングは、最も有名なのは Impact Factor (IF) です。これは、被引用数から計算されています。臨床系学術誌では、IF が 1.0 を超えていれば信頼できる学術誌とみなされています。\n学術誌は、歴史あることが権威を伴ってきました。しかし、学術誌は高価であるため、OA の論文の方が引用される可能性が高くなります。こうなると、OA 雑誌の方が IF が高くなっていきます。そこで、既存の雑誌の中に、一部の論文をオープンアクセス化するのが出てきました。JAMA は Jama Network Open、BMJ は BMJ Open といったジャーナルも出しています。\n\n\n1.3.2 検索データベース\n論文を検索する場合は、論文が登録されている検索データベースを検索することが一般的です。\n医療系では、英語ベースのものとしては以下のようなものがあります。\n\nMEDLINE: 臨床論文のデータベース。MEDLINE のウェブ版が PubMed。なお、日本語で検索できる PubMed CLOUD もある。\nEMBASE: 薬学論文のデータベース。\nCINAHL: 看護などの関連職種。\n\n医療系ではなく、広く論文を検索する場合は、Google による Google Scholar があります。Google Scholar の特徴として、被引用件数の情報があります。Cited by … とあるところが被引用件数です。また、Google アカウントを持っていれば、検索して Save を押すと My Library に記録されます。Cite 機能を使えば、後述する文献管理アプリケーションに取り込むこともできます。\n日本語論文を検索できるものに、以下のようなものがあります。\n\nCiNii\n医中誌\nJ-Stage\n\n\n\n1.3.3 DOI\nデジタルオブジェクト識別子 (Document Object Identifier, DOI) は、インターネット上にあるドキュメントの ID です。\n通常、インターネット上のドキュメントには URL があります。しかし、URL は変わることがあるため、 ID としては不適切です。国際 DOI 財団が ID を管理していています。\n論文の引用文献などで DOI を付与することが増えてきています。実際、ジャーナルの投稿規程などでも推奨されています。PLOS ONE の投稿規定では、\nManuscripts on preprint servers, providing the manuscript has a citable DOI or arXiv URL.\nと書かれています。\n\n\n1.3.4 文献の管理\n文献を読んだら、文献管理アプリケーションで管理しておきましょう。\nアプリに PDF ファイルをリンクさせることで、すぐに開くことができます。メモも可能です。\nWord などで引用文献を書く場合には、自動的に形式を整えたり整列してくれるなどの機能があります。\nMendeley や Zotero の場合、データはクラウド上で管理され、他の人と共有することもできます。\n\nEndNote (有料)\nMendeley (無料)\nZotero (無料)\nBibDesk (無料) macOS のみ\nRefWorks (杏林大学図書館、有料)\n\n\n\n1.3.5 検索の実際\nフレイル (frailty) の論文として重要なものは何があるでしょうか？\n上述の検索データベースで、frailty を検索してみましょう。\nPubMed (左) と Google Scholar による検索\nPubMed: 執筆時点では、27,790 件の論文がヒットしました。Review 論文が上位に来ています。\nGoogle Scholar: 執筆時点では、約 800,000 件の論文がヒットしました。４つ目の論文は、Clegg A et al (2013) Frailty in elderly people. The Lancet, 381(9868), 752-762. で、Cited by 7802 と、多くの引用がされています。\nこのように、データベースによって検索結果の件数や並び方が異なります。"
+  },
+  {
+    "objectID": "design.html#研究コミュニティ",
+    "href": "design.html#研究コミュニティ",
+    "title": "1  臨床論文",
+    "section": "1.4 研究コミュニティ",
+    "text": "1.4 研究コミュニティ\n\n1.4.1 ORCID\nORCID (Open Researcher and Contributor ID, オーキッドとも読む) は、研究者の ID です。\n研究者は、論文を書くことで業績となります。その際に、論文と研究者を紐づけるのは氏名です。このため、結婚など何らかの理由で名前が変わっても、研究上は同じ名前を使い続けることも多いようです。\nしかしながら、現代では同姓同名の人も多くなっており、氏名だけで識別することは困難です。そこで登場したのが ORCID です。ORCID を登録しておくことで、確実に識別ができるようになります。論文にも、ORCID が付与されているケースが徐々に増えてきています。\n研究上の氏名は、必ずしも戸籍上の名前などである必要はありません。ペンネームを使ったことで有名な人に、統計学の Student がいます。Student の本名は William Gosset ですが、当時勤務していたギネス社が社員が論文を出すことを禁止していたため、ペンネームを用いました。\n日本人で名前を工夫している方に、京都大学の古川教授がいます。この方は、英語表記は Toshi A. Furukawa としています。\nORCID は、ID だけでなく、業績を管理するのに役立ちます。これは、査読についても適用されるようになっています。従来、査読は公表されることはないため、完全に匿名のボランティアでした。しかし、査読時に ORCID を登録することで、どの論文に対して査読したかは分からなくとも、ジャーナルごとに査読した回数がわかるようになってきています。ただし、すべてのジャーナルが対応しているわけではありません。\n日本では、研究者データベースとして ResearchMap があります。ResearchMap にも ORCID を入力する欄がありますので、データをリンクすることができます。\n\n\n1.4.2 研究の SNS\n研究者向けのソーシャルネットワーキングサービスと言えるものがあります。代表的なものは、ResearchGate や Academia があります。\nResearchGate で、関心のある研究者をフォローすることで、論文出版時に連絡が来るようになります。"
+  },
+  {
+    "objectID": "design.html#自動翻訳",
+    "href": "design.html#自動翻訳",
+    "title": "1  臨床論文",
+    "section": "1.5 自動翻訳",
+    "text": "1.5 自動翻訳\n多くのWebブラウザは、ウェブページの翻訳に対応しています。\niPad の場合、ウェブブラウザにアドオンを追加できないですが、Safari はネイティブで自動翻訳機能を備えています。"
+  },
+  {
+    "objectID": "design.html#研究デザイン",
+    "href": "design.html#研究デザイン",
+    "title": "1  臨床論文",
+    "section": "1.6 研究デザイン",
+    "text": "1.6 研究デザイン\n臨床系論文は、研究デザインによってある程度書き方が決まっています。\n\n\n\n研究デザインとエビデンス (Source: https://commons.wikimedia.org/wiki/File:Research_design_and_evidence_ja.svg )\n\n\n\n\n\n\n\n\n理学療法士国家試験 第58回 午前 23\n\n\n\n観察的研究を研究デザインとするのはどれか。２つ選べ。\n\nコホート研究\nメタアナリシス\n無作為比較対照研究\nケースコントロール研究\nシステマティックレビュー\n\n\n\nケースコントロール研究は、図中の症例対照研究です。正解は 1 と 4 となります。"
+  },
+  {
+    "objectID": "design.html#頻出キーワード",
+    "href": "design.html#頻出キーワード",
+    "title": "1  臨床論文",
+    "section": "1.7 頻出キーワード",
+    "text": "1.7 頻出キーワード\nここでは、第 2 章から第 8 章まで共通して使われる専門用語について概略します。\nアウトカムとは、転帰とも言います。当該研究において、最も重要視する評価項目です。エンドポイントとも同じような意味で使われることがあります。\n95% Confidence Interval (95 % CI):「95% 信頼区間」で、同じ調査を繰り返し行っても、95% はこの範囲に収まる範囲を示しています。定義せずに 95 % CI と表記されることもあります。\n信頼区間とは、これまでよく使われてきた p 値に変わって使われています。\n… Although hypothesis testing often results in the P value, P values themselves can only provide information about whether the null hypothesis is rejected. Confidence intervals are much more informative because they provide a plausible range og values for an unknonwn parameter, as well as some indication of the power of the study as indicated by the width of the CI. … (Manual of Style 11th Edition p. 1069)\n研究の強み (strength) と限界 (limitation) は、臨床研究では必須で、考察の後半で記述されます。\n資金提供、スポンサー、研究組織とのかかわり、起こり得る利益相反 (conflict of interest) は、論文の後半において引用文献のまえに書かれています。これは、ヘルシンキ宣言に基づくものです。"
+  },
+  {
+    "objectID": "frailty.html#sec-frailty-definition",
+    "href": "frailty.html#sec-frailty-definition",
+    "title": "2  フレイル",
+    "section": "2.1 フレイルの定義",
+    "text": "2.1 フレイルの定義\nフレイルについての重要な論文は、さまざまな検索をした結果、以下の 3 つに絞ってみました。11 PubMed または Google Scholar を使い、frailty について検索してみなさい。\n\nFried LP, Tangen CM, Walston J, Newman AB, Hirsch C, Gottdiener J, … & McBurnie MA (2001) Frailty in older adults: evidence for a phenotype. The Journals of Gerontology Series A: Biological Sciences and Medical Sciences, 56(3), M146-M157.\nClegg A, Young J, Iliffe S, Rikkert MO, & Rockwood K (2013). Frailty in elderly people. The Lancet, 381(9868), 752-762.\nRockwood K, Song X, MacKnight C, Bergman H, Hogan DB, McDowell I, & Mitnitski A (2005) A global clinical measure of fitness and frailty in elderly people. CMAJ, 173(5), 489-495.\n\nさて、これらのなかで必ず読むべき論文はどれか？と聞かれたら、全てです。その中で一つというならば、おそらく Clegg A (2013) The Lancet となります。比較的新しいのと、ジャーナルが有名という点です。\nただし、ここでは Fried LP (2001) The Journals of Gerontology Series A2 を読んでみたいと思います。理由としては、フレイルの定義としてもっとも定着している Phenotype 法を提唱した論文だからです。Fried LP (2001) の中身そのものが医師国家試験で出題されたことがあります。2 The Journals of Gerontology Series A とは、どのようなジャーナルか？\n\n\n\n\n\n\n第113回 F 27\n\n\n\n身体的フレイルの評価基準として誤っているのはどれか。\na 易疲労感\nb 握力の低下\nc 睡眠時間の短縮\nd 歩行速度の低下\ne 日常生活活動量の低下\n\n\nこの問題の正解を知るために、以下の論文を読んでみましょう。"
+  },
+  {
+    "objectID": "frailty.html#sec-frailty-paper",
+    "href": "frailty.html#sec-frailty-paper",
+    "title": "2  フレイル",
+    "section": "2.2 論文",
+    "text": "2.2 論文\nFried LP, Tangen CM, Walston J, Newman AB, Hirsch C, Gottdiener J, … & McBurnie MA (2001) Frailty in older adults: evidence for a phenotype. The Journals of Gerontology Series A: Biological Sciences and Medical Sciences, 56(3), M146-M157.\nhttps://doi.org/10.1093/gerona/56.3.m146\n著者はたくさんいますが、第一著者は Linda P. Fried で、当時の所属 (affiliation) は The Johns Hopkins Medical Institution でした。33 What is her current affiliation?\nこの論文はオープンアクセスではないので、Abstract と Figure 3 のみ読みます。本文全体 (Figure 3 を含む) は、Universal Passport などから入手してください。"
+  },
+  {
+    "objectID": "frailty.html#sec-frailty-abstract",
+    "href": "frailty.html#sec-frailty-abstract",
+    "title": "2  フレイル",
+    "section": "2.3 Abstract",
+    "text": "2.3 Abstract\nAbstract は、構造化されています。\n\n原文日本語訳\n\n\nBackground. Frailty is considered highly prevalent in old age and to confer high risk for falls, disability, hospitalization, and mortality. Frailty has been considered synonymous with disability, comorbidity, and other characteristics, but it is recognized that it may have a biologic basis and be a distinct clinical syndrome. A standardized definition has not yet been established.\n\n\nフレイルは老年期に多くみられ、転倒、障害、入院、死亡のリスクが高いと考えられている。フレイルは、障害、合併症、その他の特徴と同義であると考えられてきたが、生物学的基盤があり、明確な臨床症候群である可能性が認められている。標準的な定義はまだ確立されていない。\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nprevalent: 流行している; prevalence は有病率\nfall: 転倒\nhospitalization: 入院\ncomorbidity: 重複疾患\n\n\n\n原文日本語訳\n\n\nMethods. To develop and operationalize a phenotype of frailty in older adults and assess concurrent and predictive validity, the study used data from the Cardiovascular Health Study. Participants were 5,317 men and women 65 years and older (4,735 from an original cohort recruited in 1989–90 and 582 from an African American cohort recruited in 1992–93). Both cohorts received almost identical baseline evaluations and 7 and 4 years of follow-up, respectively, with annual examinations and surveillance for outcomes including incident disease, hospitalization, falls, disability, and mortality.\n\n\n方法 高齢者におけるフレイルの表現型を作成・運用し、同時性と予測妥当性を評価するために、本研究では心血管健康調査（Cardiovascular Health Study）のデータを用いた。参加者は65歳以上の男女5,317人（1989-90年に募集されたオリジナルコホートから4,735人、1992-93年に募集されたアフリカ系アメリカ人コホートから 582 人）であった。両コホートは、ほぼ同じベースライン評価を受け、それぞれ7年間と4年間のフォローアップを受け、年 1 回の検査と、疾病の発生、入院、転倒、障害、死亡を含む転帰のサーベイランスを受けた。\n\n\n\nFried LP によるフレイル定義は、\n\n表現型 (Phenotype)\nCHS 基準\n\nなどと呼ばれます。\n\n原文日本語訳\n\n\nResults Frailty was defined as a clinical syndrome in which three or more of the following criteria were present: unintentional weight loss (10 lbs in past year), self-reported exhaustion, weakness (grip strength), slow walking speed, and low physical activity. The overall prevalence of frailty in this community-dwelling population was 6.9%; it increased with age and was greater in women than men. Four-year incidence was 7.2%. Frailty was associated with being African American, having lower education and income, poorer health, and having higher rates of comorbid chronic diseases and disability. There was overlap, but not concordance, in the cooccurrence of frailty, comorbidity, and disability. This frailty phenotype was independently predictive (over 3 years) of incident falls, worsening mobility or ADL disability, hospitalization, and death, with hazard ratios ranging from 1.82 to 4.46, unadjusted, and 1.29–2.24, adjusted for a number of health, disease, and social characteristics predictive of 5-year mortality. Intermediate frailty status, as indicated by the presence of one or two criteria, showed intermediate risk of these outcomes as well as increased risk of becoming frail over 3–4 years of follow-up (odds ratios for incident frailty = 4.51 unadjusted and 2.63 adjusted for covariates, compared to those with no frailty criteria at baseline).\n\n\n結果 フレイルは、意図的でない体重減少（過去1年間で10ポンド）、自己申告による疲労、脱力（握力）、歩行速度の低下、身体活動低下のうち 3 つ以上が認められる臨床的症候群と定義された。この地域住民集団におけるフレイルの全有病率は6.9％であり、年齢とともに増加し、男性よりも女性で大きかった。4年間の発症率は7.2％であった。フレイルは、アフリカ系アメリカ人であること、学歴や所得が低いこと、健康状態が悪いこと、重複疾患や障害の割合が高いことと関連していた。フレイル、重複疾患、障害の併発には、一致はしなかったが重複がみられた。このフレイル表現型は、転倒、移動またはADL障害の悪化、入院、死亡の独立した予測因子であり、ハザード比は未調整で1.82～4.46、5年死亡を予測する多くの健康、疾患、社会的特性で調整すると1.29～2.24であった。1つまたは2つの基準が存在することで示される中間のフレイル状態は、これらのアウトカムの中間のリスクを示すとともに、3～4年の追跡期間中にフレイルになるリスクの上昇を示した（ベースライン時に虚弱基準がなかった人と比較して、フレイルの発生に関するオッズ比は、調整前では4.51、共変量で調整すると2.63であった）。\n\n\n\n結果として、フレイルは以下のように定義されました。\n\nunintentional weight loss (10 lbs in past year)\nself-reported exhaustion\nweakness (grip strength)\nslow walking speed, and\nlow physical activity\n\nこのうち 3 つ以上当てはまると「フレイル」となります。では、国家試験の問題に戻りましょう。\n\n\n\n\n\n\n第113回 F 27\n\n\n\n身体的フレイルの評価基準として誤っているのはどれか。\na 易疲労感\nb 握力の低下\nc 睡眠時間の短縮\nd 歩行速度の低下\ne 日常生活活動量の低下\n\n\n誤っているのは、c となります。\nThere was overlap, but not concordance, in the occurrence of frailty, comorbidity, and disability.\nフレイル、合併症、障害の併発には、一致はしていないが重なりがあった、とあります。\n\n原文日本語訳\n\n\nConclusions. This study provides a potential standardized definition for frailty in community-dwelling older adults and offers concurrent and predictive validity for the definition. It also finds that there is an intermediate stage identifying those at high risk of frailty. Finally, it provides evidence that frailty is not synonymous with either comorbidity or disability, but comorbidity is an etiologic risk factor for, and disability is an outcome of, frailty. This provides a potential basis for clinical assessment for those who are frail or at risk, and for future research to develop interventions for frailty based on a standardized ascertainment of frailty.\n\n\n結論 本研究は、地域居住高齢者におけるフレイルの標準化された定義の可能性を提供し、その定義に対する同時妥当性と予測妥当性を提示するものである。また、フレイルのハイリスク者を特定する中間段階が存在することも明らかにした。最後に、フレイルは合併症や障害と同義ではなく、合併症はフレイルの病因となる危険因子であり、障害はフレイルの結果であるという証拠を示している。このことは、フレイルまたはその危険性のある人の臨床評価や、標準化された虚弱の把握に基づいたフレイルへの介入を開発するための今後の研究の基礎となる可能性を示している。\n\n\n\nこれにより、\n重複疾患 \\(\\rightarrow\\) フレイル \\(\\rightarrow\\) 障害\nという流れが判明しました。"
+  },
+  {
+    "objectID": "frailty.html#figure-3",
+    "href": "frailty.html#figure-3",
+    "title": "2  フレイル",
+    "section": "2.4 Figure 3",
+    "text": "2.4 Figure 3\nこの図はベン図と呼ばれるもので、数学の集合などでよく登場します。\n\n原文日本語訳\n\n\nFig. 3 displays the overlap between these characteristics, as well as with the presence of two or more comorbid diseases. There was only modest concordance between frailty and disability. Of those who were frail, 46% had comorbid disease, 6% had ADL disability, 22% had both comorbid disease and ADL disability, and 27% had neither ADL disability nor comorbidity.\n\n\n図 3 は、これらの特徴間の重複と、2 つ以上の併存疾患の有無を示している。虚弱と障害の間には、わずかな一致しか見られなかった。虚弱であった人のうち、46％に併存疾患があり、6％にADL障害があり、22％に併存疾患とADL障害の両方があり、27％にADL障害も併存疾患もなかった。\n\n\n\nFried LP 論文の Figure 3 を参照\n割合は、フレイル以外の人は除外し、フレイルの人 (21 + 79 + 170 + 98 = 368) を母数とした割合になっています。\n重複疾患 (comorbidity) を持っている人は、79 + 170 = 249 人です。割合は、249/368 = 68% のはずですが、ここでは重複疾患を持っておりADL障害を持っていない 170/368 = 46% と報告しています。ここはちょっと不正確な印象があります。"
+  },
+  {
+    "objectID": "frailty.html#演習",
+    "href": "frailty.html#演習",
+    "title": "2  フレイル",
+    "section": "2.5 演習",
+    "text": "2.5 演習\nGoogle Form テスト"
+  },
+  {
+    "objectID": "meta.html",
+    "href": "meta.html",
+    "title": "メタ分析",
+    "section": "",
+    "text": "システマティックレビュー\nメタ分析\n論文例1\n論文例2"
+  },
+  {
+    "objectID": "meta_intro.html#sec-meta-keyword",
+    "href": "meta_intro.html#sec-meta-keyword",
+    "title": "3  メタ分析",
+    "section": "3.1 キーワード",
+    "text": "3.1 キーワード\n世の中には、似たような研究もたくさんあります。中には結果が相反している場合もあります。メタ分析 (meta-analysis)とは、同一のアウトカムを扱っている複数の研究をプール (pool) し、再解析を行うことです。\nメタ分析は通常、系統レビュー (systematic review)とセットになります。まず、系統レビューで同一のアウトカムの研究を網羅的に検索します。次に、検索した論文から適格基準や本文の内容により、メタ分析する論文を選別します。\n\n\n\n\n\n\n医師国家試験 第109回 C 9\n\n\n\n研究を行う本人が患者や対象者の集団に働きかけて直接データを収集しないのはどれか。\na コホート研究\nb 症例対照研究\nc ランダム化比較試験\nd ケースシリーズ研究\ne メタ分析〈メタアナリスシス〉\n\n\nちょっと問題文がわかりづらいですが、メタ分析において、データは患者ではなくて研究論文から取ります。正解は e となります。\nアウトカムは、有病率やオッズ比などさまざまなものをプールすることが可能です。\n各研究の値とプール推計値は、フォレストプロット (forest plot) で示されることもあります。医師国家試験で出題されたフォレストプロットを見てみましょう。\n\n\n\n\n\n\n医師国家試験 第111回 F 05\n\n\n\nある研究結果の表を示す。\n\n\n\n医師国家試験 第111回 F 05 (Source: https://www.mhlw.go.jp/seisakunitsuite/bunya/kenkou_iryou/iryou/topics/tp170425-01.html)\n\n\nこの研究方法はどれか。\na 横断研究\nb コホート研究\nc 症例対照研究\nd 症例集積研究\ne メタ分析〈メタアナリシス〉\n\n\nこのフォレストプロットは、研究 A 〜 研究 D という 4 つの研究があり、すべてをプールしたものが再下段に描かれています。つまり、正解は e となります。\nフォレストプロットの中央の列では、四角く塗りつぶされている部分がそれぞれの研究での値で、四角の大きさは重みを表しています。値から伸びているヒゲは 95% 信頼区間を表しています。オッズ比と 95% 信頼区間の数値は一番右の列に記載されています。\nこの図から、各研究においてはオッズ比は 0.15 から 0.62 でしたが、いずれも有意差があるとは言えませんでした。プールした結果、オッズ比は 0.37 となり、有意差がありました。\n\n3.1.1 異質性\nさて、このようにプールされた結果はどの程度信頼できるでしょうか？その指標の一つが異質性 (heterogeneity) です。\nある疾患について 3 件の研究があり、プール有病率が、50% としても、元となる有病率が 10%、50%、90% である場合と、45%、50%、55% である場合では、信頼度が異なるのはわかるかと思います。前者のような時、異質性が高いと言います。\n異質性は、Cochran Q 検定または \\(I^2\\) で評価します。Cochran Q 検定は、通常の p 値で評価します。\\(I^2\\) は、0%〜100% の値を取り、数値が大きいほど異質性が高くなります。\nメタ分析の論文のガイドラインは、PRISMA 宣言です。"
+  },
+  {
+    "objectID": "meta_intro.html#sec-meta-prevalence",
+    "href": "meta_intro.html#sec-meta-prevalence",
+    "title": "3  メタ分析",
+    "section": "3.2 有病率のメタ分析",
+    "text": "3.2 有病率のメタ分析\n論文の例: Kojima G, Iliffe S, Taniguchi Y, Shimada H, Rakugi H, & Walters K (2017). Prevalence of frailty in Japan: a systematic review and meta-analysis. Journal of Epidemiology, 27(8), 347-353.\nVetrano DL, Palmer KM, Galluzzo L, Giampaoli S, Marengoni A, Bernabei R, & Onder G (2018). Hypertension and frailty: a systematic review and meta-analysis. BMJ open, 8(12), e024406.\nOfori-Asenso R, Chin KL, Mazidi M, Zomer E, Ilomaki J, Zullo AR, … & Liew D (2019) Global incidence of frailty and prefrailty among community-dwelling older adults: a systematic review and meta-analysis. JAMA network open, 2(8), e198398-e198398."
+  },
+  {
+    "objectID": "ct.html",
+    "href": "ct.html",
+    "title": "比較試験",
+    "section": "",
+    "text": "ランダム化比較試験\nランダム化\n盲検化"
+  },
+  {
+    "objectID": "rct_intro.html#sec-rct-keyword",
+    "href": "rct_intro.html#sec-rct-keyword",
+    "title": "4  ランダム化比較試験",
+    "section": "4.1 キーワード",
+    "text": "4.1 キーワード\nランダム化比較試験 (randomised controlled trial, RCT) は、「ランダム化」 (randomisation) という手法で介入群と対照群を設定する臨床試験です。\n\n\n\n\n\n\n医師国家試験 第118回 B 09\n\n\n\nランダム化比較試験〈RCT〉で正しいのはどれか。\na 観察研究である。\nb 外的妥当性が高い研究である。\nc 未測定の交絡因子に対応できない。\nd 有病率の低い疾患の研究に適している。\ne 症例対照研究よりエビデンスレベルが高い。\n\n\nRCT は、介入前をベースライン (baseline) と言います。また介入が終了した後に効果が持続するかどうかを見るために、3ヶ月や 1 年など追跡 (follow-up) 調査することもよくあります。調査時点を、介入前 (T0)、介入直後 (T1)、追跡 (T2) などと表現することもあります。\n\n\n\n\n\n\n医師国家試験 第115回 B 06\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 内的妥当性が高い。\nb 二重盲検を要件とする。\nc 第１相臨床試験で用いられる。\nd メタ分析〈メタアナリシス〉の一種である。\ne 観察研究に比べて交絡因子の影響が大きい。\n\n\nRCT の特徴は、内的妥当性の高さなので、a が正解となります。\n選択肢 e に、交絡因子 (confounding factor) という言葉があります。交絡因子は系統誤差の原因の一つですので、RCT ではむしろ影響が少なくなります。交絡因子は、統計学的には「調整」(adjustment) をする必要が出てきます。\nconfounding variable: variable that can cause or prevent the outcome of interest, is not an intermediate variable, and is associated with the factor under investivgation. Unless it is possible to adjust for confounding variables their effects cannot be distinguished from those of the factors being studied. … (Style Committee et al. 2020, 1028)\n統計手法としては、繰り返しのある二元配置分散分析 (two-way repeated measures ANOVA) や混合モデル (mixed model) といった解析方法を使います。\nRCT には、倫理的な課題があります。それは、参加者の多くは治療を期待しているのにも関わらず、治療をしない対照群に割り当てられる可能性がある点です。この観点から、サンプルサイズ (sample size) は小さい方が好ましくなります。一方で、効果推定のためにはサンプルサイズが大きい方が好ましいです。このため、予備試験 (pilot study) を実施し、サンプルサイズを推定することがあります。なお、サンプルサイズは症例数ということもあります。"
+  },
+  {
+    "objectID": "rct_intro.html#itt-と-per-protocol",
+    "href": "rct_intro.html#itt-と-per-protocol",
+    "title": "4  ランダム化比較試験",
+    "section": "4.2 ITT と Per Protocol",
+    "text": "4.2 ITT と Per Protocol\n解析対象については、Intention-to-treat 解析や Per protcol 解析が行われることがあります。Intention-to-treat は、治療の意図という意味で、実際の治療ではなく当初の治療を指します。一方、Per protocol は実際に行われた治療を指します。この二つの単語については、日本語訳はされないことの方が多いようです。RCT では通常、per protocol よりも ITT の方が望ましいとされています。\nAMA Manual of Style では、以下のように定義しています。\nIntention-to-treat (ITT) analysis is the preferred way to report randomized trial results. Final results are based on analysis of data from all the participants who were originally randomly assigned, whether or not they completed the trial.\nA per-protocol analysis reports a study’s results by the treatment received and not by the group into which the participants were randomly assigned.\n(Style Committee et al. 2020, 988)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n\n\n\n\n\n\n医師国家試験 第110回 B 13\n\n\n\n治療 A と治療 B との比較を目的としたランダム化比較試験〈無作為化比較対照試験〉を行った。割り付けと実際の治療人数の表を示す。\n\n\n\n\n\n\n\n\n\n\n\n治療 A を実際に行った\n治療 B を実際に行った\n治療開始前 に死亡した\n合計\n\n\n\n\n治療A割付\n110人\n15人\n4人\n129人\n\n\n治療B割付\n6人\n115人\n0人\n121人\n\n\n合計\n116人\n130人\n4人\n250人\n\n\n\nintention to treat〈ITT〉で２つの治療を比較するときに、治療 A と治療 B の組み合わせで正しいのはどれか。\n\n\nITT ですので、「割付」を見れば良いことになります。割り付けられたのは、治療 A が 129 人、治療 B が 121 人です。これが正解になります。\nただし、RCT においては、実際には死亡した人の After のデータがない可能性があります。実際、この問題でも治療Aは125人という選択肢があり、そこで悩んだ人もいたようです。\nでは、Per protocol 解析だとすると何人でしょうか？治療 A に割付られ、実際に治療 A を行った 110 人と、治療 B の 115 人となります。\nここまで見たように、RCT の強みは、実験に参加した患者 (または参加者) については妥当性が高いと言えます。これを内的妥当性 (internal validity) と言います。対象者以外に拡張する場合は外的妥当性 (external validity) や一般化可能性 (generalisability)と言います。\n\n\n\n\n\n\n医師国家試験 第114回 E 17\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 二重盲検は必須である。\nb プラセボは現在では使用が禁止されている。\nc ランダム割付は症例数を少なくするために行われる。\nd 症例数の設定のためには治療効果の推定が必要である。\ne Intention to treat〈ITT〉による解析は実際に行った治療に基づいて行われる。\n\n\n正解は、d となります。"
+  },
+  {
+    "objectID": "rct_intro.html#sec-rct-randomisation",
+    "href": "rct_intro.html#sec-rct-randomisation",
+    "title": "4  ランダム化比較試験",
+    "section": "4.3 ランダム化",
+    "text": "4.3 ランダム化\nところが、ランダム化とは何か？と聞かれると、意外と答えられないものです。また、論文ではランダム化の方法まで報告されていることは少ないようです。ランダム化は、どのような目的で行うのでしょうか？\nランダム化の目的は、介入群と対照群を均質にすることにあります。例えば、年齢や性別が影響を及ぼす場合、100人をランダム化する場合は、両群の平均年齢と男女比がほぼ同じになるように分けます。このような、影響を及ぼす誤差を系統誤差 (systematic error) といいます。一方、「ほぼ」の部分は偶然誤差 (random error) になります。\nおや、偶然誤差の「偶然」は、英語では random ですね。つまり、これがランダム化ということです。例えば、ランダム化して平均年齢が 70.4 才と 70.5 才になったとしたら、その差 0.1 は偶然誤差と言えます。\n振り分けを「ランダムに」行うのではなく、「ランダムになるように」振り分けを意図的に行うことです。\nランダム化の目的は、医師国家試験に数回出題されたことがあります。\n\n\n\n\n\n\n医師国家試験 第110回 B 22\n\n\n\nランダム化比較試験〈無作為化比較対照試験〉においてランダム割付を実施する目的はどれか。\na 治療中断の防止\nb 偶然誤差の制御\nc 治療内容の盲検化\nd 比較群間の均質性の向上\ne 患者の試験への参加率の上昇\n\n\nランダム化の目的は、正解は d となります。b については、「系統誤差を制御」が正しく、偶然誤差はランダム化でも残ります。1\n1 選択肢 c にある「盲検化」とは何か？\n介入 (intervention) と対照 (control) の比較を行います。動物実験の場合、対照を Sham ということもあります。\nランダム化の方法には、以下のようなものがあります。ここでは、20人の人を介入群と対照群に 1:1 で割り付けるとします。\n\n4.3.1 単純ランダム化\n参加者一人一人に、50%の確立でどちらかの群に割り付ける。\nこれは、一見すると正しいような気がします。ところが、実際に実行してみるとわかりますが、14:6 など、かなり偏りが出ます。\n\n\n4.3.2 ブロックランダム化\nブロックランダム化は、単純ランダム化の問題を修正したものです。\nあらかじめ、「介介対対」や「介対対介」などのように、コンピュータで 4 人分（ブロックサイズ）の割り付け方法を決めておきます。なお、4 任分だけでなく、2 人や 6 人などブロックサイズも変えることもあります。\nこうすることで、おおむね 1:1 に割り付けられます。\n\n\n4.3.3 層別ランダム化\nランダム化は、ランダム化した結果、両群が同じような集団にならなければあんりません。\nしかし、ランダム化で偶然にも介入群に男性が10人、対照群に男性が0人となってしまうかもしれません。\nこれを防ぐために、あらかじめ性別でわけて、男性ないでランダム化を行います。\n\n\n4.3.4 クラスターランダム化\nここでいうクラスターとは、多施設試験におけるそれぞれの施設になります。\n例えば、杏林大学病院と東大病院で共同する場合、杏林大学病院の患者をまるまる介入群とするというランダム化になります。"
+  },
+  {
+    "objectID": "rct_intro.html#ガイドライン",
+    "href": "rct_intro.html#ガイドライン",
+    "title": "4  ランダム化比較試験",
+    "section": "4.4 ガイドライン",
+    "text": "4.4 ガイドライン\nRCT の論文のガイドラインは、CONSORT 声明です。\n論文の例: Siramolpiwat S, Limthanetkul N, Pornthisarn B, Vilaichone RK, Chonprasertsuk S, Bhanthumkomol P, … & Issariyakulkarn N (2023). Branched-chain amino acids supplementation improves liver frailty index in frail compensated cirrhotic patients: a randomized controlled trial. BMC gastroenterology, 23(1), 154.\nTeh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … & Pillai A (2022). Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. The Lancet Healthy Longevity, 3(8), e519-e530."
+  },
+  {
+    "objectID": "observation.html",
+    "href": "observation.html",
+    "title": "観察研究",
+    "section": "",
+    "text": "横断研究\n前向きコホート研究\nケースコントロール研究\nSTROBE 声明"
+  },
+  {
+    "objectID": "crosssectional_intro.html#sec-crosssectional-keyword",
+    "href": "crosssectional_intro.html#sec-crosssectional-keyword",
+    "title": "5  横断研究",
+    "section": "5.1 キーワード",
+    "text": "5.1 キーワード\nコホート研究 (cohort study) には、いくつかの種類があります。\nまず、ある１時点での調査を行うことを横断研究 (cross-sectional study)、複数の時点で調査を行うことを縦断研究 (longitudinal study) と言います。\n横断研究では、通常、ある疾患 (ここではフレイル) の有病率や、さまざまな属性との関連を調べます。この属性を、RCT での介入に対して、コホート研究では暴露 (exposure) と言うこともあります。\n横断研究では、統計手法としては、ロジスティック回帰 (logistic regression) がよく用いられます。これは、単一のアウトカムに対して、複数の属性を共変量 (covariate) として解析し、関連 (association) があるかどうかを調査します。最終的には、共変量ごとにオッズ比が得られます。\nロジスティック回帰を理解するためには、まずオッズ比とリスク比を理解する必要があります。\nまず、以下のオッズ比とリスク比を計算してみましょう。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n20人\n80人\n100人\n\n\n暴露なし\n10人\n90人\n100人\n\n\n合計\n30人\n170人\n200人\n\n\n\nリスク比 = \\(\\dfrac{ \\dfrac{20}{100} }{ \\dfrac{10}{100} } = 2.00\\)\nリスク比は簡単に理解できます。「暴露ありのほうが、暴露なしよりも 2.00 倍の疾患リスクがある」と解釈することができます。\nオッズ比 = \\(\\dfrac{ \\dfrac{20}{80} }{ \\dfrac{10}{90} } = 2.25\\)\nこのように、オッズ比はリスク比に近いけれども、ちょっと大袈裟にでる傾向があります。11 オッズ比は、1 より大きい場合はリスク比よりも大きく、1 より小さい場合はリスク比より小さく出ます。\nこのため、オッズ比 2.25 は、「暴露ありのほうが、暴露なしよりも 2.25倍の疾患リスクがある」と解釈することはできません (Tajeu et al. 2012; Holcomb Jr et al. 2001)。\n\nTajeu, Gabriel S, Bisakha Sen, David B Allison, and Nir Menachemi. 2012. “Misuse of Odds Ratios in Obesity Literature: An Empirical Analysis of Published Studies.” Obesity 20 (8): 1726–31.\n\nHolcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Burgdorf. 2001. “An Odd Measure of Risk: Use and Misuse of the Odds Ratio.” Obstetrics & Gynecology 98 (4): 685–88.\nなお、全体の有病率が低くなるほどオッズ比はリスク比に近づき、10% 以下ではほぼリスク比に近似できます。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n2人\n98人\n100人\n\n\n暴露なし\n1人\n99人\n100人\n\n\n合計\n3人\n197人\n200人\n\n\n\nリスク比は 2.00 のままですが、オッズ比は 2.02 になります。\n上の表では、要因が一つ (暴露) だけでした。これを、複数に拡張したものがロジスティック回帰になります。また、2 値変数だけではなく数値も使用することができます。\n横断研究では多くの場合、以下の調査を行います。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nこれで全てではありません。例えば、Chapter 2 でみた Fried LP (2001) もコホート研究の一種です。\nコホート研究の論文のガイドラインは、STROBE 宣言です。"
+  },
+  {
+    "objectID": "crosssectional_intro.html#有病率と関連要因の調査",
+    "href": "crosssectional_intro.html#有病率と関連要因の調査",
+    "title": "5  横断研究",
+    "section": "5.2 有病率と関連要因の調査",
+    "text": "5.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。\n論文の例: Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9."
+  },
+  {
+    "objectID": "critical.html",
+    "href": "critical.html",
+    "title": "批判的吟味",
+    "section": "",
+    "text": "Letter"
+  },
+  {
+    "objectID": "letter.html#批判的吟味-critical-reading",
+    "href": "letter.html#批判的吟味-critical-reading",
+    "title": "6  レター",
+    "section": "6.1 批判的吟味 (Critical Reading)",
+    "text": "6.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
+  },
+  {
+    "objectID": "letter.html#自動翻訳",
+    "href": "letter.html#自動翻訳",
+    "title": "6  レター",
+    "section": "6.2 自動翻訳",
+    "text": "6.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
+  },
+  {
+    "objectID": "letter.html#文法チェック",
+    "href": "letter.html#文法チェック",
+    "title": "6  レター",
+    "section": "6.3 文法チェック",
+    "text": "6.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
+  },
+  {
+    "objectID": "letter.html#書き換えツール",
+    "href": "letter.html#書き換えツール",
+    "title": "6  レター",
+    "section": "6.4 書き換えツール",
+    "text": "6.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "さいごに",
+    "section": "",
+    "text": "臨床研究は日進月歩で発展を続けています。本書で触れた部分は、その導入部分にすぎません。みなさんの力で、臨床研究を前に進めていきましょう。"
+  }
+]
