@@ -31,12 +31,6 @@ format:
     css: style.css
     grid:
       margin-width: 350px
-  pdf:
-    pdf-engine: xelatex
-    documentclass: bxjsbook
-    classoption: oneside,xelatex,ja=standard
-    output-file: "How"
-    output-ext:  "pdf"
 
 reference-location: margin
 citation-location: margin
