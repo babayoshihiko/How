@@ -1,18 +1,12 @@
 # はじめに {.unnumbered}
 
-本書 (HTML、PDF) は、杏林大学医学部における医学英語 III および 医学英語 IV の B/C 班で行っている講義資料です。
-
-対象年度: 2019年度〜2024年度
-
-[シラバス](https://www.kyorin-u.ac.jp/univ/faculty/medicine/education/subjects/)
-
-第3学年 シラバス p. 28 および 第4学年 シラバス p. 26
+本書 (HTML、PDF) は、介護福祉学「研究方法」テキストとして作成しています。
 
 ```{=html}
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title"> 医学英語: フレイルで理解する臨床論文の読み方</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://orcid.org/0000-0001-7034-9724">馬場 美彦</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title"> 介護福祉学「研究方法」</span> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://orcid.org/0000-0001-7034-9724">馬場 美彦</a> is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
 ```
 ```{=latex}
-医学英語: フレイルで理解する臨床論文の読み方 © 2024 by 馬場 美彦 is licensed under CC BY-SA 4.0
+介護福祉学「研究方法」 © 2025 by 馬場 美彦 is licensed under CC BY-SA 4.0
 \includegraphics[width=0.05\textwidth]{img/cc.png}
 \includegraphics[width=0.05\textwidth]{img/by.png}
 \includegraphics[width=0.05\textwidth]{img/sa.png}

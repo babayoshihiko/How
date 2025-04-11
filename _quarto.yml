@@ -6,9 +6,9 @@ execute:
   freeze: auto
 
 book:
-  title: "医学英語: フレイルで理解する臨床論文の読み方"
+  title: "介護福祉学「研究方法」"
   author: "馬場 美彦"
-  date: "11/4/2024"
+  date: today
   chapters:
     - index.qmd
     - design.qmd
@@ -39,4 +39,7 @@ format:
 
 reference-location: margin
 citation-location: margin
+
+website:
+  site-url: "https://babayoshihiko.github.io/How/" # makes site links work on your remote site
 
