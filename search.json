@@ -175,6 +175,13 @@
     "text": "5.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。\n論文の例: Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9."
   },
   {
+    "objectID": "cohort_intro.html#sec-cohort-keyword",
+    "href": "cohort_intro.html#sec-cohort-keyword",
+    "title": "6  縦断研究",
+    "section": "6.1 キーワード",
+    "text": "6.1 キーワード\n縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。\n縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。\n両者には以下のような違いがあります。\n\n\n\n\n\n\n\n\n\n前向き\n後ろ向き\n\n\n\n\n解析の時期\nデータがそろってから解析\nデータがあればすぐに解析可能\n\n\n変数\nあらかじめ設定することで取り忘れがなくなる\n観測していない変数には対応できない\n\n\n対象疾患\n有病率の高い疾患に適する\n稀な疾患に適する\n\n\n\n\n6.1.1 Kaplan-Meier 曲線\n後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。\n\n\n6.1.2 log-rank 検定\nlog-rank 検定は、2 つ以上の群の生存曲線の差を検定します。\n\n\n6.1.3 ハザード比\nCox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。\n\n例 1: ある病気にかかった人とかかっていない人の、一定期間内の死亡率の差を検定\n例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定\n\n共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。\n比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります (spruance2004hazard?)。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。\n\n\n6.1.4 論文の例\n\nKennard A, Richardson A, Rainsford S et al. (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. Bmj Open, 14(10), e087189."
+  },
+  {
     "objectID": "critical.html",
     "href": "critical.html",
     "title": "批判的吟味",
@@ -184,30 +191,30 @@
   {
     "objectID": "letter.html#批判的吟味-critical-reading",
     "href": "letter.html#批判的吟味-critical-reading",
-    "title": "6  レター",
-    "section": "6.1 批判的吟味 (Critical Reading)",
-    "text": "6.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
+    "title": "7  レター",
+    "section": "7.1 批判的吟味 (Critical Reading)",
+    "text": "7.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
   },
   {
     "objectID": "letter.html#自動翻訳",
     "href": "letter.html#自動翻訳",
-    "title": "6  レター",
-    "section": "6.2 自動翻訳",
-    "text": "6.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
+    "title": "7  レター",
+    "section": "7.2 自動翻訳",
+    "text": "7.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
   },
   {
     "objectID": "letter.html#文法チェック",
     "href": "letter.html#文法チェック",
-    "title": "6  レター",
-    "section": "6.3 文法チェック",
-    "text": "6.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
+    "title": "7  レター",
+    "section": "7.3 文法チェック",
+    "text": "7.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
   },
   {
     "objectID": "letter.html#書き換えツール",
     "href": "letter.html#書き換えツール",
-    "title": "6  レター",
-    "section": "6.4 書き換えツール",
-    "text": "6.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
+    "title": "7  レター",
+    "section": "7.4 書き換えツール",
+    "text": "7.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
   },
   {
     "objectID": "summary.html",

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>医学英語: フレイルで理解する臨床論文の読み方 - さいごに</title>
+<title>医学英語: フレイルで理解する臨床論文の読み方 - 6&nbsp; 縦断研究</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./letter.html" rel="prev">
+<link href="./critical.html" rel="next">
+<link href="./crosssectional_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -73,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html">さいごに</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./cohort_intro.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -167,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cohort_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./cohort_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></span></a>
   </div>
 </li>
@@ -192,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">さいごに</span></a>
   </div>
 </li>
@@ -202,14 +203,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-cohort-keyword" id="toc-sec-cohort-keyword" class="nav-link active" data-scroll-target="#sec-cohort-keyword"><span class="header-section-number">6.1</span> キーワード</a>
+  <ul class="collapse">
+  <li><a href="#kaplan-meier-曲線" id="toc-kaplan-meier-曲線" class="nav-link" data-scroll-target="#kaplan-meier-曲線"><span class="header-section-number">6.1.1</span> Kaplan-Meier 曲線</a></li>
+  <li><a href="#log-rank-検定" id="toc-log-rank-検定" class="nav-link" data-scroll-target="#log-rank-検定"><span class="header-section-number">6.1.2</span> log-rank 検定</a></li>
+  <li><a href="#ハザード比" id="toc-ハザード比" class="nav-link" data-scroll-target="#ハザード比"><span class="header-section-number">6.1.3</span> ハザード比</a></li>
+  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">6.1.4</span> 論文の例</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">さいごに</h1>
+<h1 class="title"><span id="sec-cohort-intro" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></span></h1>
 </div>
 
 
@@ -224,9 +237,69 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>臨床研究は日進月歩で発展を続けています。本書で触れた部分は、その導入部分にすぎません。みなさんの力で、臨床研究を前に進めていきましょう。</p>
+<section id="sec-cohort-keyword" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-cohort-keyword"><span class="header-section-number">6.1</span> キーワード</h2>
+<p>縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。</p>
+<p>縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。</p>
+<p>両者には以下のような違いがあります。</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 30%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>前向き</th>
+<th>後ろ向き</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>解析の時期</td>
+<td>データがそろってから解析</td>
+<td>データがあればすぐに解析可能</td>
+</tr>
+<tr class="even">
+<td>変数</td>
+<td>あらかじめ設定することで取り忘れがなくなる</td>
+<td>観測していない変数には対応できない</td>
+</tr>
+<tr class="odd">
+<td>対象疾患</td>
+<td>有病率の高い疾患に適する</td>
+<td>稀な疾患に適する</td>
+</tr>
+</tbody>
+</table>
+<section id="kaplan-meier-曲線" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="kaplan-meier-曲線"><span class="header-section-number">6.1.1</span> Kaplan-Meier 曲線</h3>
+<p>後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。</p>
+</section>
+<section id="log-rank-検定" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="log-rank-検定"><span class="header-section-number">6.1.2</span> log-rank 検定</h3>
+<p>log-rank 検定は、2 つ以上の群の生存曲線の差を検定します。</p>
+</section>
+<section id="ハザード比" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="ハザード比"><span class="header-section-number">6.1.3</span> ハザード比</h3>
+<p>Cox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。</p>
+<ul>
+<li>例 1: ある病気にかかった人とかかっていない人の、一定期間内の死亡率の差を検定</li>
+<li>例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定</li>
+</ul>
+<p>共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。</p>
+<p>比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります <span class="citation" data-cites="spruance2004hazard">(<a href="#ref-spruance2004hazard" role="doc-biblioref"><strong>spruance2004hazard?</strong></a>)</span>。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。</p>
+</section>
+<section id="論文の例" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">6.1.4</span> 論文の例</h3>
+<ul>
+<li>Kennard A, Richardson A, Rainsford S <em>et al.</em> (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. <em>Bmj Open</em>, 14(10), e087189.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -464,11 +537,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./letter.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">レター</span></span>
+      <a href="./crosssectional_intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">横断研究</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./critical.html" class="pagination-link">
+        <span class="nav-page-text">批判的吟味</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
