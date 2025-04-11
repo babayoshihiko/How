@@ -1,5 +1,9 @@
 project:
   type: book
+  output-dir: docs
+
+execute:
+  freeze: auto
 
 book:
   title: "医学英語: フレイルで理解する臨床論文の読み方"
