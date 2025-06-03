@@ -68,5 +68,7 @@
 
 説明変数は、仮説や先行研究から決定することが多いようです。
 
-論文の例: Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. *BMC Geriatrics*, 20(1), 1-9.
+### 論文の例
+
+- Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. *BMC Geriatrics*, 20(1), 1-9.
 

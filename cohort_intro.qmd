@@ -1,5 +1,9 @@
 # 縦断研究  {#sec-cohort-intro}
 
+```{r}
+# Do nothing
+```
+
 ## キーワード  {#sec-cohort-keyword}
 
 縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。

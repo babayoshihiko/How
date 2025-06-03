@@ -25,6 +25,8 @@ book:
         - cohort_intro.qmd
     - part: critical.qmd
       chapters: 
+        - protocol.qmd
+        - statement.qmd
         - letter.qmd
     - summary.qmd
 
