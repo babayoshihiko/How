@@ -1,0 +1,74 @@
+# 声明  {#sec-statement}
+
+## 声明  {#sec-statement-1}
+
+臨床論文は、書き方がある程度規定されています。
+
+- International Committee of Medical Journal Editors (ICMJE)
+- アメリカ医学会 Manual of Style: A guide for Authors and Editors
+- 各ジャーナルの Authors Guideline など
+- 研究デザインごとの声明 (Statement)
+
+声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。
+
+| 研究デザイン | ガイドライン |
+| -- | -- |
+| システマティックレビュー メタアナリシス	| PRISMA |
+| ランダム化比較試験	| CONSORT | 
+| 非ランダム化比較試験	| TREND | 
+| 分析疫学的研究 (コホート研究や症例対照研究)	| STROBE | 
+
+その他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。
+
+歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。
+
+## チェックリスト
+
+### STROBE
+
+| Item No |	Recommendation	| Page No |
+| -- | -- | -- |
+| Title and abstract	1 |	(a) Indicate the study's design with a commonly used term in the title or the abstract | |	
+| |		(b) Provide in the abstract an informative and balanced summary of what was done and what was found | |	
+| Introduction | | |
+| Background/rationale	2	| Explain the scientific background and rationale for the investigation being reported	| |
+| Objectives	3	| State specific objectives, including any prespecified hypotheses	| |
+| Methods | | |
+| Study design	4	| Present key elements of study design early in the paper		| |
+| Setting	5	| Describe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection		| |
+| Participants	6	| (a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up		| |
+| | 		(b) For matched studies, give matching criteria and number of exposed and unexposed		| |
+| Variables	7	| Clearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable		| |
+| Data sources/ measurement	8*	 | For each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group		| |
+| Bias	9	| Describe any efforts to address potential sources of bias		| |
+| Study size	10	| Explain how the study size was arrived at		| |
+| Quantitative variables	11	| Explain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why		| |
+| Statistical methods	12	| (a) Describe all statistical methods, including those used to control for confounding		| |
+| | 		(b) Describe any methods used to examine subgroups and interactions		| |
+| | 		(c) Explain how missing data were addressed		| |
+| | 		(d) If applicable, explain how loss to follow-up was addressed		| |
+| | 		(e) Describe any sensitivity analyses		| |
+| Results | | | 	
+| Participants	13*	| (a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed		| |
+| | 		(b) Give reasons for non-participation at each stage		| |
+| | 		(c) Consider use of a flow diagram		| |
+| Descriptive data	14*	| (a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders		| |
+| | 		(b) Indicate number of participants with missing data for each variable of interest		| |
+| | 		(c) Summarise follow-up time (eg, average and total amount)		| |
+| Outcome data	15*	| Report numbers of outcome events or summary measures over time		| |
+| Main results	16	| (a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included		| |
+| | 		(b) Report category boundaries when continuous variables were categorized		| |
+| | 		(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period		| |
+| Other analyses	17	| Report other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses		| |
+| Discussion | | | 
+| Key results	18	| Summarise key results with reference to study objectives		| |
+| Limitations	19	| Discuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias		| |
+| Interpretation	20	| Give a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence 	| |
+| Generalisability	21	| Discuss the generalisability (external validity) of the study results	
+Other information	| |
+| Funding	22	| Give the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based		| |
+
+: STROBE checklist {tbl-colwidths="[20,75,5]"}
+
+
+*Give information separately for exposed and unexposed groups.
