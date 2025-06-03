@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>医学英語：臨床論文の読み方 - 5&nbsp; 横断研究</title>
+<title>医学英語：臨床論文の読み方 - 7&nbsp; プロトコル</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./cohort_intro.html" rel="next">
-<link href="./observation.html" rel="prev">
+<link href="./statement.html" rel="next">
+<link href="./critical.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -80,13 +61,11 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,7 +74,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./crosssectional_intro.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">横断研究</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical.html">批判的吟味</a></li><li class="breadcrumb-item"><a href="./protocol.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">プロトコル</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +162,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crosssectional_intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./crosssectional_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">横断研究</span></span></a>
   </div>
 </li>
@@ -206,7 +185,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./protocol.html" class="sidebar-item-text sidebar-link">
+  <a href="./protocol.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">プロトコル</span></span></a>
   </div>
 </li>
@@ -240,20 +219,18 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-crosssectional-keyword" id="toc-sec-crosssectional-keyword" class="nav-link active" data-scroll-target="#sec-crosssectional-keyword"><span class="header-section-number">5.1</span> キーワード</a></li>
-  <li><a href="#有病率と関連要因の調査" id="toc-有病率と関連要因の調査" class="nav-link" data-scroll-target="#有病率と関連要因の調査"><span class="header-section-number">5.2</span> 有病率と関連要因の調査</a>
-  <ul class="collapse">
-  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">5.2.1</span> 論文の例</a></li>
-  </ul></li>
+  <li><a href="#プロトコルとは" id="toc-プロトコルとは" class="nav-link active" data-scroll-target="#プロトコルとは"><span class="header-section-number">7.1</span> プロトコルとは</a></li>
+  <li><a href="#倫理審査" id="toc-倫理審査" class="nav-link" data-scroll-target="#倫理審査"><span class="header-section-number">7.2</span> 倫理審査</a></li>
+  <li><a href="#臨床試験登録" id="toc-臨床試験登録" class="nav-link" data-scroll-target="#臨床試験登録"><span class="header-section-number">7.3</span> 臨床試験登録</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-crosssectional-intro" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">横断研究</span></span></h1>
+<h1 class="title"><span id="critical-protocol" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">プロトコル</span></span></h1>
 </div>
 
 
@@ -268,117 +245,36 @@ div.csl-indent {
 
 </header>
 
-<section id="sec-crosssectional-keyword" class="level2 page-columns page-full" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="sec-crosssectional-keyword"><span class="header-section-number">5.1</span> キーワード</h2>
-<p>コホート研究 (cohort study) には、いくつかの種類があります。</p>
-<p>まず、ある１時点での調査を行うことを横断研究 (cross-sectional study)、複数の時点で調査を行うことを縦断研究 (longitudinal study) と言います。</p>
-<p>横断研究では、通常、ある疾患 (ここではフレイル) の有病率や、さまざまな属性との関連を調べます。この属性を、RCT での介入に対して、コホート研究では暴露 (exposure) と言うこともあります。</p>
-<p>横断研究では、統計手法としては、ロジスティック回帰 (logistic regression) がよく用いられます。これは、単一のアウトカムに対して、複数の属性を共変量 (covariate) として解析し、関連 (association) があるかどうかを調査します。最終的には、共変量ごとにオッズ比が得られます。</p>
-<p>ロジスティック回帰を理解するためには、まずオッズ比とリスク比を理解する必要があります。</p>
-<p>まず、以下のオッズ比とリスク比を計算してみましょう。</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>疾患あり</th>
-<th>疾患なし</th>
-<th>合計</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>暴露あり</td>
-<td>20人</td>
-<td>80人</td>
-<td>100人</td>
-</tr>
-<tr class="even">
-<td>暴露なし</td>
-<td>10人</td>
-<td>90人</td>
-<td>100人</td>
-</tr>
-<tr class="odd">
-<td>合計</td>
-<td>30人</td>
-<td>170人</td>
-<td>200人</td>
-</tr>
-</tbody>
-</table>
-<p>リスク比 = <span class="math inline">\(\dfrac{ \dfrac{20}{100} }{ \dfrac{10}{100} } = 2.00\)</span></p>
-<p>リスク比は簡単に理解できます。「暴露ありのほうが、暴露なしよりも 2.00 倍の疾患リスクがある」と解釈することができます。</p>
-<p>オッズ比 = <span class="math inline">\(\dfrac{ \dfrac{20}{80} }{ \dfrac{10}{90} } = 2.25\)</span></p>
-<div class="page-columns page-full"><p>このように、オッズ比はリスク比に近いけれども、ちょっと大袈裟にでる傾向があります。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;オッズ比は、1 より大きい場合はリスク比よりも大きく、1 より小さい場合はリスク比より小さく出ます。</p></li></div></div>
-<p>このため、オッズ比 2.25 は、「暴露ありのほうが、暴露なしよりも 2.25倍の疾患リスクがある」と解釈することはできません <span class="citation" data-cites="tajeu2012misuse holcomb2001odd">(<a href="#ref-tajeu2012misuse" role="doc-biblioref">Tajeu et al. 2012</a>; <a href="#ref-holcomb2001odd" role="doc-biblioref">Holcomb Jr et al. 2001</a>)</span>。</p>
-<div class="no-row-height column-margin column-container"><div id="ref-tajeu2012misuse" class="csl-entry" role="listitem">
-Tajeu, Gabriel S, Bisakha Sen, David B Allison, and Nir Menachemi. 2012. <span>“Misuse of Odds Ratios in Obesity Literature: An Empirical Analysis of Published Studies.”</span> <em>Obesity</em> 20 (8): 1726–31.
-</div><div id="ref-holcomb2001odd" class="csl-entry" role="listitem">
-Holcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Burgdorf. 2001. <span>“An Odd Measure of Risk: Use and Misuse of the Odds Ratio.”</span> <em>Obstetrics &amp; Gynecology</em> 98 (4): 685–88.
-</div></div><p>なお、全体の有病率が低くなるほどオッズ比はリスク比に近づき、10% 以下ではほぼリスク比に近似できます。</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th>疾患あり</th>
-<th>疾患なし</th>
-<th>合計</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>暴露あり</td>
-<td>2人</td>
-<td>98人</td>
-<td>100人</td>
-</tr>
-<tr class="even">
-<td>暴露なし</td>
-<td>1人</td>
-<td>99人</td>
-<td>100人</td>
-</tr>
-<tr class="odd">
-<td>合計</td>
-<td>3人</td>
-<td>197人</td>
-<td>200人</td>
-</tr>
-</tbody>
-</table>
-<p>リスク比は 2.00 のままですが、オッズ比は 2.02 になります。</p>
-<p>上の表では、要因が一つ (暴露) だけでした。これを、複数に拡張したものがロジスティック回帰になります。また、2 値変数だけではなく数値も使用することができます。</p>
-<p>横断研究では多くの場合、以下の調査を行います。</p>
+<section id="プロトコルとは" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="プロトコルとは"><span class="header-section-number">7.1</span> プロトコルとは</h2>
+<p>医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。</p>
+<p>基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。</p>
+<p>研究プロトコルの目的には、以下のようなことがあります。</p>
 <ul>
-<li>有病率を求める</li>
-<li>リスク因子のオッズ比を求める</li>
+<li>研究の質を保つ。バイアスを最小限にする</li>
+<li>再現性を確保する</li>
+<li>倫理性を担保する</li>
+<li>査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)</li>
 </ul>
-<p>これで全てではありません。例えば、Chapter 2 でみた Fried LP (2001) もコホート研究の一種です。</p>
-<p>コホート研究の論文のガイドラインは、STROBE 宣言です。</p>
 </section>
-<section id="有病率と関連要因の調査" class="level2 page-columns page-full" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="有病率と関連要因の調査"><span class="header-section-number">5.2</span> 有病率と関連要因の調査</h2>
-<p>ここでは多くの場合、以下の調査を行う横断研究について解説します。</p>
+<section id="倫理審査" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="倫理審査"><span class="header-section-number">7.2</span> 倫理審査</h2>
+<p>倫理審査においては、研究プロトコルを審査します。</p>
+</section>
+<section id="臨床試験登録" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="臨床試験登録"><span class="header-section-number">7.3</span> 臨床試験登録</h2>
+<p>研究プロトコルや進捗状況を臨床試験登録に登録します。</p>
+<p>日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。</p>
 <ul>
-<li>有病率を求める</li>
-<li>リスク因子のオッズ比を求める</li>
+<li>jRCT: 臨床研究法に基づく臨床研究</li>
+<li>UMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。</li>
+<li>JAPIC: 治験</li>
+<li>日本医師会治験促進センター: 医師主導治験等</li>
 </ul>
-<p>リスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。</p>
-<p>説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする <span class="citation" data-cites="hidalgo2013multivariate">(<a href="#ref-hidalgo2013multivariate" role="doc-biblioref">Hidalgo and Goodman 2013</a>)</span></p>
-<div class="no-row-height column-margin column-container"><div id="ref-hidalgo2013multivariate" class="csl-entry" role="listitem">
-Hidalgo, Bertha, and Melody Goodman. 2013. <span>“Multivariate or Multivariable Regression?”</span> <em>American Journal of Public Health</em> 103 (1): 39–40.
-</div></div><p>説明変数は、仮説や先行研究から決定することが多いようです。</p>
-<section id="論文の例" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">5.2.1</span> 論文の例</h3>
-<ul>
-<li>Liu W, Puts M, Jian F et al.&nbsp;(2020) Physical frailty and its associated factors among elderly nursing home residents in China. <em>BMC Geriatrics</em>, 20(1), 1-9.</li>
-</ul>
-
+<p>アメリカの臨床試験データベースは ClinicalTrials.gov です。</p>
 
 
 </section>
-</section>
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -616,13 +512,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./observation.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">観察研究</span>
+      <a href="./critical.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">批判的吟味</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./cohort_intro.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./statement.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">声明</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

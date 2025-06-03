@@ -133,25 +133,25 @@
     "text": "4.1 キーワード\nランダム化比較試験 (randomised controlled trial, RCT) は、「ランダム化」 (randomisation) という手法で介入群と対照群を設定する臨床試験です。\n\n\n\n\n\n\n医師国家試験 第118回 B 09\n\n\n\nランダム化比較試験〈RCT〉で正しいのはどれか。\na 観察研究である。\nb 外的妥当性が高い研究である。\nc 未測定の交絡因子に対応できない。\nd 有病率の低い疾患の研究に適している。\ne 症例対照研究よりエビデンスレベルが高い。\n\n\nRCT は、介入前をベースライン (baseline) と言います。また介入が終了した後に効果が持続するかどうかを見るために、3ヶ月や 1 年など追跡 (follow-up) 調査することもよくあります。調査時点を、介入前 (T0)、介入直後 (T1)、追跡 (T2) などと表現することもあります。\n\n\n\n\n\n\n医師国家試験 第115回 B 06\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 内的妥当性が高い。\nb 二重盲検を要件とする。\nc 第１相臨床試験で用いられる。\nd メタ分析〈メタアナリシス〉の一種である。\ne 観察研究に比べて交絡因子の影響が大きい。\n\n\nRCT の特徴は、内的妥当性の高さなので、a が正解となります。\n選択肢 e に、交絡因子 (confounding factor) という言葉があります。交絡因子は系統誤差の原因の一つですので、RCT ではむしろ影響が少なくなります。交絡因子は、統計学的には「調整」(adjustment) をする必要が出てきます。\nconfounding variable: variable that can cause or prevent the outcome of interest, is not an intermediate variable, and is associated with the factor under investivgation. Unless it is possible to adjust for confounding variables their effects cannot be distinguished from those of the factors being studied. … (Style Committee et al. 2020, 1028)\n統計手法としては、繰り返しのある二元配置分散分析 (two-way repeated measures ANOVA) や混合モデル (mixed model) といった解析方法を使います。\nRCT には、倫理的な課題があります。それは、参加者の多くは治療を期待しているのにも関わらず、治療をしない対照群に割り当てられる可能性がある点です。この観点から、サンプルサイズ (sample size) は小さい方が好ましくなります。一方で、効果推定のためにはサンプルサイズが大きい方が好ましいです。このため、予備試験 (pilot study) を実施し、サンプルサイズを推定することがあります。なお、サンプルサイズは症例数ということもあります。"
   },
   {
-    "objectID": "rct_intro.html#itt-と-per-protocol",
-    "href": "rct_intro.html#itt-と-per-protocol",
-    "title": "4  ランダム化比較試験",
-    "section": "4.2 ITT と Per Protocol",
-    "text": "4.2 ITT と Per Protocol\n解析対象については、Intention-to-treat 解析や Per protcol 解析が行われることがあります。Intention-to-treat は、治療の意図という意味で、実際の治療ではなく当初の治療を指します。一方、Per protocol は実際に行われた治療を指します。この二つの単語については、日本語訳はされないことの方が多いようです。RCT では通常、per protocol よりも ITT の方が望ましいとされています。\nAMA Manual of Style では、以下のように定義しています。\nIntention-to-treat (ITT) analysis is the preferred way to report randomized trial results. Final results are based on analysis of data from all the participants who were originally randomly assigned, whether or not they completed the trial.\nA per-protocol analysis reports a study’s results by the treatment received and not by the group into which the participants were randomly assigned.\n(Style Committee et al. 2020, 988)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n\n\n\n\n\n\n医師国家試験 第110回 B 13\n\n\n\n治療 A と治療 B との比較を目的としたランダム化比較試験〈無作為化比較対照試験〉を行った。割り付けと実際の治療人数の表を示す。\n\n\n\n\n\n\n\n\n\n\n\n治療 A を実際に行った\n治療 B を実際に行った\n治療開始前 に死亡した\n合計\n\n\n\n\n治療A割付\n110人\n15人\n4人\n129人\n\n\n治療B割付\n6人\n115人\n0人\n121人\n\n\n合計\n116人\n130人\n4人\n250人\n\n\n\nintention to treat〈ITT〉で２つの治療を比較するときに、治療 A と治療 B の組み合わせで正しいのはどれか。\n\n\nITT ですので、「割付」を見れば良いことになります。割り付けられたのは、治療 A が 129 人、治療 B が 121 人です。これが正解になります。\nただし、RCT においては、実際には死亡した人の After のデータがない可能性があります。実際、この問題でも治療Aは125人という選択肢があり、そこで悩んだ人もいたようです。\nでは、Per protocol 解析だとすると何人でしょうか？治療 A に割付られ、実際に治療 A を行った 110 人と、治療 B の 115 人となります。\nここまで見たように、RCT の強みは、実験に参加した患者 (または参加者) については妥当性が高いと言えます。これを内的妥当性 (internal validity) と言います。対象者以外に拡張する場合は外的妥当性 (external validity) や一般化可能性 (generalisability)と言います。\n\n\n\n\n\n\n医師国家試験 第114回 E 17\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 二重盲検は必須である。\nb プラセボは現在では使用が禁止されている。\nc ランダム割付は症例数を少なくするために行われる。\nd 症例数の設定のためには治療効果の推定が必要である。\ne Intention to treat〈ITT〉による解析は実際に行った治療に基づいて行われる。\n\n\n正解は、d となります。"
-  },
-  {
     "objectID": "rct_intro.html#sec-rct-randomisation",
     "href": "rct_intro.html#sec-rct-randomisation",
     "title": "4  ランダム化比較試験",
-    "section": "4.3 ランダム化",
-    "text": "4.3 ランダム化\nところが、ランダム化とは何か？と聞かれると、意外と答えられないものです。また、論文ではランダム化の方法まで報告されていることは少ないようです。ランダム化は、どのような目的で行うのでしょうか？\nランダム化の目的は、介入群と対照群を均質にすることにあります。例えば、年齢や性別が影響を及ぼす場合、100人をランダム化する場合は、両群の平均年齢と男女比がほぼ同じになるように分けます。このような、影響を及ぼす誤差を系統誤差 (systematic error) といいます。一方、「ほぼ」の部分は偶然誤差 (random error) になります。\nおや、偶然誤差の「偶然」は、英語では random ですね。つまり、これがランダム化ということです。例えば、ランダム化して平均年齢が 70.4 才と 70.5 才になったとしたら、その差 0.1 は偶然誤差と言えます。\n振り分けを「ランダムに」行うのではなく、「ランダムになるように」振り分けを意図的に行うことです。\nランダム化の目的は、医師国家試験に数回出題されたことがあります。\n\n\n\n\n\n\n医師国家試験 第110回 B 22\n\n\n\nランダム化比較試験〈無作為化比較対照試験〉においてランダム割付を実施する目的はどれか。\na 治療中断の防止\nb 偶然誤差の制御\nc 治療内容の盲検化\nd 比較群間の均質性の向上\ne 患者の試験への参加率の上昇\n\n\nランダム化の目的は、正解は d となります。b については、「系統誤差を制御」が正しく、偶然誤差はランダム化でも残ります。1\n1 選択肢 c にある「盲検化」とは何か？\n介入 (intervention) と対照 (control) の比較を行います。動物実験の場合、対照を Sham ということもあります。\nランダム化の方法には、以下のようなものがあります。ここでは、20人の人を介入群と対照群に 1:1 で割り付けるとします。\n\n4.3.1 単純ランダム化\n参加者一人一人に、50%の確立でどちらかの群に割り付ける。\nこれは、一見すると正しいような気がします。ところが、実際に実行してみるとわかりますが、14:6 など、かなり偏りが出ます。\n\n\n4.3.2 ブロックランダム化\nブロックランダム化は、単純ランダム化の問題を修正したものです。\nあらかじめ、「介介対対」や「介対対介」などのように、コンピュータで 4 人分（ブロックサイズ）の割り付け方法を決めておきます。なお、4 任分だけでなく、2 人や 6 人などブロックサイズも変えることもあります。\nこうすることで、おおむね 1:1 に割り付けられます。\n\n\n4.3.3 層別ランダム化\nランダム化は、ランダム化した結果、両群が同じような集団にならなければあんりません。\nしかし、ランダム化で偶然にも介入群に男性が10人、対照群に男性が0人となってしまうかもしれません。\nこれを防ぐために、あらかじめ性別でわけて、男性ないでランダム化を行います。\n\n\n4.3.4 クラスターランダム化\nここでいうクラスターとは、多施設試験におけるそれぞれの施設になります。\n例えば、杏林大学病院と東大病院で共同する場合、杏林大学病院の患者をまるまる介入群とするというランダム化になります。"
+    "section": "4.2 ランダム化",
+    "text": "4.2 ランダム化\nところが、ランダム化とは何か？と聞かれると、意外と答えられないものです。また、論文ではランダム化の方法まで報告されていることは少ないようです。ランダム化は、どのような目的で行うのでしょうか？\nランダム化の目的は、介入群と対照群を均質にすることにあります。例えば、年齢や性別が影響を及ぼす場合、100人をランダム化する場合は、両群の平均年齢と男女比がほぼ同じになるように分けます。このような、影響を及ぼす誤差を系統誤差 (systematic error) といいます。一方、「ほぼ」の部分は偶然誤差 (random error) になります。\nおや、偶然誤差の「偶然」は、英語では random ですね。つまり、これがランダム化ということです。例えば、ランダム化して平均年齢が 70.4 才と 70.5 才になったとしたら、その差 0.1 は偶然誤差と言えます。\n振り分けを「ランダムに」行うのではなく、「ランダムになるように」振り分けを意図的に行うことです。\nランダム化の目的は、医師国家試験に数回出題されたことがあります。\n\n\n\n\n\n\n医師国家試験 第110回 B 22\n\n\n\nランダム化比較試験〈無作為化比較対照試験〉においてランダム割付を実施する目的はどれか。\na 治療中断の防止\nb 偶然誤差の制御\nc 治療内容の盲検化\nd 比較群間の均質性の向上\ne 患者の試験への参加率の上昇\n\n\nランダム化の目的は、正解は d となります。b については、「系統誤差を制御」が正しく、偶然誤差はランダム化でも残ります。1\n1 選択肢 c にある「盲検化」とは何か？\n介入 (intervention) と対照 (control) の比較を行います。動物実験の場合、対照を Sham ということもあります。\nランダム化の方法には、以下のようなものがあります。ここでは、20人の人を介入群と対照群に 1:1 で割り付けるとします。\n\n4.2.1 単純ランダム化\n参加者一人一人に、50%の確立でどちらかの群に割り付ける。\nこれは、一見すると正しいような気がします。ところが、実際に実行してみるとわかりますが、14:6 など、かなり偏りが出ます。\n\n\n4.2.2 ブロックランダム化\nブロックランダム化は、単純ランダム化の問題を修正したものです。\nあらかじめ、「介介対対」や「介対対介」などのように、コンピュータで 4 人分（ブロックサイズ）の割り付け方法を決めておきます。なお、4 人分だけでなく、2 人や 6 人などブロックサイズも変えることもあります。\nこうすることで、おおむね 1:1 に割り付けられます。\n\n\n4.2.3 層別ランダム化\nランダム化は、ランダム化した結果、両群が同じような集団にならなければあんりません。\nしかし、ランダム化で偶然にも介入群に男性が10人、対照群に男性が0人となってしまうかもしれません。\nこれを防ぐために、あらかじめ性別でわけて、男性内でランダム化を行います。\n層別ランダム化と並んで説明される方法に、最小化法というものがあります。しかしながら、あまり使われていないようなので、省略します。\n\n\n4.2.4 クラスターランダム化\nここでいうクラスターとは、多施設試験におけるそれぞれの施設になります。\n例えば、杏林大学病院と東大病院で共同する場合、杏林大学病院の患者をまるまる介入群とするというランダム化になります。\n\n\n4.2.5 ランダム化の実際\n4 大ジャーナル (および比較のためもう一つのジャーナル) を対象に、どのようなランダム化が使われているかを調査した論文があります (bruce2022systematic?)。個人ランダム化が 348 (90%) であったのに対して、クラスターランダム化は 37 (10%) でした。単純ランダム化は 20、ブロックランダム化は 33件、層別ランダム化は 66件、ブロックと層別は 162件、最小化は 49 件でした。"
+  },
+  {
+    "objectID": "rct_intro.html#統計",
+    "href": "rct_intro.html#統計",
+    "title": "4  ランダム化比較試験",
+    "section": "4.3 統計",
+    "text": "4.3 統計\n\n4.3.1 ITT と Per Protocol\n解析対象については、Intention-to-treat 解析や Per protcol 解析が行われることがあります。Intention-to-treat は、治療の意図という意味で、実際の治療ではなく当初の治療を指します。一方、Per protocol は実際に行われた治療を指します。この二つの単語については、日本語訳はされないことの方が多いようです。RCT では通常、per protocol よりも ITT の方が望ましいとされています。\nAMA Manual of Style では、以下のように定義しています。\nIntention-to-treat (ITT) analysis is the preferred way to report randomized trial results. Final results are based on analysis of data from all the participants who were originally randomly assigned, whether or not they completed the trial.\nA per-protocol analysis reports a study’s results by the treatment received and not by the group into which the participants were randomly assigned.\n(Style Committee et al. 2020, 988)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n\n\n\n\n\n\n医師国家試験 第110回 B 13\n\n\n\n治療 A と治療 B との比較を目的としたランダム化比較試験〈無作為化比較対照試験〉を行った。割り付けと実際の治療人数の表を示す。\n\n\n\n\n\n\n\n\n\n\n\n治療 A を実際に行った\n治療 B を実際に行った\n治療開始前 に死亡した\n合計\n\n\n\n\n治療A割付\n110人\n15人\n4人\n129人\n\n\n治療B割付\n6人\n115人\n0人\n121人\n\n\n合計\n116人\n130人\n4人\n250人\n\n\n\nintention to treat〈ITT〉で２つの治療を比較するときに、治療 A と治療 B の組み合わせで正しいのはどれか。\n\n\nITT ですので、「割付」を見れば良いことになります。割り付けられたのは、治療 A が 129 人、治療 B が 121 人です。これが正解になります。\nただし、RCT においては、実際には死亡した人の After のデータがない可能性があります。実際、この問題でも治療 A は 125 人という選択肢があり、そこで悩んだ人もいたと推察されます。\nでは、Per protocol 解析だとすると何人でしょうか？治療 A に割付られ、実際に治療 A を行った 110 人と、治療 B の 115 人となります。\nここまで見たように、RCT の強みは、実験に参加した患者 (または参加者) については妥当性が高いと言えます。これを内的妥当性 (internal validity) と言います。対象者以外に拡張する場合は外的妥当性 (external validity) や一般化可能性 (generalisability)と言います。\n\n\n\n\n\n\n医師国家試験 第114回 E 17\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 二重盲検は必須である。\nb プラセボは現在では使用が禁止されている。\nc ランダム割付は症例数を少なくするために行われる。\nd 症例数の設定のためには治療効果の推定が必要である。\ne Intention to treat〈ITT〉による解析は実際に行った治療に基づいて行われる。\n\n\n正解は、d となります。"
   },
   {
     "objectID": "rct_intro.html#ガイドライン",
     "href": "rct_intro.html#ガイドライン",
     "title": "4  ランダム化比較試験",
     "section": "4.4 ガイドライン",
-    "text": "4.4 ガイドライン\nRCT の論文のガイドラインは、CONSORT 声明です。\n論文の例: Siramolpiwat S, Limthanetkul N, Pornthisarn B, Vilaichone RK, Chonprasertsuk S, Bhanthumkomol P, … & Issariyakulkarn N (2023). Branched-chain amino acids supplementation improves liver frailty index in frail compensated cirrhotic patients: a randomized controlled trial. BMC gastroenterology, 23(1), 154.\nTeh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … & Pillai A (2022). Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. The Lancet Healthy Longevity, 3(8), e519-e530."
+    "text": "4.4 ガイドライン\nRCT の論文のガイドラインは、CONSORT 声明です。\n論文の例: Siramolpiwat S, Limthanetkul N, Pornthisarn B, Vilaichone RK, Chonprasertsuk S, Bhanthumkomol P, … & Issariyakulkarn N (2023) Branched-chain amino acids supplementation improves liver frailty index in frail compensated cirrhotic patients: a randomized controlled trial. BMC gastroenterology, 23(1), 154.\nTeh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … & Pillai A (2022) Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. The Lancet Healthy Longevity, 3(8), e519-e530.\nJiayuan Z, Xiang-Zi J, Li-Na M, Jin-Wei Y, & Xue Y (2022) Effects of mindfulness-based tai chi Chuan on physical performance and cognitive function among cognitive frailty older adults: a six-month follow-up of a randomized controlled trial. The Journal of Prevention of Alzheimer’s Disease, 9(1), 104-112."
   },
   {
     "objectID": "observation.html",
@@ -172,7 +172,7 @@
     "href": "crosssectional_intro.html#有病率と関連要因の調査",
     "title": "5  横断研究",
     "section": "5.2 有病率と関連要因の調査",
-    "text": "5.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。\n論文の例: Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9."
+    "text": "5.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。\n\n5.2.1 論文の例\n\nLiu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9."
   },
   {
     "objectID": "cohort_intro.html#sec-cohort-keyword",
@@ -189,32 +189,67 @@
     "text": "Letter"
   },
   {
+    "objectID": "protocol.html#プロトコルとは",
+    "href": "protocol.html#プロトコルとは",
+    "title": "7  プロトコル",
+    "section": "7.1 プロトコルとは",
+    "text": "7.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。\n\n研究の質を保つ。バイアスを最小限にする\n再現性を確保する\n倫理性を担保する\n査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)"
+  },
+  {
+    "objectID": "protocol.html#倫理審査",
+    "href": "protocol.html#倫理審査",
+    "title": "7  プロトコル",
+    "section": "7.2 倫理審査",
+    "text": "7.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。"
+  },
+  {
+    "objectID": "protocol.html#臨床試験登録",
+    "href": "protocol.html#臨床試験登録",
+    "title": "7  プロトコル",
+    "section": "7.3 臨床試験登録",
+    "text": "7.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。"
+  },
+  {
+    "objectID": "statement.html#sec-statement-1",
+    "href": "statement.html#sec-statement-1",
+    "title": "8  声明",
+    "section": "8.1 声明",
+    "text": "8.1 声明\n臨床論文は、書き方がある程度規定されています。\n\nInternational Committee of Medical Journal Editors (ICMJE)\nアメリカ医学会 Manual of Style: A guide for Authors and Editors\n各ジャーナルの Authors Guideline など\n研究デザインごとの声明 (Statement)\n\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\n\n\n\n研究デザイン\nガイドライン\n\n\n\n\nシステマティックレビュー メタアナリシス\nPRISMA\n\n\nランダム化比較試験\nCONSORT\n\n\n非ランダム化比較試験\nTREND\n\n\n分析疫学的研究 (コホート研究や症例対照研究)\nSTROBE\n\n\n\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。"
+  },
+  {
+    "objectID": "statement.html#チェックリスト",
+    "href": "statement.html#チェックリスト",
+    "title": "8  声明",
+    "section": "8.2 チェックリスト",
+    "text": "8.2 チェックリスト\n\n8.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups."
+  },
+  {
     "objectID": "letter.html#批判的吟味-critical-reading",
     "href": "letter.html#批判的吟味-critical-reading",
-    "title": "7  レター",
-    "section": "7.1 批判的吟味 (Critical Reading)",
-    "text": "7.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
+    "title": "9  レター",
+    "section": "9.1 批判的吟味 (Critical Reading)",
+    "text": "9.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
   },
   {
     "objectID": "letter.html#自動翻訳",
     "href": "letter.html#自動翻訳",
-    "title": "7  レター",
-    "section": "7.2 自動翻訳",
-    "text": "7.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
+    "title": "9  レター",
+    "section": "9.2 自動翻訳",
+    "text": "9.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
   },
   {
     "objectID": "letter.html#文法チェック",
     "href": "letter.html#文法チェック",
-    "title": "7  レター",
-    "section": "7.3 文法チェック",
-    "text": "7.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
+    "title": "9  レター",
+    "section": "9.3 文法チェック",
+    "text": "9.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
   },
   {
     "objectID": "letter.html#書き換えツール",
     "href": "letter.html#書き換えツール",
-    "title": "7  レター",
-    "section": "7.4 書き換えツール",
-    "text": "7.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
+    "title": "9  レター",
+    "section": "9.4 書き換えツール",
+    "text": "9.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
   },
   {
     "objectID": "summary.html",
