@@ -97,6 +97,62 @@ e メタ分析〈メタアナリシス〉
 
 異質性は、Cochran Q 検定または $I^2$ で評価します。Cochran Q 検定は、通常の p 値で評価します。$I^2$ は、0%〜100% の値を取り、数値が大きいほど異質性が高くなります。
 
+```{r include = FALSE}
+library(metafor)
+```
+
+```{r}
+library(metafor)
+
+# Data: prevalence (proportion) and sample size
+prev <- c(0.45, 0.50, 0.55)
+n    <- c(100, 200, 300)
+
+# Convert prevalence to number of events
+events <- prev * n
+
+# Create effect sizes (logit transformed proportions)
+es <- escalc(measure = "PLO", xi = events, ni = n)
+
+# Random-effects meta-analysis
+res <- rma(yi, vi, data = es, method = "REML")
+
+# Forest plot
+forest(res, 
+       transf = transf.ilogit, # back-transform logits to proportions
+       refline = 0.5,          # reference line at 50%
+       xlab = "Prevalence",
+       slab = paste("Study", 1:3))
+```
+
+このとき、Cochran Q は `r res$QE` (p = `r res$QEp`) で、I$^2$ = `r res$I2` です。
+
+```{r}
+library(metafor)
+
+# Data: prevalence (proportion) and sample size
+prev <- c(0.10, 0.50, 0.90)
+n    <- c(100, 200, 300)
+
+# Convert prevalence to number of events
+events <- prev * n
+
+# Create effect sizes (logit transformed proportions)
+es <- escalc(measure = "PLO", xi = events, ni = n)
+
+# Random-effects meta-analysis
+res <- rma(yi, vi, data = es, method = "REML")
+
+# Forest plot
+forest(res, 
+       transf = transf.ilogit, # back-transform logits to proportions
+       refline = 0.5,          # reference line at 50%
+       xlab = "Prevalence",
+       slab = paste("Study", 1:3))
+```
+
+このとき、Cochran Q は `r res$QE` (p = `r res$QEp`) で、I$^2$ = `r res$I2` です。
+
 メタ分析の論文のガイドラインは、PRISMA 宣言です。
 
 ## 有病率のメタ分析  {#sec-meta-prevalence}
