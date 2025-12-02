@@ -1,0 +1,92 @@
+# スクリーニングツールの開発 {#sec-screening-intro}
+
+## 標準基準とスクリーニング {#sec-screening-gold}
+
+診断を目的とした検査には、標準基準 (criterion standard) や参照基準 (reference standard) というものがあります。以前はゴールドスタンダードとも呼ばれていました。
+
+criterion standard (also known as reference standard): test considered to be the diagnostic standard for a particular disease or condition, used as a basis of comparison for other (usually noninvasive) tests. An outdated term is gold standard, which refers to a time when the monetary system was based on the value of gold. This is no longer the case and the term is obsolete.
+
+AMA Manual of Style 11th ed p. 1031
+
+標準基準は、もっとも正確なものです。一方で、時間がかかったり、侵襲性が高いこともあります。
+
+これに対して、スクリーニングは、標準基準に比べて簡易なものになります。
+
+:::{.callout-note}
+
+スクリーニングの Wilson 基準（最新版）
+
+- 検査プログラムは、認識されている必要性に対応しなければならない
+- まず最初に、検査の目的が定められていること
+- 対象となる母集団の定義が定められていること
+- 検査プログラムの有効性に科学的な証拠があること
+- 計画は、周知活動、検査・医療補助・プログラム管理に統一性がなければならない
+- 検査のもつ潜在的なリスクを最小限にするメカニズムを有した高度な品質が保証されていること
+- 計画は、情報に関する権利と守秘性を確保し、自主性を尊重しなければならない
+- 計画は、対象集団の全員が公平にスクリーニングを受ける機会を得られるよう促進すべきである
+- プログラムに対する評価は、事前に計画されていなければならない
+- スクリーニングによって与えられる損失より、得られる利益のほうが勝っていなければならない
+:::
+
+## 感度と特異度 {#sec-screening-gold}
+
+スクリーニング検査の信頼度合いは、感度や特異度などによって評価されます。
+
+|        | 標準検査で陽性 | 標準検査で陰性 |
+|:------|-----|---------|
+| 標準検査で陽性 | A | B |
+| 標準検査で陰性 | C | D |
+
+感度 = $\dfrac{A}{A + C}$
+
+特異度 = $\dfrac{D}{B + D}$
+
+ある検査の感度が 60%、特異度が 99% とします。 1万人のうち 0.1% にあたる 10 人が感染しているとします。
+
+|        | 標準検査で陽性 | 標準検査で陰性 |
+|:------|-----|---------|
+| 標準検査で陽性 | 6 | 100 |
+| 標準検査で陰性 | 4 | 9890 |
+
+感度 = $\dfrac{6}{6 + 4}$ = 60%
+
+特異度 = $\dfrac{9890}{100 + 9890}$ = 98.999%
+
+これを解釈すると以下のようになります。 1 万人にこの検査を行ったところ、106人の陽性者が出ました。 このうち、真陽性者は 6 人、そして陽性的中率は、わずかに 5.7% となります。 つまり、感度と特異度の解釈は、有病率に大きく影響を受けることがわかります。
+
+## ROC 曲線
+
+スクリーニング検査が、30点満点で、点数が高いほど病気の可能性が高いとします。
+
+ある点数以上の参加者に対して、標準基準の診断を行いたいとします。この点数をカットオフ値といいます。
+
+カットオフ値を高くすると、スクリーニング陽性の割合は減っていき、また感度がどんどん下がります。
+
+カットオフ値を低くすると、多くの参加者が標準基準の診断を受けますが、特異度がどんどん下がります。
+
+これを表しているのが Receiver Operating Characteristic (ROC) 曲線です。もともとレーダーにおいて、鳥などと敵機を識別するために開発された技術です。
+
+ROC 曲線の描き方は、以下の通りです。
+
+- x軸を 偽陽性率 (1-特異度)、y軸を感度とする。
+- カットオフ値を変えて感度、特異度をプロットする。
+- 点をつなぐ（これを、Receiver Operating Characteristic, ROC という)
+
+全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC または c-statistic とも言う) が、0.7 以上であればスクリーニングとして適していると判断します。
+
+## カットオフ値の決定
+
+さて、ではどの値をカットオフ値として決定するのがよいでしょうか？
+
+方法はたくさんありますが、以下がよく使われています。
+
+- 感度 + (1 - 特異度) (Youden index という) が最大の点 
+- 左上からの距離が最小の点
+- 感度  ×  特異度が最大の点
+
+Unal I (2017) Defining an optimal cut-point value in ROC analysis: an alternative approach. *Computational and Mathematical Methods in Medicine*, 2017.
+
+### 論文の例
+
+- Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … & Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970
+
