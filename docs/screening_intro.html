@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>批判的吟味 – 医学英語：臨床論文の読み方</title>
+<title>7&nbsp; スクリーニングツールの開発 – 医学英語：臨床論文の読み方</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./protocol.html" rel="next">
-<link href="./screening_intro.html" rel="prev">
+<link href="./critical.html" rel="next">
+<link href="./cohort_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -83,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical.html">批判的吟味</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_intro.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -183,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./screening_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></a>
   </div>
 </li>
@@ -191,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./critical.html" class="sidebar-item-text sidebar-link active">
+            <a href="./critical.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">批判的吟味</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -229,15 +258,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-screening-gold" id="toc-sec-screening-gold" class="nav-link active" data-scroll-target="#sec-screening-gold"><span class="header-section-number">7.1</span> 標準基準とスクリーニング</a></li>
+  <li><a href="#sec-screening-gold" id="toc-sec-screening-gold" class="nav-link" data-scroll-target="#sec-screening-gold"><span class="header-section-number">7.2</span> 感度と特異度</a></li>
+  <li><a href="#roc-曲線" id="toc-roc-曲線" class="nav-link" data-scroll-target="#roc-曲線"><span class="header-section-number">7.3</span> ROC 曲線</a></li>
+  <li><a href="#カットオフ値の決定" id="toc-カットオフ値の決定" class="nav-link" data-scroll-target="#カットオフ値の決定"><span class="header-section-number">7.4</span> カットオフ値の決定</a>
+  <ul class="collapse">
+  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">7.4.1</span> 論文の例</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_intro.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="critical" class="quarto-section-identifier">批判的吟味</span></h1>
+<h1 class="title"><span id="sec-screening-intro" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></h1>
 </div>
 
 
@@ -254,13 +295,125 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div style="background:#E6E6FA;">
+<section id="sec-screening-gold" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-screening-gold"><span class="header-section-number">7.1</span> 標準基準とスクリーニング</h2>
+<p>診断を目的とした検査には、標準基準 (criterion standard) や参照基準 (reference standard) というものがあります。以前はゴールドスタンダードとも呼ばれていました。</p>
+<p>criterion standard (also known as reference standard): test considered to be the diagnostic standard for a particular disease or condition, used as a basis of comparison for other (usually noninvasive) tests. An outdated term is gold standard, which refers to a time when the monetary system was based on the value of gold. This is no longer the case and the term is obsolete.</p>
+<p>AMA Manual of Style 11th ed p.&nbsp;1031</p>
+<p>標準基準は、もっとも正確なものです。一方で、時間がかかったり、侵襲性が高いこともあります。</p>
+<p>これに対して、スクリーニングは、標準基準に比べて簡易なものになります。</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>スクリーニングの Wilson 基準（最新版）</p>
 <ul>
-<li>Letter</li>
+<li>検査プログラムは、認識されている必要性に対応しなければならない</li>
+<li>まず最初に、検査の目的が定められていること</li>
+<li>対象となる母集団の定義が定められていること</li>
+<li>検査プログラムの有効性に科学的な証拠があること</li>
+<li>計画は、周知活動、検査・医療補助・プログラム管理に統一性がなければならない</li>
+<li>検査のもつ潜在的なリスクを最小限にするメカニズムを有した高度な品質が保証されていること</li>
+<li>計画は、情報に関する権利と守秘性を確保し、自主性を尊重しなければならない</li>
+<li>計画は、対象集団の全員が公平にスクリーニングを受ける機会を得られるよう促進すべきである</li>
+<li>プログラムに対する評価は、事前に計画されていなければならない</li>
+<li>スクリーニングによって与えられる損失より、得られる利益のほうが勝っていなければならない</li>
 </ul>
 </div>
+</div>
+</section>
+<section id="sec-screening-gold" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-screening-gold"><span class="header-section-number">7.2</span> 感度と特異度</h2>
+<p>スクリーニング検査の信頼度合いは、感度や特異度などによって評価されます。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th>標準検査で陽性</th>
+<th>標準検査で陰性</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">標準検査で陽性</td>
+<td>A</td>
+<td>B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">標準検査で陰性</td>
+<td>C</td>
+<td>D</td>
+</tr>
+</tbody>
+</table>
+<p>感度 = <span class="math inline">\(\dfrac{A}{A + C}\)</span></p>
+<p>特異度 = <span class="math inline">\(\dfrac{D}{B + D}\)</span></p>
+<p>ある検査の感度が 60%、特異度が 99% とします。 1万人のうち 0.1% にあたる 10 人が感染しているとします。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th>標準検査で陽性</th>
+<th>標準検査で陰性</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">標準検査で陽性</td>
+<td>6</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">標準検査で陰性</td>
+<td>4</td>
+<td>9890</td>
+</tr>
+</tbody>
+</table>
+<p>感度 = <span class="math inline">\(\dfrac{6}{6 + 4}\)</span> = 60%</p>
+<p>特異度 = <span class="math inline">\(\dfrac{9890}{100 + 9890}\)</span> = 98.999%</p>
+<p>これを解釈すると以下のようになります。 1 万人にこの検査を行ったところ、106人の陽性者が出ました。 このうち、真陽性者は 6 人、そして陽性的中率は、わずかに 5.7% となります。 つまり、感度と特異度の解釈は、有病率に大きく影響を受けることがわかります。</p>
+</section>
+<section id="roc-曲線" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="roc-曲線"><span class="header-section-number">7.3</span> ROC 曲線</h2>
+<p>スクリーニング検査が、30点満点で、点数が高いほど病気の可能性が高いとします。</p>
+<p>ある点数以上の参加者に対して、標準基準の診断を行いたいとします。この点数をカットオフ値といいます。</p>
+<p>カットオフ値を高くすると、スクリーニング陽性の割合は減っていき、また感度がどんどん下がります。</p>
+<p>カットオフ値を低くすると、多くの参加者が標準基準の診断を受けますが、特異度がどんどん下がります。</p>
+<p>これを表しているのが Receiver Operating Characteristic (ROC) 曲線です。もともとレーダーにおいて、鳥などと敵機を識別するために開発された技術です。</p>
+<p>ROC 曲線の描き方は、以下の通りです。</p>
+<ul>
+<li>x軸を 偽陽性率 (1-特異度)、y軸を感度とする。</li>
+<li>カットオフ値を変えて感度、特異度をプロットする。</li>
+<li>点をつなぐ（これを、Receiver Operating Characteristic, ROC という)</li>
+</ul>
+<p>全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC または c-statistic とも言う) が、0.7 以上であればスクリーニングとして適していると判断します。</p>
+</section>
+<section id="カットオフ値の決定" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="カットオフ値の決定"><span class="header-section-number">7.4</span> カットオフ値の決定</h2>
+<p>さて、ではどの値をカットオフ値として決定するのがよいでしょうか？</p>
+<p>方法はたくさんありますが、以下がよく使われています。</p>
+<ul>
+<li>感度 + (1 - 特異度) (Youden index という) が最大の点</li>
+<li>左上からの距離が最小の点</li>
+<li>感度 × 特異度が最大の点</li>
+</ul>
+<p>Unal I (2017) Defining an optimal cut-point value in ROC analysis: an alternative approach. <em>Computational and Mathematical Methods in Medicine</em>, 2017.</p>
+<section id="論文の例" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">7.4.1</span> 論文の例</h3>
+<ul>
+<li>Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … &amp; Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -664,13 +817,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./screening_intro.html" class="pagination-link" aria-label="スクリーニングツールの開発">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span>
+      <a href="./cohort_intro.html" class="pagination-link" aria-label="縦断研究">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./protocol.html" class="pagination-link" aria-label="プロトコル">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">プロトコル</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./critical.html" class="pagination-link" aria-label="批判的吟味">
+        <span class="nav-page-text">批判的吟味</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
