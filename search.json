@@ -182,6 +182,27 @@
     "text": "6.1 キーワード\n縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。\n縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。\n両者には以下のような違いがあります。\n\n\n\n\n\n\n\n\n\n前向き\n後ろ向き\n\n\n\n\n解析の時期\nデータがそろってから解析\nデータがあればすぐに解析可能\n\n\n変数\nあらかじめ設定することで取り忘れがなくなる\n観測していない変数には対応できない\n\n\n対象疾患\n有病率の高い疾患に適する\n稀な疾患に適する\n\n\n\n\n6.1.1 Kaplan-Meier 曲線\n後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。\n\n\n6.1.2 log-rank 検定\nlog-rank 検定は、2 つ以上の群の生存曲線の差を検定します。\n\n\n6.1.3 ハザード比\nCox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。\n\n例 1: ある病気にかかった人とかかっていない人の、一定期間内の死亡率の差を検定\n例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定\n\n共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。\n比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります (spruance2004hazard?)。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。\n\n\n6.1.4 論文の例\n\nKennard A, Richardson A, Rainsford S et al. (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. Bmj Open, 14(10), e087189."
   },
   {
+    "objectID": "screening_intro.html#sec-screening-gold",
+    "href": "screening_intro.html#sec-screening-gold",
+    "title": "7  スクリーニングツールの開発",
+    "section": "7.2 感度と特異度",
+    "text": "7.2 感度と特異度\nスクリーニング検査の信頼度合いは、感度や特異度などによって評価されます。\n\n\n\n\n標準検査で陽性\n標準検査で陰性\n\n\n\n\n標準検査で陽性\nA\nB\n\n\n標準検査で陰性\nC\nD\n\n\n\n感度 = \\(\\dfrac{A}{A + C}\\)\n特異度 = \\(\\dfrac{D}{B + D}\\)\nある検査の感度が 60%、特異度が 99% とします。 1万人のうち 0.1% にあたる 10 人が感染しているとします。\n\n\n\n\n標準検査で陽性\n標準検査で陰性\n\n\n\n\n標準検査で陽性\n6\n100\n\n\n標準検査で陰性\n4\n9890\n\n\n\n感度 = \\(\\dfrac{6}{6 + 4}\\) = 60%\n特異度 = \\(\\dfrac{9890}{100 + 9890}\\) = 98.999%\nこれを解釈すると以下のようになります。 1 万人にこの検査を行ったところ、106人の陽性者が出ました。 このうち、真陽性者は 6 人、そして陽性的中率は、わずかに 5.7% となります。 つまり、感度と特異度の解釈は、有病率に大きく影響を受けることがわかります。"
+  },
+  {
+    "objectID": "screening_intro.html#roc-曲線",
+    "href": "screening_intro.html#roc-曲線",
+    "title": "7  スクリーニングツールの開発",
+    "section": "7.3 ROC 曲線",
+    "text": "7.3 ROC 曲線\nスクリーニング検査が、30点満点で、点数が高いほど病気の可能性が高いとします。\nある点数以上の参加者に対して、標準基準の診断を行いたいとします。この点数をカットオフ値といいます。\nカットオフ値を高くすると、スクリーニング陽性の割合は減っていき、また感度がどんどん下がります。\nカットオフ値を低くすると、多くの参加者が標準基準の診断を受けますが、特異度がどんどん下がります。\nこれを表しているのが Receiver Operating Characteristic (ROC) 曲線です。もともとレーダーにおいて、鳥などと敵機を識別するために開発された技術です。\nROC 曲線の描き方は、以下の通りです。\n\nx軸を 偽陽性率 (1-特異度)、y軸を感度とする。\nカットオフ値を変えて感度、特異度をプロットする。\n点をつなぐ（これを、Receiver Operating Characteristic, ROC という)\n\n全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC または c-statistic とも言う) が、0.7 以上であればスクリーニングとして適していると判断します。"
+  },
+  {
+    "objectID": "screening_intro.html#カットオフ値の決定",
+    "href": "screening_intro.html#カットオフ値の決定",
+    "title": "7  スクリーニングツールの開発",
+    "section": "7.4 カットオフ値の決定",
+    "text": "7.4 カットオフ値の決定\nさて、ではどの値をカットオフ値として決定するのがよいでしょうか？\n方法はたくさんありますが、以下がよく使われています。\n\n感度 + (1 - 特異度) (Youden index という) が最大の点\n左上からの距離が最小の点\n感度 × 特異度が最大の点\n\nUnal I (2017) Defining an optimal cut-point value in ROC analysis: an alternative approach. Computational and Mathematical Methods in Medicine, 2017.\n\n7.4.1 論文の例\n\nChakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … & Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970"
+  },
+  {
     "objectID": "critical.html",
     "href": "critical.html",
     "title": "批判的吟味",
@@ -191,65 +212,65 @@
   {
     "objectID": "protocol.html#プロトコルとは",
     "href": "protocol.html#プロトコルとは",
-    "title": "7  プロトコル",
-    "section": "7.1 プロトコルとは",
-    "text": "7.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。\n\n研究の質を保つ。バイアスを最小限にする\n再現性を確保する\n倫理性を担保する\n査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)"
+    "title": "8  プロトコル",
+    "section": "8.1 プロトコルとは",
+    "text": "8.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。\n\n研究の質を保つ。バイアスを最小限にする\n再現性を確保する\n倫理性を担保する\n査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)"
   },
   {
     "objectID": "protocol.html#倫理審査",
     "href": "protocol.html#倫理審査",
-    "title": "7  プロトコル",
-    "section": "7.2 倫理審査",
-    "text": "7.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。"
+    "title": "8  プロトコル",
+    "section": "8.2 倫理審査",
+    "text": "8.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。"
   },
   {
     "objectID": "protocol.html#臨床試験登録",
     "href": "protocol.html#臨床試験登録",
-    "title": "7  プロトコル",
-    "section": "7.3 臨床試験登録",
-    "text": "7.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。"
+    "title": "8  プロトコル",
+    "section": "8.3 臨床試験登録",
+    "text": "8.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。"
   },
   {
     "objectID": "statement.html#sec-statement-1",
     "href": "statement.html#sec-statement-1",
-    "title": "8  声明",
-    "section": "8.1 声明",
-    "text": "8.1 声明\n臨床論文は、書き方がある程度規定されています。\n\nInternational Committee of Medical Journal Editors (ICMJE)\nアメリカ医学会 Manual of Style: A guide for Authors and Editors\n各ジャーナルの Authors Guideline など\n研究デザインごとの声明 (Statement)\n\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\n\n\n\n研究デザイン\nガイドライン\n\n\n\n\nシステマティックレビュー メタアナリシス\nPRISMA\n\n\nランダム化比較試験\nCONSORT\n\n\n非ランダム化比較試験\nTREND\n\n\n分析疫学的研究 (コホート研究や症例対照研究)\nSTROBE\n\n\n\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。"
+    "title": "9  声明",
+    "section": "9.1 声明",
+    "text": "9.1 声明\n臨床論文は、書き方がある程度規定されています。\n\nInternational Committee of Medical Journal Editors (ICMJE)\nアメリカ医学会 Manual of Style: A guide for Authors and Editors\n各ジャーナルの Authors Guideline など\n研究デザインごとの声明 (Statement)\n\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\n\n\n\n研究デザイン\nガイドライン\n\n\n\n\nシステマティックレビュー メタアナリシス\nPRISMA\n\n\nランダム化比較試験\nCONSORT\n\n\n非ランダム化比較試験\nTREND\n\n\n分析疫学的研究 (コホート研究や症例対照研究)\nSTROBE\n\n\n\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。"
   },
   {
     "objectID": "statement.html#チェックリスト",
     "href": "statement.html#チェックリスト",
-    "title": "8  声明",
-    "section": "8.2 チェックリスト",
-    "text": "8.2 チェックリスト\n\n8.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups."
+    "title": "9  声明",
+    "section": "9.2 チェックリスト",
+    "text": "9.2 チェックリスト\n\n9.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups."
   },
   {
     "objectID": "letter.html#批判的吟味-critical-reading",
     "href": "letter.html#批判的吟味-critical-reading",
-    "title": "9  レター",
-    "section": "9.1 批判的吟味 (Critical Reading)",
-    "text": "9.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
+    "title": "10  レター",
+    "section": "10.1 批判的吟味 (Critical Reading)",
+    "text": "10.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント\nIntroduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない"
   },
   {
     "objectID": "letter.html#自動翻訳",
     "href": "letter.html#自動翻訳",
-    "title": "9  レター",
-    "section": "9.2 自動翻訳",
-    "text": "9.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
+    "title": "10  レター",
+    "section": "10.2 自動翻訳",
+    "text": "10.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved."
   },
   {
     "objectID": "letter.html#文法チェック",
     "href": "letter.html#文法チェック",
-    "title": "9  レター",
-    "section": "9.3 文法チェック",
-    "text": "9.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
+    "title": "10  レター",
+    "section": "10.3 文法チェック",
+    "text": "10.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/"
   },
   {
     "objectID": "letter.html#書き換えツール",
     "href": "letter.html#書き換えツール",
-    "title": "9  レター",
-    "section": "9.4 書き換えツール",
-    "text": "9.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
+    "title": "10  レター",
+    "section": "10.4 書き換えツール",
+    "text": "10.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved."
   },
   {
     "objectID": "summary.html",
