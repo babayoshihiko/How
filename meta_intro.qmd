@@ -97,13 +97,11 @@ e メタ分析〈メタアナリシス〉
 
 異質性は、Cochran Q 検定または $I^2$ で評価します。Cochran Q 検定は、通常の p 値で評価します。$I^2$ は、0%〜100% の値を取り、数値が大きいほど異質性が高くなります。
 
-```{r include = FALSE}
+```{r include=FALSE}
 library(metafor)
 ```
 
-```{r}
-library(metafor)
-
+```{r echo = FALSE}
 # Data: prevalence (proportion) and sample size
 prev <- c(0.45, 0.50, 0.55)
 n    <- c(100, 200, 300)
@@ -127,9 +125,7 @@ forest(res,
 
 このとき、Cochran Q は `r res$QE` (p = `r res$QEp`) で、I$^2$ = `r res$I2` です。
 
-```{r}
-library(metafor)
-
+```{r echo = FALSE}
 # Data: prevalence (proportion) and sample size
 prev <- c(0.10, 0.50, 0.90)
 n    <- c(100, 200, 300)
@@ -162,4 +158,6 @@ forest(res,
 Vetrano DL, Palmer KM, Galluzzo L, Giampaoli S, Marengoni A, Bernabei R, & Onder G (2018). Hypertension and frailty: a systematic review and meta-analysis. *BMJ open*, 8(12), e024406.
 
 Ofori-Asenso R, Chin KL, Mazidi M, Zomer E, Ilomaki J, Zullo AR, ... & Liew D (2019) Global incidence of frailty and prefrailty among community-dwelling older adults: a systematic review and meta-analysis. *JAMA network open*, 2(8), e198398-e198398.
+
+Wilkinson, C., Todd, O., Clegg, A., Gale, C. P., & Hall, M. (2019). Management of atrial fibrillation for older people with frailty: a systematic review and meta-analysis. Age and ageing, 48(2), 196-203.
 
