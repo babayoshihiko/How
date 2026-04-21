@@ -16,6 +16,7 @@ book:
     - part: meta.qmd
       chapters:
         - meta_intro.qmd
+        - meta_r.qmd
     - part: ct.qmd
       chapters:
         - rct_intro.qmd

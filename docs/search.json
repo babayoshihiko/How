@@ -203,6 +203,83 @@
     ]
   },
   {
+    "objectID": "meta_r.html",
+    "href": "meta_r.html",
+    "title": "4  R でメタ分析",
+    "section": "",
+    "text": "4.1 はじめに\nメタ分析については、R には多くのパッケージがあり、公式サイト中にも Michael Dewey によるメタ分析のパッケージの紹介ページがあります。\nまた、Minds 診療ガイドライン作成マニュアル2020 ver. 3.0 には、複数の事例とサンプルコードが解説されています。\nR以外のソフトウェアとしては、メタ分析を推奨している Cochrane から RevMan をいうソフトウェアを無償で提供しています。\nメタ分析は、参照する文献が用いている統計手法によって違いが出てきます。\n実際の論文をもとに、比率 (proportion) のメタ分析を行ってみましょう。ここで、比率 (proportion) とは、ある母集団に対して特定の特徴を持った人の比率です。\nなお、rate と proportion の用語は、ここでは深入りしません。\nAbate SM, Ahmed Ali S, Mantfardo B, & Basu B (2020). Rate of Intensive Care Unit admission and outcomes among patients with coronavirus: A systematic review and Meta-analysis. PloS one, 15(7), e0235653. https://doi.org/10.1371/journal.pone.0235653\nコロナウィルス感染患者の ICU admission のデータです。いわゆる新型コロナ (SARS-COV-2) だけではなく、SARS や MERS のコロナウィルスも含めて、ICU入室率を扱う論文を集めてメタ分析しています。",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#はじめに",
+    "href": "meta_r.html#はじめに",
+    "title": "4  R でメタ分析",
+    "section": "",
+    "text": "https://cran.r-project.org/web/views/MetaAnalysis.html\nhttps://babayoshihiko.github.io/Doing-Meta-Analysis-in-R-ja/\n\n\n\n\n\nシステマティックレビューによって抽出された論文からデータを取得する\nデータがない場合は、コレスポンディングオーサーにデータを請求する\n生データ（個人データ, Individual Participant Data）を取得する場合もある\n固定効果、ランダム効果を選択する、あるいは weight を計算する\nデータを統合 (pool) する\n異質性 (heterogeneity) を検証する\n出版バイアスを検証する",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#データの読み込み",
+    "href": "meta_r.html#データの読み込み",
+    "title": "4  R でメタ分析",
+    "section": "4.2 データの読み込み",
+    "text": "4.2 データの読み込み\nこの論文では、メタ分析を行った際の表データがインターネット上で公開されています。インターネットから、データを直接読み込みましょう。\n\ndfMeta &lt;- readr::read_csv(\"https://ndownloader.figshare.com/files/23167073\")\n\nRows: 38 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): Author, country, corona, Study design\ndbl (3): year, event, sample\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n列ごとにデータ型が示されていることが分かります。\n\nAuthor: 文字列\nyear: 数値（小数点）\nevent: 数値（小数点）\nsample: 数値（小数点）\ncountry: 文字列\ncorona: 文字列\nStudy design: 文字列\n\nここで、Study design は、列名に空白があるので、バッククォート記号で囲みます。\n元データの最後の行は空データで、おそらく元々は統合データを格納するために準備してあったと思われます。この行は不要なので、NA データのある行を削除しました。\nR では、データの入っていないことを表す手段が複数あります。NULL や NA です。NA などがあるとエラーが出やすくなります。\n\ndfMeta &lt;- na.omit(dfMeta)\ndfMeta$Study_design &lt;- dfMeta$`Study design`",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#メタ分析",
+    "href": "meta_r.html#メタ分析",
+    "title": "4  R でメタ分析",
+    "section": "4.3 メタ分析",
+    "text": "4.3 メタ分析\nメタ分析を行うのは、わずか一行です。なお、ここでは結果を直接表示せず、いったん mpResult に格納しています。\n\nmpResult &lt;- meta::metaprop(data = dfMeta, \n                event = event, \n                n = sample, \n                studlab = paste(Author, year))\n\n関数\n\npaste: 文字列をつなげる。文字列間 (sep) にはデフォルトで空白が追加される。ここでは、Author と year を空白でつなげている。\n\n変数と引数\n\nmpResult は、metaprop の結果を格納します。MetaProp から mp をとって mpResult と命名しました。\n引数 data は、データフレーム dfMeta としました。\n引数 event は、データフレーム中の event (イベント数) 列を指定しました。\n引数 n は、データフレーム中の sample (観測数) 列を指定しました。\n引数 studlab は、データフレーム中の Author (著者) 列と year (発行年) をつなげたものを指定しました。\n\n結果を見てみます。\n\nmpResult\n\nNumber of studies: k = 37\nNumber of observations: o = 32741\nNumber of events: e = 6220\n\n                     proportion           95%-CI\nCommon effect model      0.1900 [0.1858; 0.1943]\nRandom effects model     0.2834 [0.2057; 0.3765]\n\nQuantifying heterogeneity (with 95%-CIs):\n tau^2 = 1.6165; tau = 1.2714; I^2 = 99.0% [98.8%; 99.1%]; H = 9.83 [9.26; 10.44]\n\nTest of heterogeneity:\n            Q d.f. p-value\n Wald 3481.43   36       0\n LRT  4446.74   36       0\n\nDetails of meta-analysis methods:\n- Random intercept logistic regression model\n- Maximum-likelihood estimator for tau^2\n- Calculation of I^2 based on Q\n- Logit transformation\n\n\nこの上までが、R で出力される結果です。\n結果においては、異質性 (heterogeneity) 検定の結果が示されています。 Q, \\(τ^2\\), \\(I^2\\) などが異質性の指標です。\n\\(I^2\\) の解釈の仕方:\n\n0 〜40%（重要でない異質性）\n30 〜60%（中等度の異質性）\n50 〜90％（大きな異質性）\n75 〜100%（高度の異質性）",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#フォレストプロット",
+    "href": "meta_r.html#フォレストプロット",
+    "title": "4  R でメタ分析",
+    "section": "4.4 フォレストプロット",
+    "text": "4.4 フォレストプロット\nフォレストプロットを作図してみましょう。\n\nmeta::forest(mpResult)\n\n\n\n\n\n\n\n\nあまり美しくないので、オプションを試してみます。\n\nmeta::forest(mpResult, \n       layout = \"RevMan5\", \n       comb.fixed = FALSE,\n       label.right = \"Favours control\", \n       col.label.right = \"red\",\n       label.left = \"Favours experimental\", \n       col.label.left = \"green\",\n       prediction = TRUE)",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#出版バイアス",
+    "href": "meta_r.html#出版バイアス",
+    "title": "4  R でメタ分析",
+    "section": "4.5 出版バイアス",
+    "text": "4.5 出版バイアス\nこれまで、研究はポジティブな結果が出た時に発表される傾向がありました。これはメタ分析を行う際にはバイアスとなってしまいます。これを出版バイアスと言います。多くの論文では、ファンネルプロットを作成して、視覚的に出版バイアスがあるかどうかを確認するに止まります。\nファンネルプロットを描いてみます。\n\nmeta::funnel(mpResult)\n\n\n\n\n\n\n\n\nメタ分析の論文では、出版バイアスがあるかどうかをファンネルプロットで視覚的に確認したというものが多く見られます。しかしながら、出版バイアスを検証する統計もあります。\n\nmetabias(mpResult)\n\nLinear regression test of funnel plot asymmetry\n\nTest result: t = 1.40, df = 35, p-value = 0.1698\nBias estimate: 2.8392 (SE = 2.0256)\n\nDetails:\n- multiplicative residual heterogeneity variance (tau^2 = 94.1829)\n- predictor: standard error\n- weight:    inverse variance\n- reference: Egger et al. (1997), BMJ\n\n\nこのデータに対し、Egger 検定を行ったところ、\np = 0.1698\nとなり、出版バイアスはあるとは言えません。",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
+    "objectID": "meta_r.html#結論",
+    "href": "meta_r.html#結論",
+    "title": "4  R でメタ分析",
+    "section": "4.6 結論",
+    "text": "4.6 結論\nR におけるメタ分析は、分析（検定や作図など）がそれぞれ一行でできるほど簡単なものになっています。\nなお作図に関しては、出版できるようにするためには大きさなど微調整が必要になります。",
+    "crumbs": [
+      "メタ分析",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>R でメタ分析</span>"
+    ]
+  },
+  {
     "objectID": "ct.html",
     "href": "ct.html",
     "title": "比較試験",
@@ -215,56 +292,56 @@
   {
     "objectID": "rct_intro.html",
     "href": "rct_intro.html",
-    "title": "4  ランダム化比較試験",
+    "title": "5  ランダム化比較試験",
     "section": "",
-    "text": "4.1 キーワード\nランダム化比較試験 (randomised controlled trial, RCT) は、「ランダム化」 (randomisation) という手法で介入群と対照群を設定する臨床試験です。\nRCT は、介入前をベースライン (baseline) と言います。また介入が終了した後に効果が持続するかどうかを見るために、3ヶ月や 1 年など追跡 (follow-up) 調査することもよくあります。調査時点を、介入前 (T0)、介入直後 (T1)、追跡 (T2) などと表現することもあります。\nRCT の特徴は、内的妥当性の高さなので、a が正解となります。\n選択肢 e に、交絡因子 (confounding factor) という言葉があります。交絡因子は系統誤差の原因の一つですので、RCT ではむしろ影響が少なくなります。交絡因子は、統計学的には「調整」(adjustment) をする必要が出てきます。\nconfounding variable: variable that can cause or prevent the outcome of interest, is not an intermediate variable, and is associated with the factor under investivgation. Unless it is possible to adjust for confounding variables their effects cannot be distinguished from those of the factors being studied. … (Style Committee et al. 2020, 1028)\n統計手法としては、繰り返しのある二元配置分散分析 (two-way repeated measures ANOVA) や混合モデル (mixed model) といった解析方法を使います。\nRCT には、倫理的な課題があります。それは、参加者の多くは治療を期待しているのにも関わらず、治療をしない対照群に割り当てられる可能性がある点です。この観点から、サンプルサイズ (sample size) は小さい方が好ましくなります。一方で、効果推定のためにはサンプルサイズが大きい方が好ましいです。このため、予備試験 (pilot study) を実施し、サンプルサイズを推定することがあります。なお、サンプルサイズは症例数ということもあります。",
+    "text": "5.1 キーワード\nランダム化比較試験 (randomised controlled trial, RCT) は、「ランダム化」 (randomisation) という手法で介入群と対照群を設定する臨床試験です。\nRCT は、介入前をベースライン (baseline) と言います。また介入が終了した後に効果が持続するかどうかを見るために、3ヶ月や 1 年など追跡 (follow-up) 調査することもよくあります。調査時点を、介入前 (T0)、介入直後 (T1)、追跡 (T2) などと表現することもあります。\nRCT の特徴は、内的妥当性の高さなので、a が正解となります。\n選択肢 e に、交絡因子 (confounding factor) という言葉があります。交絡因子は系統誤差の原因の一つですので、RCT ではむしろ影響が少なくなります。交絡因子は、統計学的には「調整」(adjustment) をする必要が出てきます。\nconfounding variable: variable that can cause or prevent the outcome of interest, is not an intermediate variable, and is associated with the factor under investivgation. Unless it is possible to adjust for confounding variables their effects cannot be distinguished from those of the factors being studied. … (Style Committee et al. 2020, 1028)\n統計手法としては、繰り返しのある二元配置分散分析 (two-way repeated measures ANOVA) や混合モデル (mixed model) といった解析方法を使います。\nRCT には、倫理的な課題があります。それは、参加者の多くは治療を期待しているのにも関わらず、治療をしない対照群に割り当てられる可能性がある点です。この観点から、サンプルサイズ (sample size) は小さい方が好ましくなります。一方で、効果推定のためにはサンプルサイズが大きい方が好ましいです。このため、予備試験 (pilot study) を実施し、サンプルサイズを推定することがあります。なお、サンプルサイズは症例数ということもあります。",
     "crumbs": [
       "比較試験",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ランダム化比較試験</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ランダム化比較試験</span>"
     ]
   },
   {
     "objectID": "rct_intro.html#sec-rct-keyword",
     "href": "rct_intro.html#sec-rct-keyword",
-    "title": "4  ランダム化比較試験",
+    "title": "5  ランダム化比較試験",
     "section": "",
     "text": "Note医師国家試験 第118回 B 09\n\n\n\nランダム化比較試験〈RCT〉で正しいのはどれか。\na 観察研究である。\nb 外的妥当性が高い研究である。\nc 未測定の交絡因子に対応できない。\nd 有病率の低い疾患の研究に適している。\ne 症例対照研究よりエビデンスレベルが高い。\n\n\n\n\n\n\n\n\n\nNote医師国家試験 第115回 B 06\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 内的妥当性が高い。\nb 二重盲検を要件とする。\nc 第１相臨床試験で用いられる。\nd メタ分析〈メタアナリシス〉の一種である。\ne 観察研究に比べて交絡因子の影響が大きい。",
     "crumbs": [
       "比較試験",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ランダム化比較試験</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ランダム化比較試験</span>"
     ]
   },
   {
     "objectID": "rct_intro.html#sec-rct-randomisation",
     "href": "rct_intro.html#sec-rct-randomisation",
-    "title": "4  ランダム化比較試験",
-    "section": "4.2 ランダム化",
-    "text": "4.2 ランダム化\nところが、ランダム化とは何か？と聞かれると、意外と答えられないものです。また、論文ではランダム化の方法まで報告されていることは少ないようです。ランダム化は、どのような目的で行うのでしょうか？\nランダム化の目的は、介入群と対照群を均質にすることにあります。例えば、年齢や性別が影響を及ぼす場合、100人をランダム化する場合は、両群の平均年齢と男女比がほぼ同じになるように分けます。このような、影響を及ぼす誤差を系統誤差 (systematic error) といいます。一方、「ほぼ」の部分は偶然誤差 (random error) になります。\nおや、偶然誤差の「偶然」は、英語では random ですね。つまり、これがランダム化ということです。例えば、ランダム化して平均年齢が 70.4 才と 70.5 才になったとしたら、その差 0.1 は偶然誤差と言えます。\n振り分けを「ランダムに」行うのではなく、「ランダムになるように」振り分けを意図的に行うことです。\nランダム化の目的は、医師国家試験に数回出題されたことがあります。\n\n\n\n\n\n\nNote医師国家試験 第110回 B 22\n\n\n\nランダム化比較試験〈無作為化比較対照試験〉においてランダム割付を実施する目的はどれか。\na 治療中断の防止\nb 偶然誤差の制御\nc 治療内容の盲検化\nd 比較群間の均質性の向上\ne 患者の試験への参加率の上昇\n\n\nランダム化の目的は、正解は d となります。b については、「系統誤差を制御」が正しく、偶然誤差はランダム化でも残ります。1\n1 選択肢 c にある「盲検化」とは何か？\n介入 (intervention) と対照 (control) の比較を行います。動物実験の場合、対照を Sham ということもあります。\nランダム化の方法には、以下のようなものがあります。ここでは、20人の人を介入群と対照群に 1:1 で割り付けるとします。\n\n4.2.1 単純ランダム化\n参加者一人一人に、50%の確立でどちらかの群に割り付ける。\nこれは、一見すると正しいような気がします。ところが、実際に実行してみるとわかりますが、14:6 など、かなり偏りが出ます。\n\n\n4.2.2 ブロックランダム化\nブロックランダム化は、単純ランダム化の問題を修正したものです。\nあらかじめ、「介介対対」や「介対対介」などのように、コンピュータで 4 人分（ブロックサイズ）の割り付け方法を決めておきます。なお、4 人分だけでなく、2 人や 6 人などブロックサイズも変えることもあります。\nこうすることで、おおむね 1:1 に割り付けられます。\n\n\n4.2.3 層別ランダム化\nランダム化は、ランダム化した結果、両群が同じような集団にならなければあんりません。\nしかし、ランダム化で偶然にも介入群に男性が10人、対照群に男性が0人となってしまうかもしれません。\nこれを防ぐために、あらかじめ性別でわけて、男性内でランダム化を行います。\n層別ランダム化と並んで説明される方法に、最小化法というものがあります。しかしながら、あまり使われていないようなので、省略します。\n\n\n4.2.4 クラスターランダム化\nここでいうクラスターとは、多施設試験におけるそれぞれの施設になります。\n例えば、杏林大学病院と東大病院で共同する場合、杏林大学病院の患者をまるまる介入群とするというランダム化になります。\n\n\n4.2.5 ランダム化の実際\n4 大ジャーナル (および比較のためもう一つのジャーナル) を対象に、どのようなランダム化が使われているかを調査した論文があります (Bruce et al. 2022)。個人ランダム化が 348 (90%) であったのに対して、クラスターランダム化は 37 (10%) でした。単純ランダム化は 20、ブロックランダム化は 33件、層別ランダム化は 66件、ブロックと層別は 162件、最小化は 49 件でした。\n\nBruce, Cydney L, Edmund Juszczak, Reuben Ogollah, Christopher Partlett, and Alan Montgomery. 2022. “A Systematic Review of Randomisation Method Use in RCTs and Association of Trial Design Characteristics with Method Selection.” BMC Medical Research Methodology 22 (1): 314.",
+    "title": "5  ランダム化比較試験",
+    "section": "5.2 ランダム化",
+    "text": "5.2 ランダム化\nところが、ランダム化とは何か？と聞かれると、意外と答えられないものです。また、論文ではランダム化の方法まで報告されていることは少ないようです。ランダム化は、どのような目的で行うのでしょうか？\nランダム化の目的は、介入群と対照群を均質にすることにあります。例えば、年齢や性別が影響を及ぼす場合、100人をランダム化する場合は、両群の平均年齢と男女比がほぼ同じになるように分けます。このような、影響を及ぼす誤差を系統誤差 (systematic error) といいます。一方、「ほぼ」の部分は偶然誤差 (random error) になります。\nおや、偶然誤差の「偶然」は、英語では random ですね。つまり、これがランダム化ということです。例えば、ランダム化して平均年齢が 70.4 才と 70.5 才になったとしたら、その差 0.1 は偶然誤差と言えます。\n振り分けを「ランダムに」行うのではなく、「ランダムになるように」振り分けを意図的に行うことです。\nランダム化の目的は、医師国家試験に数回出題されたことがあります。\n\n\n\n\n\n\nNote医師国家試験 第110回 B 22\n\n\n\nランダム化比較試験〈無作為化比較対照試験〉においてランダム割付を実施する目的はどれか。\na 治療中断の防止\nb 偶然誤差の制御\nc 治療内容の盲検化\nd 比較群間の均質性の向上\ne 患者の試験への参加率の上昇\n\n\nランダム化の目的は、正解は d となります。b については、「系統誤差を制御」が正しく、偶然誤差はランダム化でも残ります。1\n1 選択肢 c にある「盲検化」とは何か？\n介入 (intervention) と対照 (control) の比較を行います。動物実験の場合、対照を Sham ということもあります。\nランダム化の方法には、以下のようなものがあります。ここでは、20人の人を介入群と対照群に 1:1 で割り付けるとします。\n\n5.2.1 単純ランダム化\n参加者一人一人に、50%の確立でどちらかの群に割り付ける。\nこれは、一見すると正しいような気がします。ところが、実際に実行してみるとわかりますが、14:6 など、かなり偏りが出ます。\n\n\n5.2.2 ブロックランダム化\nブロックランダム化は、単純ランダム化の問題を修正したものです。\nあらかじめ、「介介対対」や「介対対介」などのように、コンピュータで 4 人分（ブロックサイズ）の割り付け方法を決めておきます。なお、4 人分だけでなく、2 人や 6 人などブロックサイズも変えることもあります。\nこうすることで、おおむね 1:1 に割り付けられます。\n\n\n5.2.3 層別ランダム化\nランダム化は、ランダム化した結果、両群が同じような集団にならなければあんりません。\nしかし、ランダム化で偶然にも介入群に男性が10人、対照群に男性が0人となってしまうかもしれません。\nこれを防ぐために、あらかじめ性別でわけて、男性内でランダム化を行います。\n層別ランダム化と並んで説明される方法に、最小化法というものがあります。しかしながら、あまり使われていないようなので、省略します。\n\n\n5.2.4 クラスターランダム化\nここでいうクラスターとは、多施設試験におけるそれぞれの施設になります。\n例えば、杏林大学病院と東大病院で共同する場合、杏林大学病院の患者をまるまる介入群とするというランダム化になります。\n\n\n5.2.5 ランダム化の実際\n4 大ジャーナル (および比較のためもう一つのジャーナル) を対象に、どのようなランダム化が使われているかを調査した論文があります (Bruce et al. 2022)。個人ランダム化が 348 (90%) であったのに対して、クラスターランダム化は 37 (10%) でした。単純ランダム化は 20、ブロックランダム化は 33件、層別ランダム化は 66件、ブロックと層別は 162件、最小化は 49 件でした。\n\nBruce, Cydney L, Edmund Juszczak, Reuben Ogollah, Christopher Partlett, and Alan Montgomery. 2022. “A Systematic Review of Randomisation Method Use in RCTs and Association of Trial Design Characteristics with Method Selection.” BMC Medical Research Methodology 22 (1): 314.",
     "crumbs": [
       "比較試験",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ランダム化比較試験</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ランダム化比較試験</span>"
     ]
   },
   {
     "objectID": "rct_intro.html#統計",
     "href": "rct_intro.html#統計",
-    "title": "4  ランダム化比較試験",
-    "section": "4.3 統計",
-    "text": "4.3 統計\n\n4.3.1 ITT と Per Protocol\n解析対象については、Intention-to-treat 解析や Per protcol 解析が行われることがあります。Intention-to-treat は、治療の意図という意味で、実際の治療ではなく当初の治療を指します。一方、Per protocol は実際に行われた治療を指します。この二つの単語については、日本語訳はされないことの方が多いようです。RCT では通常、per protocol よりも ITT の方が望ましいとされています。\nAMA Manual of Style では、以下のように定義しています。\nIntention-to-treat (ITT) analysis is the preferred way to report randomized trial results. Final results are based on analysis of data from all the participants who were originally randomly assigned, whether or not they completed the trial.\nA per-protocol analysis reports a study’s results by the treatment received and not by the group into which the participants were randomly assigned.\n(Style Committee et al. 2020, 988)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n\n\n\n\n\n\nNote医師国家試験 第110回 B 13\n\n\n\n治療 A と治療 B との比較を目的としたランダム化比較試験〈無作為化比較対照試験〉を行った。割り付けと実際の治療人数の表を示す。\n\n\n\n\n\n\n\n\n\n\n\n治療 A を実際に行った\n治療 B を実際に行った\n治療開始前 に死亡した\n合計\n\n\n\n\n治療A割付\n110人\n15人\n4人\n129人\n\n\n治療B割付\n6人\n115人\n0人\n121人\n\n\n合計\n116人\n130人\n4人\n250人\n\n\n\nintention to treat〈ITT〉で２つの治療を比較するときに、治療 A と治療 B の組み合わせで正しいのはどれか。\n\n\nITT ですので、「割付」を見れば良いことになります。割り付けられたのは、治療 A が 129 人、治療 B が 121 人です。これが正解になります。\nただし、RCT においては、実際には死亡した人の After のデータがない可能性があります。実際、この問題でも治療 A は 125 人という選択肢があり、そこで悩んだ人もいたと推察されます。\nでは、Per protocol 解析だとすると何人でしょうか？治療 A に割付られ、実際に治療 A を行った 110 人と、治療 B の 115 人となります。\nここまで見たように、RCT の強みは、実験に参加した患者 (または参加者) については妥当性が高いと言えます。これを内的妥当性 (internal validity) と言います。対象者以外に拡張する場合は外的妥当性 (external validity) や一般化可能性 (generalisability)と言います。\n\n\n\n\n\n\nNote医師国家試験 第114回 E 17\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 二重盲検は必須である。\nb プラセボは現在では使用が禁止されている。\nc ランダム割付は症例数を少なくするために行われる。\nd 症例数の設定のためには治療効果の推定が必要である。\ne Intention to treat〈ITT〉による解析は実際に行った治療に基づいて行われる。\n\n\n正解は、d となります。",
+    "title": "5  ランダム化比較試験",
+    "section": "5.3 統計",
+    "text": "5.3 統計\n\n5.3.1 ITT と Per Protocol\n解析対象については、Intention-to-treat 解析や Per protcol 解析が行われることがあります。Intention-to-treat は、治療の意図という意味で、実際の治療ではなく当初の治療を指します。一方、Per protocol は実際に行われた治療を指します。この二つの単語については、日本語訳はされないことの方が多いようです。RCT では通常、per protocol よりも ITT の方が望ましいとされています。\nAMA Manual of Style では、以下のように定義しています。\nIntention-to-treat (ITT) analysis is the preferred way to report randomized trial results. Final results are based on analysis of data from all the participants who were originally randomly assigned, whether or not they completed the trial.\nA per-protocol analysis reports a study’s results by the treatment received and not by the group into which the participants were randomly assigned.\n(Style Committee et al. 2020, 988)\n\nStyle Committee, AMA Manual of et al. 2020. AMA Manual of Style: A Guide for Authors and Editors. Oxford University Press.\n\n\n\n\n\n\nNote医師国家試験 第110回 B 13\n\n\n\n治療 A と治療 B との比較を目的としたランダム化比較試験〈無作為化比較対照試験〉を行った。割り付けと実際の治療人数の表を示す。\n\n\n\n\n\n\n\n\n\n\n\n治療 A を実際に行った\n治療 B を実際に行った\n治療開始前 に死亡した\n合計\n\n\n\n\n治療A割付\n110人\n15人\n4人\n129人\n\n\n治療B割付\n6人\n115人\n0人\n121人\n\n\n合計\n116人\n130人\n4人\n250人\n\n\n\nintention to treat〈ITT〉で２つの治療を比較するときに、治療 A と治療 B の組み合わせで正しいのはどれか。\n\n\nITT ですので、「割付」を見れば良いことになります。割り付けられたのは、治療 A が 129 人、治療 B が 121 人です。これが正解になります。\nただし、RCT においては、実際には死亡した人の After のデータがない可能性があります。実際、この問題でも治療 A は 125 人という選択肢があり、そこで悩んだ人もいたと推察されます。\nでは、Per protocol 解析だとすると何人でしょうか？治療 A に割付られ、実際に治療 A を行った 110 人と、治療 B の 115 人となります。\nここまで見たように、RCT の強みは、実験に参加した患者 (または参加者) については妥当性が高いと言えます。これを内的妥当性 (internal validity) と言います。対象者以外に拡張する場合は外的妥当性 (external validity) や一般化可能性 (generalisability)と言います。\n\n\n\n\n\n\nNote医師国家試験 第114回 E 17\n\n\n\nランダム化比較試験〈RCT〉について正しいのはどれか。\na 二重盲検は必須である。\nb プラセボは現在では使用が禁止されている。\nc ランダム割付は症例数を少なくするために行われる。\nd 症例数の設定のためには治療効果の推定が必要である。\ne Intention to treat〈ITT〉による解析は実際に行った治療に基づいて行われる。\n\n\n正解は、d となります。",
     "crumbs": [
       "比較試験",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ランダム化比較試験</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ランダム化比較試験</span>"
     ]
   },
   {
     "objectID": "rct_intro.html#ガイドライン",
     "href": "rct_intro.html#ガイドライン",
-    "title": "4  ランダム化比較試験",
-    "section": "4.4 ガイドライン",
-    "text": "4.4 ガイドライン\nRCT の論文のガイドラインは、CONSORT 声明です。\n論文の例: Siramolpiwat S, Limthanetkul N, Pornthisarn B, Vilaichone RK, Chonprasertsuk S, Bhanthumkomol P, … & Issariyakulkarn N (2023) Branched-chain amino acids supplementation improves liver frailty index in frail compensated cirrhotic patients: a randomized controlled trial. BMC gastroenterology, 23(1), 154.\nTeh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … & Pillai A (2022) Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. The Lancet Healthy Longevity, 3(8), e519-e530.\nJiayuan Z, Xiang-Zi J, Li-Na M, Jin-Wei Y, & Xue Y (2022) Effects of mindfulness-based tai chi Chuan on physical performance and cognitive function among cognitive frailty older adults: a six-month follow-up of a randomized controlled trial. The Journal of Prevention of Alzheimer’s Disease, 9(1), 104-112.\nWalters K, Frost R, Avgerinou C, et al. (2025) Clinical and cost-effectiveness of a home-based health promotion intervention for older people with mild frailty in England: a multicentre, parallel-group, randomised controlled trial. The Lancet Healthy Longevity, 6(2).",
+    "title": "5  ランダム化比較試験",
+    "section": "5.4 ガイドライン",
+    "text": "5.4 ガイドライン\nRCT の論文のガイドラインは、CONSORT 声明です。\n論文の例: Siramolpiwat S, Limthanetkul N, Pornthisarn B, Vilaichone RK, Chonprasertsuk S, Bhanthumkomol P, … & Issariyakulkarn N (2023) Branched-chain amino acids supplementation improves liver frailty index in frail compensated cirrhotic patients: a randomized controlled trial. BMC gastroenterology, 23(1), 154.\nTeh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … & Pillai A (2022) Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. The Lancet Healthy Longevity, 3(8), e519-e530.\nJiayuan Z, Xiang-Zi J, Li-Na M, Jin-Wei Y, & Xue Y (2022) Effects of mindfulness-based tai chi Chuan on physical performance and cognitive function among cognitive frailty older adults: a six-month follow-up of a randomized controlled trial. The Journal of Prevention of Alzheimer’s Disease, 9(1), 104-112.\nWalters K, Frost R, Avgerinou C, et al. (2025) Clinical and cost-effectiveness of a home-based health promotion intervention for older people with mild frailty in England: a multicentre, parallel-group, randomised controlled trial. The Lancet Healthy Longevity, 6(2).",
     "crumbs": [
       "比較試験",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>ランダム化比較試験</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>ランダム化比較試験</span>"
     ]
   },
   {
@@ -280,122 +357,122 @@
   {
     "objectID": "crosssectional_intro.html",
     "href": "crosssectional_intro.html",
-    "title": "5  横断研究",
+    "title": "6  横断研究",
     "section": "",
-    "text": "5.1 キーワード\nコホート研究 (cohort study) には、いくつかの種類があります。\nまず、ある１時点での調査を行うことを横断研究 (cross-sectional study)、複数の時点で調査を行うことを縦断研究 (longitudinal study) と言います。\n横断研究では、通常、ある疾患 (ここではフレイル) の有病率や、さまざまな属性との関連を調べます。この属性を、RCT での介入に対して、コホート研究では暴露 (exposure) と言うこともあります。\n横断研究では、統計手法としては、ロジスティック回帰 (logistic regression) がよく用いられます。これは、単一のアウトカムに対して、複数の属性を共変量 (covariate) として解析し、関連 (association) があるかどうかを調査します。最終的には、共変量ごとにオッズ比が得られます。",
+    "text": "6.1 キーワード\nコホート研究 (cohort study) には、いくつかの種類があります。\nまず、ある１時点での調査を行うことを横断研究 (cross-sectional study)、複数の時点で調査を行うことを縦断研究 (longitudinal study) と言います。\n横断研究では、通常、ある疾患 (ここではフレイル) の有病率や、さまざまな属性との関連を調べます。この属性を、RCT での介入に対して、コホート研究では暴露 (exposure) と言うこともあります。\n横断研究では、統計手法としては、ロジスティック回帰 (logistic regression) がよく用いられます。これは、単一のアウトカムに対して、複数の属性を共変量 (covariate) として解析し、関連 (association) があるかどうかを調査します。最終的には、共変量ごとにオッズ比が得られます。",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>横断研究</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>横断研究</span>"
     ]
   },
   {
     "objectID": "crosssectional_intro.html#sec-crosssectional-keyword",
     "href": "crosssectional_intro.html#sec-crosssectional-keyword",
-    "title": "5  横断研究",
+    "title": "6  横断研究",
     "section": "",
-    "text": "5.1.1 リスク比とオッズ比\nロジスティック回帰を理解するためには、まずオッズ比とリスク比を理解する必要があります。\nまず、以下のオッズ比とリスク比を計算してみましょう。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n20人\n80人\n100人\n\n\n暴露なし\n10人\n90人\n100人\n\n\n合計\n30人\n170人\n200人\n\n\n\nリスク比 = \\(\\dfrac{ \\dfrac{20}{100} }{ \\dfrac{10}{100} } = 2.00\\)\nリスク比は簡単に理解できます。「暴露ありのほうが、暴露なしよりも 2.00 倍の疾患リスクがある」と解釈することができます。\nオッズ比 = \\(\\dfrac{ \\dfrac{20}{80} }{ \\dfrac{10}{90} } = 2.25\\)\nこのように、オッズ比はリスク比に近いけれども、ちょっと大袈裟にでる傾向があります。1\n1 オッズ比は、1 より大きい場合はリスク比よりも大きく、1 より小さい場合はリスク比より小さく出ます。\nTajeu, Gabriel S, Bisakha Sen, David B Allison, and Nir Menachemi. 2012. “Misuse of Odds Ratios in Obesity Literature: An Empirical Analysis of Published Studies.” Obesity 20 (8): 1726–31.\n\nHolcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Burgdorf. 2001. “An Odd Measure of Risk: Use and Misuse of the Odds Ratio.” Obstetrics & Gynecology 98 (4): 685–88.\nこのため、オッズ比 2.25 は、「暴露ありのほうが、暴露なしよりも 2.25倍の疾患リスクがある」と解釈することはできません (Tajeu et al. 2012; Holcomb Jr et al. 2001)。\nなお、全体の有病率が低くなるほどオッズ比はリスク比に近づき、10% 以下ではほぼリスク比に近似できます。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n2人\n98人\n100人\n\n\n暴露なし\n1人\n99人\n100人\n\n\n合計\n3人\n197人\n200人\n\n\n\nリスク比は 2.00 のままですが、オッズ比は 2.02 になります。\n上の表では、要因が一つ (暴露) だけでした。これを、複数に拡張したものがロジスティック回帰になります。また、2 値変数だけではなく数値も使用することができます。\n横断研究では多くの場合、以下の調査を行います。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nこれで全てではありません。例えば、Chapter 2 でみた Fried LP (2001) もコホート研究の一種です。\nコホート研究の論文のガイドラインは、STROBE 宣言です。",
+    "text": "6.1.1 リスク比とオッズ比\nロジスティック回帰を理解するためには、まずオッズ比とリスク比を理解する必要があります。\nまず、以下のオッズ比とリスク比を計算してみましょう。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n20人\n80人\n100人\n\n\n暴露なし\n10人\n90人\n100人\n\n\n合計\n30人\n170人\n200人\n\n\n\nリスク比 = \\(\\dfrac{ \\dfrac{20}{100} }{ \\dfrac{10}{100} } = 2.00\\)\nリスク比は簡単に理解できます。「暴露ありのほうが、暴露なしよりも 2.00 倍の疾患リスクがある」と解釈することができます。\nオッズ比 = \\(\\dfrac{ \\dfrac{20}{80} }{ \\dfrac{10}{90} } = 2.25\\)\nこのように、オッズ比はリスク比に近いけれども、ちょっと大袈裟にでる傾向があります。1\n1 オッズ比は、1 より大きい場合はリスク比よりも大きく、1 より小さい場合はリスク比より小さく出ます。\nTajeu, Gabriel S, Bisakha Sen, David B Allison, and Nir Menachemi. 2012. “Misuse of Odds Ratios in Obesity Literature: An Empirical Analysis of Published Studies.” Obesity 20 (8): 1726–31.\n\nHolcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Burgdorf. 2001. “An Odd Measure of Risk: Use and Misuse of the Odds Ratio.” Obstetrics & Gynecology 98 (4): 685–88.\nこのため、オッズ比 2.25 は、「暴露ありのほうが、暴露なしよりも 2.25倍の疾患リスクがある」と解釈することはできません (Tajeu et al. 2012; Holcomb Jr et al. 2001)。\nなお、全体の有病率が低くなるほどオッズ比はリスク比に近づき、10% 以下ではほぼリスク比に近似できます。\n\n\n\n\n疾患あり\n疾患なし\n合計\n\n\n\n\n暴露あり\n2人\n98人\n100人\n\n\n暴露なし\n1人\n99人\n100人\n\n\n合計\n3人\n197人\n200人\n\n\n\nリスク比は 2.00 のままですが、オッズ比は 2.02 になります。\n上の表では、要因が一つ (暴露) だけでした。これを、複数に拡張したものがロジスティック回帰になります。また、2 値変数だけではなく数値も使用することができます。\n横断研究では多くの場合、以下の調査を行います。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nこれで全てではありません。例えば、Chapter 2 でみた Fried LP (2001) もコホート研究の一種です。\nコホート研究の論文のガイドラインは、STROBE 宣言です。",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>横断研究</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>横断研究</span>"
     ]
   },
   {
     "objectID": "crosssectional_intro.html#有病率と関連要因の調査",
     "href": "crosssectional_intro.html#有病率と関連要因の調査",
-    "title": "5  横断研究",
-    "section": "5.2 有病率と関連要因の調査",
-    "text": "5.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。",
+    "title": "6  横断研究",
+    "section": "6.2 有病率と関連要因の調査",
+    "text": "6.2 有病率と関連要因の調査\nここでは多くの場合、以下の調査を行う横断研究について解説します。\n\n有病率を求める\nリスク因子のオッズ比を求める\n\nリスク因子のオッズ比を調査するためには、多変数ロジスティック回帰を行います。\n説明変数が複数あるときに多変数 (multivariable)、アウトカム変数が複数あるときに多変量 (multivariate) とする (Hidalgo and Goodman 2013)\n\nHidalgo, Bertha, and Melody Goodman. 2013. “Multivariate or Multivariable Regression?” American Journal of Public Health 103 (1): 39–40.\n説明変数は、仮説や先行研究から決定することが多いようです。",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>横断研究</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>横断研究</span>"
     ]
   },
   {
     "objectID": "crosssectional_intro.html#sec-crosssectional-logistic",
     "href": "crosssectional_intro.html#sec-crosssectional-logistic",
-    "title": "5  横断研究",
-    "section": "5.3 ロジスティック回帰",
-    "text": "5.3 ロジスティック回帰\nロジスティック回帰 (logistic regression) は、目的変数が 2値データ のときに用いられる代表的な統計手法です。\nたとえば、次のような結果を予測する場合に使用されます。\n\n疾患あり = 1\n疾患なし = 0\n\nこのように、結果が「はい / いいえ」「ある / ない」のように 2 つの値をとる場合に適しています。\n\n\n5.3.1 なぜ線形回帰ではなくロジスティック回帰か\n通常の線形回帰では、予測値が 0 未満や 1 を超える可能性があります。\nしかし、確率は\n\\[\n0 \\le p \\le 1\n\\]\nの範囲でなければなりません。\nそこでロジスティック回帰では、確率そのものではなく オッズの対数（log odds） をモデル化します。\n\n\n\n5.3.2 モデル式\nロジスティック回帰の基本式は次の通りです。\n\\[\n\\log\\left(\\frac{p}{1-p}\\right)=\\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\cdots\n\\]\nここで、\n\n(p)：イベントが起こる確率\n()：オッズ\n(_0)：切片\n(_1)：回帰係数（ベータ）\n(X_1)：説明変数\n\nを表します。\n\n\n\n5.3.3 ベータ係数とオッズ比の関係\nロジスティック回帰を使った論文では、回帰係数 (\\(\\beta\\)) が提示されることもあれば、オッズ比 (OR) が提示されることもあります。 回帰係数 (\\(\\beta\\)) を指数変換するとオッズ比になる関係にあります。\n\\[\n\\text{OR}=e^{\\beta}\n\\]\n\\[\n\\beta=0.693\n\\]\nであれば、\n\\[\ne^{0.693}=2.0\n\\]\nとなります。\nつまり、説明変数 (X_1) が 1 単位増加すると、オッズは 2 倍 になることを意味します。\n\n\n\n5.3.4 解釈の例\n年齢の係数が\n\\[\n\\beta=0.05\n\\]\nだったとします。\nこのときオッズ比は\n\\[\ne^{0.05}=1.051\n\\]\nです。\nこれは、年齢が 1 歳増えるごとに、目的変数が 1 になるオッズが 約 1.05 倍（5.1%増加） することを意味します。\n\n\n5.3.5 論文の例\n\nLiu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9.",
+    "title": "6  横断研究",
+    "section": "6.3 ロジスティック回帰",
+    "text": "6.3 ロジスティック回帰\nロジスティック回帰 (logistic regression) は、目的変数が 2値データ のときに用いられる代表的な統計手法です。\nたとえば、次のような結果を予測する場合に使用されます。\n\n疾患あり = 1\n疾患なし = 0\n\nこのように、結果が「はい / いいえ」「ある / ない」のように 2 つの値をとる場合に適しています。\n\n\n6.3.1 なぜ線形回帰ではなくロジスティック回帰か\n通常の線形回帰では、予測値が 0 未満や 1 を超える可能性があります。\nしかし、確率は\n\\[\n0 \\le p \\le 1\n\\]\nの範囲でなければなりません。\nそこでロジスティック回帰では、確率そのものではなく オッズの対数（log odds） をモデル化します。\n\n\n\n6.3.2 モデル式\nロジスティック回帰の基本式は次の通りです。\n\\[\n\\log\\left(\\frac{p}{1-p}\\right)=\\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\cdots\n\\]\nここで、\n\n(p)：イベントが起こる確率\n()：オッズ\n(_0)：切片\n(_1)：回帰係数（ベータ）\n(X_1)：説明変数\n\nを表します。\n\n\n\n6.3.3 ベータ係数とオッズ比の関係\nロジスティック回帰を使った論文では、回帰係数 (\\(\\beta\\)) が提示されることもあれば、オッズ比 (OR) が提示されることもあります。 回帰係数 (\\(\\beta\\)) を指数変換するとオッズ比になる関係にあります。\n\\[\n\\text{OR}=e^{\\beta}\n\\]\n\\[\n\\beta=0.693\n\\]\nであれば、\n\\[\ne^{0.693}=2.0\n\\]\nとなります。\nつまり、説明変数 (X_1) が 1 単位増加すると、オッズは 2 倍 になることを意味します。\n\n\n\n6.3.4 解釈の例\n年齢の係数が\n\\[\n\\beta=0.05\n\\]\nだったとします。\nこのときオッズ比は\n\\[\ne^{0.05}=1.051\n\\]\nです。\nこれは、年齢が 1 歳増えるごとに、目的変数が 1 になるオッズが 約 1.05 倍（5.1%増加） することを意味します。\n\n\n6.3.5 論文の例\n\nLiu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. BMC Geriatrics, 20(1), 1-9.",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>横断研究</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>横断研究</span>"
     ]
   },
   {
     "objectID": "cohort_intro.html",
     "href": "cohort_intro.html",
-    "title": "6  縦断研究",
+    "title": "7  縦断研究",
     "section": "",
-    "text": "6.1 キーワード\n縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。\n縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。\n両者には以下のような違いがあります。\n後ろ向きコホート研究 (ケース・コントロール研究とも呼ばれる) は、アウトカム (病気など) の有無で対象者を分け、過去にさかのぼって要因への曝露を調査するため、因果関係の証明は困難ですが、短期間・低コストで珍しい病気の研究に適しています。ただし、データの質や交絡因子の影響を受けやすく、因果関係と解釈するには他の研究との総合的な判断が必要不可欠です\n前向きコホート研究は、特定の要因 (曝露) を持つ集団と持たない集団を未来に向かって長期的に追跡し、両者の間で将来発生する疾患などの違いを観察・比較することで、要因と結果の「因果関係」の強さや可能性を推定する強力な観察研究手法です。ランダム化比較試験 (RCT) には及ばないものの、時間的な前後関 (曝露が先、発症が後) が明確で、交絡因子を調整できれば因果関係に迫ることができ、特に生活習慣病や環境要因と疾患の関係解明に貢献しています",
+    "text": "7.1 キーワード\n縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。\n縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。\n両者には以下のような違いがあります。\n後ろ向きコホート研究 (ケース・コントロール研究とも呼ばれる) は、アウトカム (病気など) の有無で対象者を分け、過去にさかのぼって要因への曝露を調査するため、因果関係の証明は困難ですが、短期間・低コストで珍しい病気の研究に適しています。ただし、データの質や交絡因子の影響を受けやすく、因果関係と解釈するには他の研究との総合的な判断が必要不可欠です\n前向きコホート研究は、特定の要因 (曝露) を持つ集団と持たない集団を未来に向かって長期的に追跡し、両者の間で将来発生する疾患などの違いを観察・比較することで、要因と結果の「因果関係」の強さや可能性を推定する強力な観察研究手法です。ランダム化比較試験 (RCT) には及ばないものの、時間的な前後関 (曝露が先、発症が後) が明確で、交絡因子を調整できれば因果関係に迫ることができ、特に生活習慣病や環境要因と疾患の関係解明に貢献しています",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>縦断研究</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>縦断研究</span>"
     ]
   },
   {
     "objectID": "cohort_intro.html#sec-cohort-keyword",
     "href": "cohort_intro.html#sec-cohort-keyword",
-    "title": "6  縦断研究",
+    "title": "7  縦断研究",
     "section": "",
-    "text": "前向き\n後ろ向き\n\n\n\n\n解析の時期\nデータがそろってから解析\nデータがあればすぐに解析可能\n\n\n変数\nあらかじめ設定することで取り忘れがなくなる\n観測していない変数には対応できない\n\n\n対象疾患\n有病率の高い疾患に適する\n稀な疾患に適する\n\n\n\n\n\n\n6.1.1 Kaplan-Meier 曲線\n後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。\n曲線が下に下がっていくほどイベントが発生したことを意味し (上向の場合も同様)、傾きがハザード (瞬間的なリスク) を表します。\n\n\n6.1.2 log-rank 検定\nlog-rank 検定は、2 つ以上の群の生存曲線の差を検定します。\n\n\n6.1.3 ハザード比\nCox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。\n\n例 1: ある病気にかかった人とかかっていない人の、一定期間内の死亡率の差を検定\n例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定\n\n共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。\n比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります (Spruance et al. 2004)。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。\n\nSpruance, Spotswood L, Julia E Reid, Michael Grace, and Matthew Samore. 2004. “Hazard Ratio in Clinical Trials.” Antimicrobial Agents and Chemotherapy 48 (8): 2787–92.\n\n\n6.1.4 論文の例\nフレイル\n\nKennard A, Richardson A, Rainsford S et al. (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. Bmj Open, 14(10), e087189.\n\n認知症\n\nGallagher J, Gochanour C, Caspell-Garcia C, et al. & Parkinson’s Progression Markers Initiative. (2024). Long-term dementia risk in Parkinson disease. Neurology, 103(5), e209699.",
+    "text": "前向き\n後ろ向き\n\n\n\n\n解析の時期\nデータがそろってから解析\nデータがあればすぐに解析可能\n\n\n変数\nあらかじめ設定することで取り忘れがなくなる\n観測していない変数には対応できない\n\n\n対象疾患\n有病率の高い疾患に適する\n稀な疾患に適する\n\n\n\n\n\n\n7.1.1 Kaplan-Meier 曲線\n後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。\n曲線が下に下がっていくほどイベントが発生したことを意味し (上向の場合も同様)、傾きがハザード (瞬間的なリスク) を表します。\n\n\n7.1.2 log-rank 検定\nlog-rank 検定は、2 つ以上の群の生存曲線の差を検定します。\n\n\n7.1.3 ハザード比\nCox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。\n\n例 1: ある病気にかかった人とかかっていない人の、一定期間内の死亡率の差を検定\n例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定\n\n共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。\n比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります (Spruance et al. 2004)。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。\n\nSpruance, Spotswood L, Julia E Reid, Michael Grace, and Matthew Samore. 2004. “Hazard Ratio in Clinical Trials.” Antimicrobial Agents and Chemotherapy 48 (8): 2787–92.\n\n\n7.1.4 論文の例\nフレイル\n\nKennard A, Richardson A, Rainsford S et al. (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. Bmj Open, 14(10), e087189.\n\n認知症\n\nGallagher J, Gochanour C, Caspell-Garcia C, et al. & Parkinson’s Progression Markers Initiative. (2024). Long-term dementia risk in Parkinson disease. Neurology, 103(5), e209699.",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>縦断研究</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>縦断研究</span>"
     ]
   },
   {
     "objectID": "screening_intro.html",
     "href": "screening_intro.html",
-    "title": "7  スクリーニング",
+    "title": "8  スクリーニング",
     "section": "",
-    "text": "7.1 キーワード\n感度 (sensitivity) と特異度 (specificity)\nROC 曲線 (Receiver Operating Characteristic curve)\nカットオフ値:",
+    "text": "8.1 キーワード\n感度 (sensitivity) と特異度 (specificity)\nROC 曲線 (Receiver Operating Characteristic curve)\nカットオフ値:",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>スクリーニング</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
     ]
   },
   {
     "objectID": "screening_intro.html#sec-screening-keyword",
     "href": "screening_intro.html#sec-screening-keyword",
-    "title": "7  スクリーニング",
+    "title": "8  スクリーニング",
     "section": "",
     "text": "感度 - (1 - 特異度) が最大の点 (Youden Index)\n左上からの距離が最小の点 (Closest topleft)\n感度 × 特異度が最大の点 (Product of Sensitivity and Specificity)\nその他",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>スクリーニング</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
     ]
   },
   {
     "objectID": "screening_intro.html#感度と特異度",
     "href": "screening_intro.html#感度と特異度",
-    "title": "7  スクリーニング",
-    "section": "7.2 感度と特異度",
-    "text": "7.2 感度と特異度\nたとえば、100 人に認知症スクリーニング検査をしたとします。このスクリーニングツールは 30 点満点で、23 点以下が検査陽性であったとします。\n実際の診断結果 (真実) は次の通りだったとします。\n\n実際に病気あり: 20人\n実際に病気なし: 80人\n\n検査結果はこうでした。\n\n\n\n\n実際に病気あり\n実際に病気なし\n合計\n\n\n\n\n検査陽性\n18\n10\n28\n\n\n検査陰性\n2\n70\n72\n\n\n合計\n20\n80\n100\n\n\n\n\n真陽性 (True Positive) 病気ありを正しく陽性 18\n偽陽性 (False Positive) 病気なしを誤って陽性 10\n真陰性 (True Negative) 病気なしを正しく陰性 70\n偽陰性 (False Negative) 病気ありを見逃し陰性 2\n\n\n7.2.1 感度\n感度は、スクリーニングツールで本当に病気の人をどれだけ正しく見つけられるか、です。\n式は 感度 = TP / ( TP + FN )\n感度 = 18 / (18 + 2 ) = 90%\n意味は、このスクリーニングツールで、病気の人 20 人のうち 18 人を正しく陽性と判定した、ということです。その一方で、2 人の病気の人は拾えていません。\nまた、10 人の病気でない人も陽性となっています。この情報は感度には入りません。\n\n\n7.2.2 特異度\n特異度は、病気でない人をどれだけ正しく陰性にできるか、です。\n式は 特異度 = TN / (TN+FP)\n特異度 = 70/(70 + 10) = 87.5%\n意味は、このスクリーニングツール・カットオフ値で、病気でない 80 人のうち 70 人を正しく陰性と判定した、です。一方で、10 人の病人も陰性と判定してしまいました。\nまた、2 人の病気の人も陰性となっています。この情報は特異度には入りません。",
+    "title": "8  スクリーニング",
+    "section": "8.2 感度と特異度",
+    "text": "8.2 感度と特異度\nたとえば、100 人に認知症スクリーニング検査をしたとします。このスクリーニングツールは 30 点満点で、23 点以下が検査陽性であったとします。\n実際の診断結果 (真実) は次の通りだったとします。\n\n実際に病気あり: 20人\n実際に病気なし: 80人\n\n検査結果はこうでした。\n\n\n\n\n実際に病気あり\n実際に病気なし\n合計\n\n\n\n\n検査陽性\n18\n10\n28\n\n\n検査陰性\n2\n70\n72\n\n\n合計\n20\n80\n100\n\n\n\n\n真陽性 (True Positive) 病気ありを正しく陽性 18\n偽陽性 (False Positive) 病気なしを誤って陽性 10\n真陰性 (True Negative) 病気なしを正しく陰性 70\n偽陰性 (False Negative) 病気ありを見逃し陰性 2\n\n\n8.2.1 感度\n感度は、スクリーニングツールで本当に病気の人をどれだけ正しく見つけられるか、です。\n式は 感度 = TP / ( TP + FN )\n感度 = 18 / (18 + 2 ) = 90%\n意味は、このスクリーニングツールで、病気の人 20 人のうち 18 人を正しく陽性と判定した、ということです。その一方で、2 人の病気の人は拾えていません。\nまた、10 人の病気でない人も陽性となっています。この情報は感度には入りません。\n\n\n8.2.2 特異度\n特異度は、病気でない人をどれだけ正しく陰性にできるか、です。\n式は 特異度 = TN / (TN+FP)\n特異度 = 70/(70 + 10) = 87.5%\n意味は、このスクリーニングツール・カットオフ値で、病気でない 80 人のうち 70 人を正しく陰性と判定した、です。一方で、10 人の病人も陰性と判定してしまいました。\nまた、2 人の病気の人も陰性となっています。この情報は特異度には入りません。",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>スクリーニング</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
     ]
   },
   {
     "objectID": "screening_intro.html#roc-曲線",
     "href": "screening_intro.html#roc-曲線",
-    "title": "7  スクリーニング",
-    "section": "7.3 ROC 曲線",
-    "text": "7.3 ROC 曲線\nROC 曲線は、連続値の検査スコアで、どのカットオフ値がよいかを評価するための図です。 前回の感度・特異度の話とつながるので、MMSE を例に説明します。\nたとえば、30点満点のスクリーニングテストで病気を判定するとします。\n一般に\n\n点数が低いほど有病\n点数が高いほど正常\n\nです。例えばカットオフ値を 23 点以下 = 有病疑いとすると、感度・特異度を計算できます。ただし、カットオフは 23 点だけではありません。\n\n21点以下\n22点以下\n23点以下\n24点以下\n\nなど、いろいろ試せます。\nROC 曲線は、全てのカットオフ値での感度・特異度をまとめて可視化したものです。\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAttaching package: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\n\n\n\n\n\n\n縦軸は 感度(Sensitivity)、つまり縦 = 見逃さない割合です。横軸は 1−特異度(Specificity) 、つまり誤って陽性にする割合です。\n点線の対角線は、ランダム判定です。この線に近いほど性能が悪いです。",
+    "title": "8  スクリーニング",
+    "section": "8.3 ROC 曲線",
+    "text": "8.3 ROC 曲線\nROC 曲線は、連続値の検査スコアで、どのカットオフ値がよいかを評価するための図です。 前回の感度・特異度の話とつながるので、MMSE を例に説明します。\nたとえば、30点満点のスクリーニングテストで病気を判定するとします。\n一般に\n\n点数が低いほど有病\n点数が高いほど正常\n\nです。例えばカットオフ値を 23 点以下 = 有病疑いとすると、感度・特異度を計算できます。ただし、カットオフは 23 点だけではありません。\n\n21点以下\n22点以下\n23点以下\n24点以下\n\nなど、いろいろ試せます。\nROC 曲線は、全てのカットオフ値での感度・特異度をまとめて可視化したものです。\n\n\nType 'citation(\"pROC\")' for a citation.\n\n\n\nAttaching package: 'pROC'\n\n\nThe following objects are masked from 'package:stats':\n\n    cov, smooth, var\n\n\n\n\n\n\n\n\n\n縦軸は 感度(Sensitivity)、つまり縦 = 見逃さない割合です。横軸は 1−特異度(Specificity) 、つまり誤って陽性にする割合です。\n点線の対角線は、ランダム判定です。この線に近いほど性能が悪いです。",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>スクリーニング</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
     ]
   },
   {
     "objectID": "screening_intro.html#カットオフ値",
     "href": "screening_intro.html#カットオフ値",
-    "title": "7  スクリーニング",
-    "section": "7.4 カットオフ値",
-    "text": "7.4 カットオフ値\nカットオフ値は\n\n7.4.1 論文の例\n\nWang ZT, F, Y, Zhang YR et al. (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. Translational Psychiatry, 12(1), 509.",
+    "title": "8  スクリーニング",
+    "section": "8.4 カットオフ値",
+    "text": "8.4 カットオフ値\nカットオフ値は\n\n8.4.1 論文の例\n\nWang ZT, F, Y, Zhang YR et al. (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. Translational Psychiatry, 12(1), 509.",
     "crumbs": [
       "観察研究",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>スクリーニング</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
     ]
   },
   {
@@ -411,133 +488,133 @@
   {
     "objectID": "protocol.html",
     "href": "protocol.html",
-    "title": "8  プロトコル",
+    "title": "9  プロトコル",
     "section": "",
-    "text": "8.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。",
+    "text": "9.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#プロトコルとは",
     "href": "protocol.html#プロトコルとは",
-    "title": "8  プロトコル",
+    "title": "9  プロトコル",
     "section": "",
     "text": "研究の質を保つ。バイアスを最小限にする\n再現性を確保する\n倫理性を担保する\n査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#倫理審査",
     "href": "protocol.html#倫理審査",
-    "title": "8  プロトコル",
-    "section": "8.2 倫理審査",
-    "text": "8.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。",
+    "title": "9  プロトコル",
+    "section": "9.2 倫理審査",
+    "text": "9.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#臨床試験登録",
     "href": "protocol.html#臨床試験登録",
-    "title": "8  プロトコル",
-    "section": "8.3 臨床試験登録",
-    "text": "8.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。",
+    "title": "9  プロトコル",
+    "section": "9.3 臨床試験登録",
+    "text": "9.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "statement.html",
     "href": "statement.html",
-    "title": "9  声明",
+    "title": "10  声明",
     "section": "",
-    "text": "9.1 声明\n臨床論文は、書き方がある程度規定されています。\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。",
+    "text": "10.1 声明\n臨床論文は、書き方がある程度規定されています。\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "statement.html#sec-statement-1",
     "href": "statement.html#sec-statement-1",
-    "title": "9  声明",
+    "title": "10  声明",
     "section": "",
     "text": "International Committee of Medical Journal Editors (ICMJE)\nアメリカ医学会 Manual of Style: A guide for Authors and Editors\n各ジャーナルの Authors Guideline など\n研究デザインごとの声明 (Statement)\n\n\n\n\n\n研究デザイン\nガイドライン\n\n\n\n\nシステマティックレビュー メタアナリシス\nPRISMA\n\n\nランダム化比較試験\nCONSORT\n\n\n非ランダム化比較試験\nTREND\n\n\n分析疫学的研究 (コホート研究や症例対照研究)\nSTROBE",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "statement.html#チェックリスト",
     "href": "statement.html#チェックリスト",
-    "title": "9  声明",
-    "section": "9.2 チェックリスト",
-    "text": "9.2 チェックリスト\n\n9.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups.",
+    "title": "10  声明",
+    "section": "10.2 チェックリスト",
+    "text": "10.2 チェックリスト\n\n10.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "letter.html",
     "href": "letter.html",
-    "title": "10  レター",
+    "title": "11  レター",
     "section": "",
-    "text": "10.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント",
+    "text": "11.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#批判的吟味-critical-reading",
     "href": "letter.html#批判的吟味-critical-reading",
-    "title": "10  レター",
+    "title": "11  レター",
     "section": "",
     "text": "Introduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#自動翻訳",
     "href": "letter.html#自動翻訳",
-    "title": "10  レター",
-    "section": "10.2 自動翻訳",
-    "text": "10.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved.",
+    "title": "11  レター",
+    "section": "11.2 自動翻訳",
+    "text": "11.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#文法チェック",
     "href": "letter.html#文法チェック",
-    "title": "10  レター",
-    "section": "10.3 文法チェック",
-    "text": "10.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/",
+    "title": "11  レター",
+    "section": "11.3 文法チェック",
+    "text": "11.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#書き換えツール",
     "href": "letter.html#書き換えツール",
-    "title": "10  レター",
-    "section": "10.4 書き換えツール",
-    "text": "10.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved.",
+    "title": "11  レター",
+    "section": "11.4 書き換えツール",
+    "text": "11.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; 声明 – 医学英語：臨床論文の読み方</title>
+<title>4&nbsp; R でメタ分析 – 医学英語：臨床論文の読み方</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./letter.html" rel="next">
-<link href="./protocol.html" rel="prev">
+<link href="./ct.html" rel="next">
+<link href="./meta_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,6 +106,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -84,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical.html">批判的吟味</a></li><li class="breadcrumb-item"><a href="./statement.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">声明</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./meta.html">メタ分析</a></li><li class="breadcrumb-item"><a href="./meta_r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R でメタ分析</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -146,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./meta_r.html" class="sidebar-item-text sidebar-link">
+  <a href="./meta_r.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R でメタ分析</span></span></a>
   </div>
 </li>
@@ -215,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./statement.html" class="sidebar-item-text sidebar-link active">
+  <a href="./statement.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">声明</span></span></a>
   </div>
 </li>
@@ -243,20 +307,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-statement-1" id="toc-sec-statement-1" class="nav-link active" data-scroll-target="#sec-statement-1"><span class="header-section-number">10.1</span> 声明</a></li>
-  <li><a href="#チェックリスト" id="toc-チェックリスト" class="nav-link" data-scroll-target="#チェックリスト"><span class="header-section-number">10.2</span> チェックリスト</a>
-  <ul class="collapse">
-  <li><a href="#strobe" id="toc-strobe" class="nav-link" data-scroll-target="#strobe"><span class="header-section-number">10.2.1</span> STROBE</a></li>
-  </ul></li>
+  <li><a href="#はじめに" id="toc-はじめに" class="nav-link active" data-scroll-target="#はじめに"><span class="header-section-number">4.1</span> はじめに</a></li>
+  <li><a href="#データの読み込み" id="toc-データの読み込み" class="nav-link" data-scroll-target="#データの読み込み"><span class="header-section-number">4.2</span> データの読み込み</a></li>
+  <li><a href="#メタ分析" id="toc-メタ分析" class="nav-link" data-scroll-target="#メタ分析"><span class="header-section-number">4.3</span> メタ分析</a></li>
+  <li><a href="#フォレストプロット" id="toc-フォレストプロット" class="nav-link" data-scroll-target="#フォレストプロット"><span class="header-section-number">4.4</span> フォレストプロット</a></li>
+  <li><a href="#出版バイアス" id="toc-出版バイアス" class="nav-link" data-scroll-target="#出版バイアス"><span class="header-section-number">4.5</span> 出版バイアス</a></li>
+  <li><a href="#結論" id="toc-結論" class="nav-link" data-scroll-target="#結論"><span class="header-section-number">4.6</span> 結論</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./critical.html">批判的吟味</a></li><li class="breadcrumb-item"><a href="./statement.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">声明</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./meta.html">メタ分析</a></li><li class="breadcrumb-item"><a href="./meta_r.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R でメタ分析</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-statement" class="quarto-section-identifier"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">声明</span></span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R でメタ分析</span></h1>
 </div>
 
 
@@ -273,265 +338,194 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-statement-1" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="sec-statement-1"><span class="header-section-number">10.1</span> 声明</h2>
-<p>臨床論文は、書き方がある程度規定されています。</p>
+<section id="はじめに" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="はじめに"><span class="header-section-number">4.1</span> はじめに</h2>
+<p>メタ分析については、R には多くのパッケージがあり、公式サイト中にも Michael Dewey によるメタ分析のパッケージの紹介ページがあります。</p>
 <ul>
-<li>International Committee of Medical Journal Editors (ICMJE)</li>
-<li>アメリカ医学会 Manual of Style: A guide for Authors and Editors</li>
-<li>各ジャーナルの Authors Guideline など</li>
-<li>研究デザインごとの声明 (Statement)</li>
+<li>https://cran.r-project.org/web/views/MetaAnalysis.html</li>
+<li>https://babayoshihiko.github.io/Doing-Meta-Analysis-in-R-ja/</li>
 </ul>
-<p>声明は、EQUATOR Network (<a href="https://www.equator-network.org/">https://www.equator-network.org/</a>) が主導し、以下のようなものがあります。</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>研究デザイン</th>
-<th>ガイドライン</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>システマティックレビュー メタアナリシス</td>
-<td>PRISMA</td>
-</tr>
-<tr class="even">
-<td>ランダム化比較試験</td>
-<td>CONSORT</td>
-</tr>
-<tr class="odd">
-<td>非ランダム化比較試験</td>
-<td>TREND</td>
-</tr>
-<tr class="even">
-<td>分析疫学的研究 (コホート研究や症例対照研究)</td>
-<td>STROBE</td>
-</tr>
-</tbody>
-</table>
-<p>その他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。</p>
-<p>歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。</p>
+<p>また、Minds 診療ガイドライン作成マニュアル2020 ver. 3.0 には、複数の事例とサンプルコードが解説されています。</p>
+<p>R以外のソフトウェアとしては、メタ分析を推奨している Cochrane から RevMan をいうソフトウェアを無償で提供しています。</p>
+<p>メタ分析は、参照する文献が用いている統計手法によって違いが出てきます。</p>
+<ol type="1">
+<li>システマティックレビューによって抽出された論文からデータを取得する</li>
+<li>データがない場合は、コレスポンディングオーサーにデータを請求する</li>
+<li>生データ（個人データ, Individual Participant Data）を取得する場合もある</li>
+<li>固定効果、ランダム効果を選択する、あるいは weight を計算する</li>
+<li>データを統合 (pool) する</li>
+<li>異質性 (heterogeneity) を検証する</li>
+<li>出版バイアスを検証する</li>
+</ol>
+<p>実際の論文をもとに、比率 (proportion) のメタ分析を行ってみましょう。ここで、比率 (proportion) とは、ある母集団に対して特定の特徴を持った人の比率です。</p>
+<p>なお、rate と proportion の用語は、ここでは深入りしません。</p>
+<p>Abate SM, Ahmed Ali S, Mantfardo B, &amp; Basu B (2020). Rate of Intensive Care Unit admission and outcomes among patients with coronavirus: A systematic review and Meta-analysis. PloS one, 15(7), e0235653. https://doi.org/10.1371/journal.pone.0235653</p>
+<p>コロナウィルス感染患者の ICU admission のデータです。いわゆる新型コロナ (SARS-COV-2) だけではなく、SARS や MERS のコロナウィルスも含めて、ICU入室率を扱う論文を集めてメタ分析しています。</p>
 </section>
-<section id="チェックリスト" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="チェックリスト"><span class="header-section-number">10.2</span> チェックリスト</h2>
-<section id="strobe" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="strobe"><span class="header-section-number">10.2.1</span> STROBE</h3>
-<table class="caption-top table">
-<caption>STROBE checklist</caption>
-<colgroup>
-<col style="width: 20%">
-<col style="width: 75%">
-<col style="width: 5%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Item No</th>
-<th>Recommendation</th>
-<th>Page No</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Title and abstract 1</td>
-<td>(a) Indicate the study’s design with a commonly used term in the title or the abstract</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(b) Provide in the abstract an informative and balanced summary of what was done and what was found</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Introduction</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Background/rationale 2</td>
-<td>Explain the scientific background and rationale for the investigation being reported</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Objectives 3</td>
-<td>State specific objectives, including any prespecified hypotheses</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Methods</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Study design 4</td>
-<td>Present key elements of study design early in the paper</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Setting 5</td>
-<td>Describe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Participants 6</td>
-<td>(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(b) For matched studies, give matching criteria and number of exposed and unexposed</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Variables 7</td>
-<td>Clearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Data sources/ measurement 8*</td>
-<td>For each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Bias 9</td>
-<td>Describe any efforts to address potential sources of bias</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Study size 10</td>
-<td>Explain how the study size was arrived at</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Quantitative variables 11</td>
-<td>Explain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Statistical methods 12</td>
-<td>(a) Describe all statistical methods, including those used to control for confounding</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(b) Describe any methods used to examine subgroups and interactions</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(c) Explain how missing data were addressed</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(d) If applicable, explain how loss to follow-up was addressed</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(e) Describe any sensitivity analyses</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Results</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Participants 13*</td>
-<td>(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(b) Give reasons for non-participation at each stage</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(c) Consider use of a flow diagram</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Descriptive data 14*</td>
-<td>(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(b) Indicate number of participants with missing data for each variable of interest</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(c) Summarise follow-up time (eg, average and total amount)</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Outcome data 15*</td>
-<td>Report numbers of outcome events or summary measures over time</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Main results 16</td>
-<td>(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>(b) Report category boundaries when continuous variables were categorized</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Other analyses 17</td>
-<td>Report other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Discussion</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Key results 18</td>
-<td>Summarise key results with reference to study objectives</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Limitations 19</td>
-<td>Discuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Interpretation 20</td>
-<td>Give a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Generalisability 21</td>
-<td>Discuss the generalisability (external validity) of the study results</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Other information</td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Funding 22</td>
-<td>Give the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>*Give information separately for exposed and unexposed groups.</p>
+<section id="データの読み込み" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="データの読み込み"><span class="header-section-number">4.2</span> データの読み込み</h2>
+<p>この論文では、メタ分析を行った際の表データがインターネット上で公開されています。インターネットから、データを直接読み込みましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dfMeta <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://ndownloader.figshare.com/files/23167073"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 38 Columns: 7
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): Author, country, corona, Study design
+dbl (3): year, event, sample
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>列ごとにデータ型が示されていることが分かります。</p>
+<ul>
+<li>Author: 文字列</li>
+<li>year: 数値（小数点）</li>
+<li>event: 数値（小数点）</li>
+<li>sample: 数値（小数点）</li>
+<li>country: 文字列</li>
+<li>corona: 文字列</li>
+<li>Study design: 文字列</li>
+</ul>
+<p>ここで、<code>Study design</code> は、列名に空白があるので、バッククォート記号で囲みます。</p>
+<p>元データの最後の行は空データで、おそらく元々は統合データを格納するために準備してあったと思われます。この行は不要なので、NA データのある行を削除しました。</p>
+<p>R では、データの入っていないことを表す手段が複数あります。NULL や NA です。NA などがあるとエラーが出やすくなります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dfMeta <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(dfMeta)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dfMeta<span class="sc">$</span>Study_design <span class="ot">&lt;-</span> dfMeta<span class="sc">$</span><span class="st">`</span><span class="at">Study design</span><span class="st">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="メタ分析" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="メタ分析"><span class="header-section-number">4.3</span> メタ分析</h2>
+<p>メタ分析を行うのは、わずか一行です。なお、ここでは結果を直接表示せず、いったん <code>mpResult</code> に格納しています。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mpResult <span class="ot">&lt;-</span> meta<span class="sc">::</span><span class="fu">metaprop</span>(<span class="at">data =</span> dfMeta, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">event =</span> event, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">n =</span> sample, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">studlab =</span> <span class="fu">paste</span>(Author, year))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>関数</p>
+<ul>
+<li>paste: 文字列をつなげる。文字列間 (sep) にはデフォルトで空白が追加される。ここでは、Author と year を空白でつなげている。</li>
+</ul>
+<p>変数と引数</p>
+<ul>
+<li>mpResult は、metaprop の結果を格納します。MetaProp から mp をとって mpResult と命名しました。</li>
+<li>引数 data は、データフレーム dfMeta としました。</li>
+<li>引数 event は、データフレーム中の event (イベント数) 列を指定しました。</li>
+<li>引数 n は、データフレーム中の sample (観測数) 列を指定しました。</li>
+<li>引数 studlab は、データフレーム中の Author (著者) 列と year (発行年) をつなげたものを指定しました。</li>
+</ul>
+<p>結果を見てみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mpResult</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of studies: k = 37
+Number of observations: o = 32741
+Number of events: e = 6220
+
+                     proportion           95%-CI
+Common effect model      0.1900 [0.1858; 0.1943]
+Random effects model     0.2834 [0.2057; 0.3765]
+
+Quantifying heterogeneity (with 95%-CIs):
+ tau^2 = 1.6165; tau = 1.2714; I^2 = 99.0% [98.8%; 99.1%]; H = 9.83 [9.26; 10.44]
+
+Test of heterogeneity:
+            Q d.f. p-value
+ Wald 3481.43   36       0
+ LRT  4446.74   36       0
+
+Details of meta-analysis methods:
+- Random intercept logistic regression model
+- Maximum-likelihood estimator for tau^2
+- Calculation of I^2 based on Q
+- Logit transformation</code></pre>
+</div>
+</div>
+<p>この上までが、R で出力される結果です。</p>
+<p>結果においては、異質性 (heterogeneity) 検定の結果が示されています。 Q, <span class="math inline">\(τ^2\)</span>, <span class="math inline">\(I^2\)</span> などが異質性の指標です。</p>
+<p><span class="math inline">\(I^2\)</span> の解釈の仕方:</p>
+<ul>
+<li>0 〜40%（重要でない異質性）</li>
+<li>30 〜60%（中等度の異質性）</li>
+<li>50 〜90％（大きな異質性）</li>
+<li>75 〜100%（高度の異質性）</li>
+</ul>
+</section>
+<section id="フォレストプロット" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="フォレストプロット"><span class="header-section-number">4.4</span> フォレストプロット</h2>
+<p>フォレストプロットを作図してみましょう。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>meta<span class="sc">::</span><span class="fu">forest</span>(mpResult)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meta_r_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>あまり美しくないので、オプションを試してみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>meta<span class="sc">::</span><span class="fu">forest</span>(mpResult, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">layout =</span> <span class="st">"RevMan5"</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">comb.fixed =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">label.right =</span> <span class="st">"Favours control"</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">col.label.right =</span> <span class="st">"red"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">label.left =</span> <span class="st">"Favours experimental"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">col.label.left =</span> <span class="st">"green"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">prediction =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meta_r_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="出版バイアス" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="出版バイアス"><span class="header-section-number">4.5</span> 出版バイアス</h2>
+<p>これまで、研究はポジティブな結果が出た時に発表される傾向がありました。これはメタ分析を行う際にはバイアスとなってしまいます。これを出版バイアスと言います。多くの論文では、ファンネルプロットを作成して、視覚的に出版バイアスがあるかどうかを確認するに止まります。</p>
+<p>ファンネルプロットを描いてみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>meta<span class="sc">::</span><span class="fu">funnel</span>(mpResult)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="meta_r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>メタ分析の論文では、出版バイアスがあるかどうかをファンネルプロットで視覚的に確認したというものが多く見られます。しかしながら、出版バイアスを検証する統計もあります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">metabias</span>(mpResult)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Linear regression test of funnel plot asymmetry
+
+Test result: t = 1.40, df = 35, p-value = 0.1698
+Bias estimate: 2.8392 (SE = 2.0256)
+
+Details:
+- multiplicative residual heterogeneity variance (tau^2 = 94.1829)
+- predictor: standard error
+- weight:    inverse variance
+- reference: Egger et al. (1997), BMJ</code></pre>
+</div>
+</div>
+<p>このデータに対し、Egger 検定を行ったところ、</p>
+<pre><code>p = 0.1698</code></pre>
+<p>となり、出版バイアスはあるとは言えません。</p>
+</section>
+<section id="結論" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="結論"><span class="header-section-number">4.6</span> 結論</h2>
+<p>R におけるメタ分析は、分析（検定や作図など）がそれぞれ一行でできるほど簡単なものになっています。</p>
+<p>なお作図に関しては、出版できるようにするためには大きさなど微調整が必要になります。</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -979,13 +973,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./protocol.html" class="pagination-link" aria-label="プロトコル">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">プロトコル</span></span>
+      <a href="./meta_intro.html" class="pagination-link" aria-label="メタ分析">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">メタ分析</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./letter.html" class="pagination-link" aria-label="レター">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">レター</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ct.html" class="pagination-link" aria-label="比較試験">
+        <span class="nav-page-text">比較試験</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

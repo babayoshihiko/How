@@ -1,0 +1,164 @@
+---
+title: "R でメタ分析"
+editor: visual
+---
+
+## はじめに
+
+```{r include=FALSE}
+# のちに初めて読み込むときに warning や message が表示されるのを避けるため、あらかじめ読み込む
+library(readr)
+library(meta)
+```
+
+メタ分析については、R には多くのパッケージがあり、公式サイト中にも Michael Dewey によるメタ分析のパッケージの紹介ページがあります。
+
+- https://cran.r-project.org/web/views/MetaAnalysis.html
+- https://babayoshihiko.github.io/Doing-Meta-Analysis-in-R-ja/
+
+また、Minds 診療ガイドライン作成マニュアル2020 ver. 3.0 には、複数の事例とサンプルコードが解説されています。
+
+R以外のソフトウェアとしては、メタ分析を推奨している Cochrane から RevMan をいうソフトウェアを無償で提供しています。
+
+メタ分析は、参照する文献が用いている統計手法によって違いが出てきます。
+
+
+1. システマティックレビューによって抽出された論文からデータを取得する
+2. データがない場合は、コレスポンディングオーサーにデータを請求する
+3. 生データ（個人データ, Individual Participant Data）を取得する場合もある
+4. 固定効果、ランダム効果を選択する、あるいは weight を計算する
+5. データを統合 (pool) する
+6. 異質性 (heterogeneity) を検証する
+7. 出版バイアスを検証する
+
+実際の論文をもとに、比率 (proportion) のメタ分析を行ってみましょう。ここで、比率 (proportion) とは、ある母集団に対して特定の特徴を持った人の比率です。
+
+なお、rate と proportion の用語は、ここでは深入りしません。
+
+Abate SM, Ahmed Ali S, Mantfardo B, & Basu B (2020). Rate of Intensive Care Unit admission and outcomes among patients with coronavirus: A systematic review and Meta-analysis. PloS one, 15(7), e0235653. https://doi.org/10.1371/journal.pone.0235653
+
+コロナウィルス感染患者の ICU admission のデータです。いわゆる新型コロナ (SARS-COV-2) だけではなく、SARS や MERS のコロナウィルスも含めて、ICU入室率を扱う論文を集めてメタ分析しています。
+
+## データの読み込み
+
+この論文では、メタ分析を行った際の表データがインターネット上で公開されています。インターネットから、データを直接読み込みましょう。
+
+```{r warning=FALSE}
+dfMeta <- readr::read_csv("https://ndownloader.figshare.com/files/23167073")
+```
+
+列ごとにデータ型が示されていることが分かります。
+
+- Author: 文字列
+- year: 数値（小数点）
+- event: 数値（小数点）
+- sample: 数値（小数点）
+- country: 文字列
+- corona: 文字列
+- Study design: 文字列
+
+ここで、`Study design` は、列名に空白があるので、バッククォート記号で囲みます。
+
+元データの最後の行は空データで、おそらく元々は統合データを格納するために準備してあったと思われます。この行は不要なので、NA データのある行を削除しました。
+
+R では、データの入っていないことを表す手段が複数あります。NULL や NA です。NA などがあるとエラーが出やすくなります。
+
+```{r}
+dfMeta <- na.omit(dfMeta)
+dfMeta$Study_design <- dfMeta$`Study design`
+```
+
+## メタ分析
+
+メタ分析を行うのは、わずか一行です。なお、ここでは結果を直接表示せず、いったん `mpResult` に格納しています。
+
+```{r}
+mpResult <- meta::metaprop(data = dfMeta, 
+                event = event, 
+                n = sample, 
+                studlab = paste(Author, year))
+```
+
+関数
+
+- paste: 文字列をつなげる。文字列間 (sep) にはデフォルトで空白が追加される。ここでは、Author と year を空白でつなげている。
+
+変数と引数
+
+- mpResult は、metaprop の結果を格納します。MetaProp から mp をとって mpResult と命名しました。
+- 引数 data は、データフレーム dfMeta としました。
+- 引数 event は、データフレーム中の event (イベント数) 列を指定しました。
+- 引数 n は、データフレーム中の sample (観測数) 列を指定しました。
+- 引数 studlab は、データフレーム中の Author (著者) 列と year (発行年) をつなげたものを指定しました。
+
+結果を見てみます。
+
+```{r}
+mpResult
+```
+
+この上までが、R で出力される結果です。
+
+結果においては、異質性 (heterogeneity) 検定の結果が示されています。 Q, $τ^2$, $I^2$ などが異質性の指標です。
+
+$I^2$ の解釈の仕方:
+
+- 0 〜40%（重要でない異質性）
+- 30 〜60%（中等度の異質性）
+- 50 〜90％（大きな異質性）
+- 75 〜100%（高度の異質性）
+
+## フォレストプロット
+
+フォレストプロットを作図してみましょう。
+
+```{r}
+meta::forest(mpResult)
+```
+
+あまり美しくないので、オプションを試してみます。
+
+```{r}
+meta::forest(mpResult, 
+       layout = "RevMan5", 
+       comb.fixed = FALSE,
+       label.right = "Favours control", 
+       col.label.right = "red",
+       label.left = "Favours experimental", 
+       col.label.left = "green",
+       prediction = TRUE)
+```
+
+## 出版バイアス
+
+これまで、研究はポジティブな結果が出た時に発表される傾向がありました。これはメタ分析を行う際にはバイアスとなってしまいます。これを出版バイアスと言います。多くの論文では、ファンネルプロットを作成して、視覚的に出版バイアスがあるかどうかを確認するに止まります。
+
+ファンネルプロットを描いてみます。
+
+```{r}
+meta::funnel(mpResult)
+```
+
+メタ分析の論文では、出版バイアスがあるかどうかをファンネルプロットで視覚的に確認したというものが多く見られます。しかしながら、出版バイアスを検証する統計もあります。
+
+```{r}
+metabias(mpResult)
+```
+
+このデータに対し、Egger 検定を行ったところ、
+
+    p = 0.1698
+
+となり、出版バイアスはあるとは言えません。
+
+## 結論
+
+R におけるメタ分析は、分析（検定や作図など）がそれぞれ一行でできるほど簡単なものになっています。
+
+なお作図に関しては、出版できるようにするためには大きさなど微調整が必要になります。
+
+
+
+
+
+
