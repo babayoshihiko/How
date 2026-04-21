@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,42 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -69,14 +54,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./crosssectional_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3b31311d19efb2a633f338e97748bc02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-95b98e0f510ad6715e2eba8ceaa75cac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -109,7 +95,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating quarto-light">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,7 +117,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">医学英語：臨床論文の読み方</a> 
     </div>
@@ -219,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></a>
   </div>
 </li>
       </ul>
@@ -280,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./cohort_intro.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">縦断研究</span></a></li></ol></nav>
 <div class="quarto-title">
@@ -301,10 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do nothing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="sec-cohort-keyword" class="level2" data-number="6.1">
+<section id="sec-cohort-keyword" class="level2 page-columns page-full" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="sec-cohort-keyword"><span class="header-section-number">6.1</span> キーワード</h2>
 <p>縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。</p>
 <p>縦断研究には、現時点から始める「前向き (prospective) コホート研究」と、過去のデータにさかのぼる「後ろ向き (retrospective) コホート研究」があります。</p>
@@ -340,15 +325,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<p>後ろ向きコホート研究 (ケース・コントロール研究とも呼ばれる) は、アウトカム (病気など) の有無で対象者を分け、過去にさかのぼって要因への曝露を調査するため、因果関係の証明は困難ですが、短期間・低コストで珍しい病気の研究に適しています。ただし、データの質や交絡因子の影響を受けやすく、因果関係と解釈するには他の研究との総合的な判断が必要不可欠です</p>
+<p>前向きコホート研究は、特定の要因 (曝露) を持つ集団と持たない集団を未来に向かって長期的に追跡し、両者の間で将来発生する疾患などの違いを観察・比較することで、要因と結果の「因果関係」の強さや可能性を推定する強力な観察研究手法です。ランダム化比較試験 (RCT) には及ばないものの、時間的な前後関 (曝露が先、発症が後) が明確で、交絡因子を調整できれば因果関係に迫ることができ、特に生活習慣病や環境要因と疾患の関係解明に貢献しています</p>
 <section id="kaplan-meier-曲線" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="kaplan-meier-曲線"><span class="header-section-number">6.1.1</span> Kaplan-Meier 曲線</h3>
 <p>後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。</p>
+<p>曲線が下に下がっていくほどイベントが発生したことを意味し (上向の場合も同様)、傾きがハザード (瞬間的なリスク) を表します。</p>
 </section>
 <section id="log-rank-検定" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="log-rank-検定"><span class="header-section-number">6.1.2</span> log-rank 検定</h3>
 <p>log-rank 検定は、2 つ以上の群の生存曲線の差を検定します。</p>
 </section>
-<section id="ハザード比" class="level3" data-number="6.1.3">
+<section id="ハザード比" class="level3 page-columns page-full" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="ハザード比"><span class="header-section-number">6.1.3</span> ハザード比</h3>
 <p>Cox 比例ハザードモデルは、一定期間内のイベントの発生の有意差を検定します。</p>
 <ul>
@@ -356,19 +344,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>例 2: 研究開始時点で頑健な人たちが、一定期間内にフレイルになるかならないかを検定</li>
 </ul>
 <p>共変量それぞれについて、相関（または因果）関係の大きさをハザード比（Hazard Ratio, HR）で表します。これは、リスク比とおおむね同じように扱うことが可能です。さらに、交絡因子で調整することもできます。なお、正確には、人-時間あたりのイベント率です。</p>
-<p>比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります <span class="citation" data-cites="spruance2004hazard">(<a href="#ref-spruance2004hazard" role="doc-biblioref"><strong>spruance2004hazard?</strong></a>)</span>。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。</p>
-</section>
+<p>比較的解釈しやすいハザード比ですが、ハザード比 2.0 を誤って「2.0倍早い」と解釈することがあります <span class="citation" data-cites="spruance2004hazard">(<a href="#ref-spruance2004hazard" role="doc-biblioref">Spruance et al. 2004</a>)</span>。ハザード比が 1 より大きいので「より早い」のは確かですが、それが 2.0 倍とは限りません。</p>
+<div class="no-row-height column-margin column-container"><div id="ref-spruance2004hazard" class="csl-entry" role="listitem">
+Spruance, Spotswood L, Julia E Reid, Michael Grace, and Matthew Samore. 2004. <span>“Hazard Ratio in Clinical Trials.”</span> <em>Antimicrobial Agents and Chemotherapy</em> 48 (8): 2787–92.
+</div></div></section>
 <section id="論文の例" class="level3" data-number="6.1.4">
 <h3 data-number="6.1.4" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">6.1.4</span> 論文の例</h3>
+<p>フレイル</p>
 <ul>
 <li>Kennard A, Richardson A, Rainsford S <em>et al.</em> (2024). Longitudinal frailty assessment in the prediction of survival among patients with advanced chronic kidney disease: a prospective observational single-centre cohort study. <em>Bmj Open</em>, 14(10), e087189.</li>
 </ul>
+<p>認知症</p>
+<ul>
+<li>Gallagher J, Gochanour C, Caspell-Garcia C, <em>et al.</em> &amp; Parkinson’s Progression Markers Initiative. (2024). Long-term dementia risk in Parkinson disease. Neurology, 103(5), e209699.</li>
+</ul>
+
 
 
 </section>
 </section>
 
 </main> <!-- /main -->
+<a href="https://saturdaymorning.connpass.com/" target="_blank" style="
+
+     position:fixed;
+
+     bottom:20px;
+
+     right:20px;
+
+     z-index:9999;
+
+     text-decoration:none;
+
+   ">
+
+  <div style="
+
+    padding:0.8em 1em;
+
+    background-color:#f8dfe7;
+
+    border-radius:10px;
+
+    color:#333;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+    transition:0.2s;
+
+  " onmouseover="this.style.transform='scale(1.05)';this.style.opacity=1" onmouseout="this.style.transform='scale(1)';this.style.opacity=0.85">
+
+    ▶ 毎週水曜 AM 7:00-8:00<br>
+
+    ZOOM 勉強会開催中!
+
+  </div>
+
+</a>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -420,13 +456,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -775,8 +812,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./screening_intro.html" class="pagination-link" aria-label="スクリーニングツールの開発">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./screening_intro.html" class="pagination-link" aria-label="スクリーニング">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニング</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

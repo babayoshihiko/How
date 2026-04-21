@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,14 +54,15 @@ div.csl-indent {
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3b31311d19efb2a633f338e97748bc02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-95b98e0f510ad6715e2eba8ceaa75cac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -116,7 +117,9 @@ div.csl-indent {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">医学英語：臨床論文の読み方</a> 
     </div>
@@ -204,7 +207,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></a>
   </div>
 </li>
       </ul>
@@ -254,16 +257,20 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#論文の構成" id="toc-論文の構成" class="nav-link active" data-scroll-target="#論文の構成"><span class="header-section-number">1.1</span> 論文の構成</a></li>
+  <li><a href="#論文の構成" id="toc-論文の構成" class="nav-link active" data-scroll-target="#論文の構成"><span class="header-section-number">1.1</span> 論文の構成</a>
+  <ul class="collapse">
+  <li><a href="#sec-design-abstract" id="toc-sec-design-abstract" class="nav-link" data-scroll-target="#sec-design-abstract"><span class="header-section-number">1.1.1</span> Abstract</a></li>
+  <li><a href="#sec-design-main" id="toc-sec-design-main" class="nav-link" data-scroll-target="#sec-design-main"><span class="header-section-number">1.1.2</span> </a></li>
+  </ul></li>
   <li><a href="#論文の英文法" id="toc-論文の英文法" class="nav-link" data-scroll-target="#論文の英文法"><span class="header-section-number">1.2</span> 論文の英文法</a>
   <ul class="collapse">
-  <li><a href="#時制" id="toc-時制" class="nav-link" data-scroll-target="#時制"><span class="header-section-number">1.2.1</span> 時制</a></li>
+  <li><a href="#sec-desgin-tense" id="toc-sec-desgin-tense" class="nav-link" data-scroll-target="#sec-desgin-tense"><span class="header-section-number">1.2.1</span> 時制</a></li>
   </ul></li>
   <li><a href="#論文の探し方" id="toc-論文の探し方" class="nav-link" data-scroll-target="#論文の探し方"><span class="header-section-number">1.3</span> 論文の探し方</a>
   <ul class="collapse">
   <li><a href="#学術誌" id="toc-学術誌" class="nav-link" data-scroll-target="#学術誌"><span class="header-section-number">1.3.1</span> 学術誌</a></li>
   <li><a href="#検索データベース" id="toc-検索データベース" class="nav-link" data-scroll-target="#検索データベース"><span class="header-section-number">1.3.2</span> 検索データベース</a></li>
-  <li><a href="#doi" id="toc-doi" class="nav-link" data-scroll-target="#doi"><span class="header-section-number">1.3.3</span> DOI</a></li>
+  <li><a href="#sec-design-doi" id="toc-sec-design-doi" class="nav-link" data-scroll-target="#sec-design-doi"><span class="header-section-number">1.3.3</span> DOI</a></li>
   <li><a href="#文献の管理" id="toc-文献の管理" class="nav-link" data-scroll-target="#文献の管理"><span class="header-section-number">1.3.4</span> 文献の管理</a></li>
   <li><a href="#検索の実際" id="toc-検索の実際" class="nav-link" data-scroll-target="#検索の実際"><span class="header-section-number">1.3.5</span> 検索の実際</a></li>
   </ul></li>
@@ -273,7 +280,7 @@ div.csl-indent {
   <li><a href="#研究の-sns" id="toc-研究の-sns" class="nav-link" data-scroll-target="#研究の-sns"><span class="header-section-number">1.4.2</span> 研究の SNS</a></li>
   </ul></li>
   <li><a href="#自動翻訳" id="toc-自動翻訳" class="nav-link" data-scroll-target="#自動翻訳"><span class="header-section-number">1.5</span> 自動翻訳</a></li>
-  <li><a href="#研究デザイン" id="toc-研究デザイン" class="nav-link" data-scroll-target="#研究デザイン"><span class="header-section-number">1.6</span> 研究デザイン</a></li>
+  <li><a href="#sec-design-design" id="toc-sec-design-design" class="nav-link" data-scroll-target="#sec-design-design"><span class="header-section-number">1.6</span> 研究デザイン</a></li>
   <li><a href="#頻出キーワード" id="toc-頻出キーワード" class="nav-link" data-scroll-target="#頻出キーワード"><span class="header-section-number">1.7</span> 頻出キーワード</a></li>
   </ul>
 </nav>
@@ -283,7 +290,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="design" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">臨床論文</span></span></h1>
+<h1 class="title"><span id="sec-design" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">臨床論文</span></span></h1>
 </div>
 
 
@@ -305,14 +312,23 @@ div.csl-indent {
 <p>論文は形式が自由だと言われることもありますが、一方で非常に形式的であると言われることもあります。どちらが本当でしょうか？一般に、臨床論文は形式が決まっていることが多いです。さらに、研究デザインやジャーナルによる特有の形式もあります。</p>
 <p>出版形式としては、従来の紙ベースおよびこれを PDF 化したものから、近年ではウェブで直接読むことも可能になってきています。</p>
 <p>一般には、論文は「タイトル (title)」「著者 (author)」「抄録 (abstract)」「キーワード (key word)」から始まり、「本文 (full text)」が続きます。本文以外は無料で閲覧でき、本文は有料ということもあります。</p>
-<p>抄録は、英語では abstracrt です。「抄録」よりも abstract という表現の方が良く使われているので、abstract とします。abstract には、「構造化されている abstract」(structured abstract) と「構造化されていない abstract」(unstructrued abstract) があるます。構造化されているとは、見出しがつき、段落わけされていることです。</p>
+<section id="sec-design-abstract" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="sec-design-abstract"><span class="header-section-number">1.1.1</span> Abstract</h3>
+<p>Abstracrt は、「抄録」や「要旨」です。「抄録」よりも Abstract という表現の方が良く使われているので、Abstract とします。なお、自動翻訳すると Anstract が「抽象的な」と訳されることが多いです。</p>
+<p>Abstract は、論文の要旨や抄録などと訳されます。本文が有料で読むことができなくても、Abstract までは読むことができます。臨床系の論文では、方法論、結果、結論が簡潔にまとまっていることが多く、Abstract だけで概要がわかるようになっています。</p>
+<p>近年の臨床系の Abstract は、多くの場合 Structured abstract です。これは、<strong>Objective</strong>、<strong>Results</strong>、<strong>Conmclusion</strong> などのように、見出しがついている Abstract です。</p>
+<p>どのような見出しを使うかは、ジャーナルが指定することが多いです。BMJ Open も同様です (<a href="https://bmjopen.bmj.com/pages/authors#submission_guidelines">https://bmjopen.bmj.com/pages/authors#submission_guidelines</a>)。</p>
+</section>
+<section id="sec-design-main" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="sec-design-main"><span class="header-section-number">1.1.2</span> </h3>
 <p>本文は、通常、IMRaD 形式に従います。これは、Introduction、Methods、Results and Discussion の頭文字をとったものです。すべての臨床論文が IMRaD 形式というわけではありません。単に名称が異なるだけのこともあります。例えば以前の JAMA は、Discussion ではなく Comment としていました。</p>
 <p>さらに、これらに加えて「資金提供者 (Funding)」「謝辞 (Acknowledgement)」「引用 (References)」などが加わります。近年では、ウェブ上に「追加情報 (Supporting Information)」としてダウンロード可能な Word/Excel ファイル、データ、解析に用いたソースコード、査読などがあることもあります。</p>
 </section>
+</section>
 <section id="論文の英文法" class="level2 page-columns page-full" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="論文の英文法"><span class="header-section-number">1.2</span> 論文の英文法</h2>
-<section id="時制" class="level3 page-columns page-full" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="時制"><span class="header-section-number">1.2.1</span> 時制</h3>
+<section id="sec-desgin-tense" class="level3 page-columns page-full" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="sec-desgin-tense"><span class="header-section-number">1.2.1</span> 時制</h3>
 <p>英語の時制は、日本語より複雑な点と、日本語と異なる使い方をすることがあるため、苦手としている人が多いようです。また、臨床論文を読む際は、英語の時制でニュアンスが変わることがあります。</p>
 <pre><code>現在形: used to refer to recently published work indicating that it is still valid
 現在完了: used to refer to a report published in the recent past that continues to have importance
@@ -343,9 +359,10 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 <li>既存ジャーナルの OA 化</li>
 </ul>
 <p>臨床系の学術誌はたくさんあります。その中でも、The Lancet、New England Journal of Medicine、Journal of American Medical Association (JAMA)、British Medical Journal (BMJ) は 4 大ジャーナルと言われています。</p>
-<p>OA ジャーナルとは、インターネット上で誰でも無料で閲覧できる学術誌です。紙媒体では流通していません。有名どころでは、PLOS 系、BioMedCentral 系、Scientific Reports などがあります。</p>
+<p>OA ジャーナルとは、インターネット上で誰でも無料で閲覧できる学術誌です。紙媒体では流通していません。有名どころでは、PLOS 系、Scientific Reports などがあります。</p>
 <p>学術誌ランキングは、最も有名なのは Impact Factor (IF) です。これは、被引用数から計算されています。臨床系学術誌では、IF が 1.0 を超えていれば信頼できる学術誌とみなされています。</p>
 <p>学術誌は、歴史あることが権威を伴ってきました。しかし、学術誌は高価であるため、OA の論文の方が引用される可能性が高くなります。こうなると、OA 雑誌の方が IF が高くなっていきます。そこで、既存の雑誌の中に、一部の論文をオープンアクセス化するのが出てきました。JAMA は Jama Network Open、BMJ は BMJ Open といったジャーナルも出しています。</p>
+<p>ジャーナルで気をつけないといけない点として、「ハゲタカジャーナル」(Predetaroy journals) の存在があります。これは、掲載料収入を目的としたジャーナルで、論文の正当性や質が十分に保証されていないジャーナルのことです。杏林大学図書館も 2018 年に、<a href="https://library.kyorin-u.ac.jp/index.php?key=joosi9tmm-73031">ハゲタカジャーナルにご注意ください</a>という注意喚起ががなされました。</p>
 </section>
 <section id="検索データベース" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="検索データベース"><span class="header-section-number">1.3.2</span> 検索データベース</h3>
@@ -364,8 +381,8 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 <li>J-Stage</li>
 </ul>
 </section>
-<section id="doi" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="doi"><span class="header-section-number">1.3.3</span> DOI</h3>
+<section id="sec-design-doi" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="sec-design-doi"><span class="header-section-number">1.3.3</span> DOI</h3>
 <p>デジタルオブジェクト識別子 (Document Object Identifier, DOI) は、インターネット上にあるドキュメントの ID です。</p>
 <p>通常、インターネット上のドキュメントには URL があります。しかし、URL は変わることがあるため、 ID としては不適切です。国際 DOI 財団が ID を管理していています。</p>
 <p>論文の引用文献などで DOI を付与することが増えてきています。実際、ジャーナルの投稿規程などでも推奨されています。PLOS ONE の投稿規定では、</p>
@@ -419,8 +436,8 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 <p>多くのWebブラウザは、ウェブページの翻訳に対応しています。</p>
 <p>iPad の場合、ウェブブラウザにアドオンを追加できないですが、Safari はネイティブで自動翻訳機能を備えています。</p>
 </section>
-<section id="研究デザイン" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="研究デザイン"><span class="header-section-number">1.6</span> 研究デザイン</h2>
+<section id="sec-design-design" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="sec-design-design"><span class="header-section-number">1.6</span> 研究デザイン</h2>
 <p>臨床系論文は、研究デザインによってある程度書き方が決まっています。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -434,11 +451,11 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-理学療法士国家試験 第58回 午前 23
+<span class="screen-reader-only">Note</span>理学療法士国家試験 第58回 午前 23
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>観察的研究を研究デザインとするのはどれか。２つ選べ。</p>
+<p>観察的研究を研究デザインとするのはどれか。2 つ選べ。</p>
 <ol type="1">
 <li><p>コホート研究</p></li>
 <li><p>メタアナリシス</p></li>
@@ -465,6 +482,46 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 </section>
 
 </main> <!-- /main -->
+<a href="https://saturdaymorning.connpass.com/" target="_blank" style="
+
+     position:fixed;
+
+     bottom:20px;
+
+     right:20px;
+
+     z-index:9999;
+
+     text-decoration:none;
+
+   ">
+
+  <div style="
+
+    padding:0.8em 1em;
+
+    background-color:#f8dfe7;
+
+    border-radius:10px;
+
+    color:#333;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+    transition:0.2s;
+
+  " onmouseover="this.style.transform='scale(1.05)';this.style.opacity=1" onmouseout="this.style.transform='scale(1)';this.style.opacity=0.85">
+
+    ▶ 毎週水曜 AM 7:00-8:00<br>
+
+    ZOOM 勉強会開催中!
+
+  </div>
+
+</a>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -516,13 +573,14 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -4,7 +4,7 @@
 # Do nothing
 ```
 
-## キーワード  {#sec-cohort-keyword}
+## キーワード {#sec-cohort-keyword}
 
 縦断研究 (longitudinal study) とは、一定期間にわたって継続的に観察する研究手法です。
 
@@ -26,6 +26,8 @@
 ### Kaplan-Meier 曲線
 
 後述する log-rank 検定 や Cox 比例ハザードモデル (ハザード比) と組み合わせて用いられる図は、Kaplan-Meier 曲線です。
+
+曲線が下に下がっていくほどイベントが発生したことを意味し (上向の場合も同様)、傾きがハザード (瞬間的なリスク) を表します。
 
 ### log-rank 検定
 

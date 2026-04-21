@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./design.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3b31311d19efb2a633f338e97748bc02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-95b98e0f510ad6715e2eba8ceaa75cac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -119,7 +120,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -160,7 +161,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">医学英語：臨床論文の読み方</a> 
     </div>
@@ -248,7 +251,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,7 +332,7 @@ window.Quarto = {
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do nothing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Do nothing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="sec-frailty-definition" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-frailty-definition"><span class="header-section-number">2.1</span> フレイルの定義</h2>
@@ -347,7 +350,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-第113回 F 27
+<span class="screen-reader-only">Note</span>第113回 F 27
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -372,7 +375,7 @@ window.Quarto = {
 <h2 data-number="2.3" class="anchored" data-anchor-id="sec-frailty-abstract"><span class="header-section-number">2.3</span> Abstract</h2>
 <p>Abstract は、構造化されています。</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">解説</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">解説</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p><strong>Background.</strong> Frailty is considered highly prevalent in old age and to confer high risk for falls, disability, hospitalization, and mortality. Frailty has been considered synonymous with <span class="wavy-underline">disability</span>, <span class="wavy-underline">comorbidity</span>, and other characteristics, but it is recognized that it may have a biologic basis and be a distinct clinical syndrome. A standardized definition has not yet been established.</p>
@@ -388,7 +391,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">解説</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">解説</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p><strong>Methods.</strong> To develop and operationalize a phenotype of frailty in older adults and assess concurrent and predictive validity, the study used data from the Cardiovascular Health Study. Participants were 5,317 men and women 65 years and older (4,735 from an original cohort recruited in 1989–90 and 582 from an African American cohort recruited in 1992–93). Both cohorts received almost identical baseline evaluations and 7 and 4 years of follow-up, respectively, with annual examinations and surveillance for outcomes including incident disease, hospitalization, falls, disability, and mortality.</p>
@@ -419,7 +422,7 @@ Note
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">解説</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">解説</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p><strong>Results</strong> Frailty was defined as a clinical syndrome in which three or more of the following criteria were present: unintentional weight loss (10 lbs in past year), self-reported exhaustion, weakness (grip strength), slow walking speed, and low physical activity. The overall prevalence of frailty in this community-dwelling population was 6.9%; <span class="wavy-underline">it increased with age and was greater in women than men.</span> Four-year incidence was 7.2%. Frailty was associated with being African American, having lower education and income, poorer health, and having higher rates of comorbid chronic diseases and disability. <span class="wavy-underline">There was overlap, but not concordance, in the cooccurrence of frailty, comorbidity, and disability.</span> This frailty phenotype was independently predictive (over 3 years) of incident falls, worsening mobility or ADL disability, hospitalization, and death, with hazard ratios ranging from 1.82 to 4.46, unadjusted, and 1.29–2.24, adjusted for a number of health, disease, and social characteristics predictive of 5-year mortality. Intermediate frailty status, as indicated by the presence of one or two criteria, showed intermediate risk of these outcomes as well as increased risk of becoming frail over 3–4 years of follow-up (odds ratios for incident frailty = 4.51 unadjusted and 2.63 adjusted for covariates, compared to those with no frailty criteria at baseline).</p>
@@ -457,7 +460,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-第113回 F 27
+<span class="screen-reader-only">Note</span>第113回 F 27
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -471,7 +474,7 @@ Note
 </div>
 <p>誤っているのは、c となります。</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">解説</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">解説</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p><strong>Conclusions.</strong> This study provides <span class="wavy-underline">a potential standardized definition for frailty in community-dwelling older adults and offers concurrent and predictive validity for the definition</span>. It also finds that there is an intermediate stage identifying those at high risk of frailty. Finally, it provides evidence that frailty is not synonymous with either comorbidity or disability, but comorbidity is an etiologic risk factor for, and disability is an outcome of, frailty. This provides a potential basis for clinical assessment for those who are frail or at risk, and for future research to develop interventions for frailty based on a standardized ascertainment of frailty.</p>
@@ -495,7 +498,7 @@ Note
 </div>
 <p>この図はベン図と呼ばれるもので、数学の集合などでよく登場します。</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">解説</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">原文</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">解説</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>Fig. 3 displays the overlap between these characteristics, as well as with the presence of two or more comorbid diseases. There was only modest concordance between frailty and disability. Of those who were frail, 46% had comorbid disease, 6% had ADL disability, 22% had both comorbid disease and ADL disability, and 27% had neither ADL disability nor comorbidity.</p>
@@ -518,6 +521,46 @@ Fried LP 論文の Figure 3 を参照
 
 
 </main> <!-- /main -->
+<a href="https://saturdaymorning.connpass.com/" target="_blank" style="
+
+     position:fixed;
+
+     bottom:20px;
+
+     right:20px;
+
+     z-index:9999;
+
+     text-decoration:none;
+
+   ">
+
+  <div style="
+
+    padding:0.8em 1em;
+
+    background-color:#f8dfe7;
+
+    border-radius:10px;
+
+    color:#333;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+    transition:0.2s;
+
+  " onmouseover="this.style.transform='scale(1.05)';this.style.opacity=1" onmouseout="this.style.transform='scale(1)';this.style.opacity=0.85">
+
+    ▶ 毎週水曜 AM 7:00-8:00<br>
+
+    ZOOM 勉強会開催中!
+
+  </div>
+
+</a>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -569,13 +612,14 @@ Fried LP 論文の Figure 3 を参照
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

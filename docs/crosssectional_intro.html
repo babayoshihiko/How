@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -54,14 +54,15 @@ div.csl-indent {
 <link href="./observation.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3b31311d19efb2a633f338e97748bc02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-95b98e0f510ad6715e2eba8ceaa75cac.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,7 +105,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -145,7 +146,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">医学英語：臨床論文の読み方</a> 
     </div>
@@ -233,7 +236,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニングツールの開発</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></a>
   </div>
 </li>
       </ul>
@@ -283,10 +286,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-crosssectional-keyword" id="toc-sec-crosssectional-keyword" class="nav-link active" data-scroll-target="#sec-crosssectional-keyword"><span class="header-section-number">5.1</span> キーワード</a></li>
-  <li><a href="#有病率と関連要因の調査" id="toc-有病率と関連要因の調査" class="nav-link" data-scroll-target="#有病率と関連要因の調査"><span class="header-section-number">5.2</span> 有病率と関連要因の調査</a>
+  <li><a href="#sec-crosssectional-keyword" id="toc-sec-crosssectional-keyword" class="nav-link active" data-scroll-target="#sec-crosssectional-keyword"><span class="header-section-number">5.1</span> キーワード</a>
   <ul class="collapse">
-  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">5.2.1</span> 論文の例</a></li>
+  <li><a href="#リスク比とオッズ比" id="toc-リスク比とオッズ比" class="nav-link" data-scroll-target="#リスク比とオッズ比"><span class="header-section-number">5.1.1</span> リスク比とオッズ比</a></li>
+  </ul></li>
+  <li><a href="#有病率と関連要因の調査" id="toc-有病率と関連要因の調査" class="nav-link" data-scroll-target="#有病率と関連要因の調査"><span class="header-section-number">5.2</span> 有病率と関連要因の調査</a></li>
+  <li><a href="#sec-crosssectional-logistic" id="toc-sec-crosssectional-logistic" class="nav-link" data-scroll-target="#sec-crosssectional-logistic"><span class="header-section-number">5.3</span> ロジスティック回帰</a>
+  <ul class="collapse">
+  <li><a href="#なぜ線形回帰ではなくロジスティック回帰か" id="toc-なぜ線形回帰ではなくロジスティック回帰か" class="nav-link" data-scroll-target="#なぜ線形回帰ではなくロジスティック回帰か"><span class="header-section-number">5.3.1</span> なぜ線形回帰ではなくロジスティック回帰か</a></li>
+  <li><a href="#モデル式" id="toc-モデル式" class="nav-link" data-scroll-target="#モデル式"><span class="header-section-number">5.3.2</span> モデル式</a></li>
+  <li><a href="#ベータ係数とオッズ比の関係" id="toc-ベータ係数とオッズ比の関係" class="nav-link" data-scroll-target="#ベータ係数とオッズ比の関係"><span class="header-section-number">5.3.3</span> ベータ係数とオッズ比の関係</a></li>
+  <li><a href="#解釈の例" id="toc-解釈の例" class="nav-link" data-scroll-target="#解釈の例"><span class="header-section-number">5.3.4</span> 解釈の例</a></li>
+  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">5.3.5</span> 論文の例</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -319,6 +330,8 @@ window.Quarto = {
 <p>まず、ある１時点での調査を行うことを横断研究 (cross-sectional study)、複数の時点で調査を行うことを縦断研究 (longitudinal study) と言います。</p>
 <p>横断研究では、通常、ある疾患 (ここではフレイル) の有病率や、さまざまな属性との関連を調べます。この属性を、RCT での介入に対して、コホート研究では暴露 (exposure) と言うこともあります。</p>
 <p>横断研究では、統計手法としては、ロジスティック回帰 (logistic regression) がよく用いられます。これは、単一のアウトカムに対して、複数の属性を共変量 (covariate) として解析し、関連 (association) があるかどうかを調査します。最終的には、共変量ごとにオッズ比が得られます。</p>
+<section id="リスク比とオッズ比" class="level3 page-columns page-full" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="リスク比とオッズ比"><span class="header-section-number">5.1.1</span> リスク比とオッズ比</h3>
 <p>ロジスティック回帰を理解するためには、まずオッズ比とリスク比を理解する必要があります。</p>
 <p>まず、以下のオッズ比とリスク比を計算してみましょう。</p>
 <table class="caption-top table">
@@ -401,6 +414,7 @@ Holcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Bur
 <p>これで全てではありません。例えば、Chapter 2 でみた Fried LP (2001) もコホート研究の一種です。</p>
 <p>コホート研究の論文のガイドラインは、STROBE 宣言です。</p>
 </section>
+</section>
 <section id="有病率と関連要因の調査" class="level2 page-columns page-full" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="有病率と関連要因の調査"><span class="header-section-number">5.2</span> 有病率と関連要因の調査</h2>
 <p>ここでは多くの場合、以下の調査を行う横断研究について解説します。</p>
@@ -413,8 +427,78 @@ Holcomb Jr, William L, Tinnakorn Chaiworapongsa, Douglas A Luke, and Kevin D Bur
 <div class="no-row-height column-margin column-container"><div id="ref-hidalgo2013multivariate" class="csl-entry" role="listitem">
 Hidalgo, Bertha, and Melody Goodman. 2013. <span>“Multivariate or Multivariable Regression?”</span> <em>American Journal of Public Health</em> 103 (1): 39–40.
 </div></div><p>説明変数は、仮説や先行研究から決定することが多いようです。</p>
-<section id="論文の例" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">5.2.1</span> 論文の例</h3>
+</section>
+<section id="sec-crosssectional-logistic" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-crosssectional-logistic"><span class="header-section-number">5.3</span> ロジスティック回帰</h2>
+<p>ロジスティック回帰 (logistic regression) は、目的変数が <strong>2値データ</strong> のときに用いられる代表的な統計手法です。</p>
+<p>たとえば、次のような結果を予測する場合に使用されます。</p>
+<ul>
+<li>疾患あり = 1</li>
+<li>疾患なし = 0</li>
+</ul>
+<p>このように、結果が「はい / いいえ」「ある / ない」のように 2 つの値をとる場合に適しています。</p>
+<hr>
+<section id="なぜ線形回帰ではなくロジスティック回帰か" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="なぜ線形回帰ではなくロジスティック回帰か"><span class="header-section-number">5.3.1</span> なぜ線形回帰ではなくロジスティック回帰か</h3>
+<p>通常の線形回帰では、予測値が 0 未満や 1 を超える可能性があります。</p>
+<p>しかし、確率は</p>
+<p><span class="math display">\[
+0 \le p \le 1
+\]</span></p>
+<p>の範囲でなければなりません。</p>
+<p>そこでロジスティック回帰では、確率そのものではなく <strong>オッズの対数（log odds）</strong> をモデル化します。</p>
+<hr>
+</section>
+<section id="モデル式" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="モデル式"><span class="header-section-number">5.3.2</span> モデル式</h3>
+<p>ロジスティック回帰の基本式は次の通りです。</p>
+<p><span class="math display">\[
+\log\left(\frac{p}{1-p}\right)=\beta_0 + \beta_1X_1 + \beta_2X_2 + \cdots
+\]</span></p>
+<p>ここで、</p>
+<ul>
+<li>(p)：イベントが起こる確率</li>
+<li>()：オッズ</li>
+<li>(_0)：切片</li>
+<li>(_1)：回帰係数（ベータ）</li>
+<li>(X_1)：説明変数</li>
+</ul>
+<p>を表します。</p>
+<hr>
+</section>
+<section id="ベータ係数とオッズ比の関係" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="ベータ係数とオッズ比の関係"><span class="header-section-number">5.3.3</span> ベータ係数とオッズ比の関係</h3>
+<p>ロジスティック回帰を使った論文では、回帰係数 (<span class="math inline">\(\beta\)</span>) が提示されることもあれば、オッズ比 (OR) が提示されることもあります。 回帰係数 (<span class="math inline">\(\beta\)</span>) を指数変換するとオッズ比になる関係にあります。</p>
+<p><span class="math display">\[
+\text{OR}=e^{\beta}
+\]</span></p>
+<p><span class="math display">\[
+\beta=0.693
+\]</span></p>
+<p>であれば、</p>
+<p><span class="math display">\[
+e^{0.693}=2.0
+\]</span></p>
+<p>となります。</p>
+<p>つまり、説明変数 (X_1) が 1 単位増加すると、オッズは <strong>2 倍</strong> になることを意味します。</p>
+<hr>
+</section>
+<section id="解釈の例" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="解釈の例"><span class="header-section-number">5.3.4</span> 解釈の例</h3>
+<p>年齢の係数が</p>
+<p><span class="math display">\[
+\beta=0.05
+\]</span></p>
+<p>だったとします。</p>
+<p>このときオッズ比は</p>
+<p><span class="math display">\[
+e^{0.05}=1.051
+\]</span></p>
+<p>です。</p>
+<p>これは、年齢が 1 歳増えるごとに、目的変数が 1 になるオッズが <strong>約 1.05 倍（5.1%増加）</strong> することを意味します。</p>
+</section>
+<section id="論文の例" class="level3" data-number="5.3.5">
+<h3 data-number="5.3.5" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">5.3.5</span> 論文の例</h3>
 <ul>
 <li>Liu W, Puts M, Jian F et al.&nbsp;(2020) Physical frailty and its associated factors among elderly nursing home residents in China. <em>BMC Geriatrics</em>, 20(1), 1-9.</li>
 </ul>
@@ -426,6 +510,46 @@ Hidalgo, Bertha, and Melody Goodman. 2013. <span>“Multivariate or Multivariabl
 
 
 </main> <!-- /main -->
+<a href="https://saturdaymorning.connpass.com/" target="_blank" style="
+
+     position:fixed;
+
+     bottom:20px;
+
+     right:20px;
+
+     z-index:9999;
+
+     text-decoration:none;
+
+   ">
+
+  <div style="
+
+    padding:0.8em 1em;
+
+    background-color:#f8dfe7;
+
+    border-radius:10px;
+
+    color:#333;
+
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+    transition:0.2s;
+
+  " onmouseover="this.style.transform='scale(1.05)';this.style.opacity=1" onmouseout="this.style.transform='scale(1)';this.style.opacity=0.85">
+
+    ▶ 毎週水曜 AM 7:00-8:00<br>
+
+    ZOOM 勉強会開催中!
+
+  </div>
+
+</a>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -477,13 +601,14 @@ Hidalgo, Bertha, and Melody Goodman. 2013. <span>“Multivariate or Multivariabl
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

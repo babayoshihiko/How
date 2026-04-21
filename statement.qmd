@@ -9,7 +9,7 @@
 - 各ジャーナルの Authors Guideline など
 - 研究デザインごとの声明 (Statement)
 
-声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。
+声明は、EQUATOR Network ([https://www.equator-network.org/](https://www.equator-network.org/)) が主導し、以下のようなものがあります。
 
 | 研究デザイン | ガイドライン |
 | -- | -- |

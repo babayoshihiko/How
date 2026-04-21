@@ -39,6 +39,7 @@ format:
     css: style.css
     grid:
       margin-width: 350px
+    include-after-body: header.html
 
 reference-location: margin
 citation-location: margin
