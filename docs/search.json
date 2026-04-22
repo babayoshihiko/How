@@ -469,10 +469,76 @@
     "href": "screening_intro.html#カットオフ値",
     "title": "8  スクリーニング",
     "section": "8.4 カットオフ値",
-    "text": "8.4 カットオフ値\nカットオフ値は\n\n8.4.1 論文の例\n\nWang ZT, F, Y, Zhang YR et al. (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. Translational Psychiatry, 12(1), 509.",
+    "text": "8.4 カットオフ値\nカットオフ値の決め方には、以下のようなものがあります。\n\nYounde Index: 感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)\n左上からの距離が最小の点 (closest.topleft, ROC01, roc01)\n感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)\nその他\n\n\n8.4.1 論文の例\n\nWang ZT, F, Y, Zhang YR et al. (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. Translational Psychiatry, 12(1), 509.",
     "crumbs": [
       "観察研究",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>スクリーニング</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html",
+    "href": "screening_r.html",
+    "title": "9  R でスクリーニング評価",
+    "section": "",
+    "text": "9.1 はじめに\nROC 曲線の描き方\nスクリーニングツールとしての評価\n以下の方式で、最適なカットオフ値を求める (カッコ内は pROC の print.thres.best.method, OptimalCutpoints での methods, cutpointr の metric)\n以下の論文で、実際にスクリーニングツールを評価してみましょう。\nChakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … & Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970\n著者は13人いて、10人がニューデリーの機関に所属、3人は米国 Pittsuburgh の大学及び大学病院所属。\n自閉症スペクトラム障がいの検査には時間がかかり、また検査ができるようにするための訓練にも時間がかかります。さらに、現状では乳幼児を対象にしたものがほとんどで、成人などを対象としたスクリーニングツールがありませんでした。一般に、自閉症の有病率は1〜2%と言われていますが、インドにおける先行研究ではこれより低い値で、著者らはスクリーニングツールにも問題があるのではないかという疑問があったようです。\n筆者らは、2009年に40項目、5 段階のツールを作りました (ISAA、40〜200点)。しかし、これはまだ検査者にトレーニングを要するなど、使いやすいものではありません。そこで、現在使われている検査の中から10の質問項目を抽出し、簡単にできるものを開発しました (IASQ、0〜10点)。このツールが有効であるかどうかを研究した論文です。\n研究参加者は、自閉症または他の精神障害を診断されている、3〜18歳の人の親または介護者。\nカットオフ値を 1 とすると感度 99%、特異度 62%。カットオフ値を 2 とすると感度 98%、特異度 71%です。\nカットオフ値は、最終的に 1 としたようです。これはつまり、10 項目中 1 項目でも当てはまれば、自閉症の可能性があるということになります。スクリーニングツールとしては、カットオフ値 1 点というのはどうなのか？とも思いますが、現状自閉症の可能性のある人を十分診断できていないという問題点から、低めに設定したのかもしれません。",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html#はじめに",
+    "href": "screening_r.html#はじめに",
+    "title": "9  R でスクリーニング評価",
+    "section": "",
+    "text": "x軸を 偽陽性率 (1-特異度)、y軸を感度とする。\n検査値ごとの感度、特異度をプロットする。\n点をつなぐ（これを、Receiver Operator Curve, ROC という)\n\n\n\n全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。\n\n\n\n感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)\n左上からの距離が最小の点 (closest.topleft, ROC01, roc01)\n感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)\nその他多数（CRAN パッケージ内の説明を参照）",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html#データの読み込み",
+    "href": "screening_r.html#データの読み込み",
+    "title": "9  R でスクリーニング評価",
+    "section": "9.2 データの読み込み",
+    "text": "9.2 データの読み込み\n今回は、エクセルデータです。まずダウンロードしてから読み込みます。2 度目以降はダウンロード済みなので、1 行目は不要になります。\n\ncurl::curl_download(\"https://doi.org/10.1371/journal.pone.0249970.s005\", \"ROC.xlsx\")\ndfCutpoint &lt;- readxl::read_excel(\"ROC.xlsx\")\n\n\n\nNew names:\n• `Family ID` -&gt; `Family ID...2`\n• `Family ID` -&gt; `Family ID...10`\n\n\nExcel 表の列名が長いので、短く変更しておきます。\n\ndfCutpoint$Autism &lt;- dfCutpoint$`Clinical Diagnosis of child autism 1, no autism 0`\ndfCutpoint$IASQ &lt;- dfCutpoint$`Total Score of IASQ`",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html#roc-曲線",
+    "href": "screening_r.html#roc-曲線",
+    "title": "9  R でスクリーニング評価",
+    "section": "9.3 ROC 曲線",
+    "text": "9.3 ROC 曲線\n\ndfCutpoint$Autism &lt;- as.factor(dfCutpoint$Autism)\npROC::plot.roc(dfCutpoint$Autism, dfCutpoint$IASQ)\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases\n\n\n\n\n\n\n\n\n\nROC曲線は描くことができました。しかし、x軸、y軸の範囲など直すところが多そうです。",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html#カットオフ値",
+    "href": "screening_r.html#カットオフ値",
+    "title": "9  R でスクリーニング評価",
+    "section": "9.4 カットオフ値",
+    "text": "9.4 カットオフ値\n次に、カットオフ値を求めます。\n\nrocCutoff &lt;- pROC::roc(response = dfCutpoint$Autism,\n            predictor = dfCutpoint$IASQ, \n            data = dfCutpoint)\n\nSetting levels: control = 0, case = 1\n\n\nSetting direction: controls &lt; cases\n\ncoCutoff &lt;- pROC::coords(roc = rocCutoff,\n            x = \"best\", \n            best.method = \"youden\")\nDT::datatable(coCutoff)\n\n\n\n\n\n結果が 2.5 となりました。\nIASQ はこの数値は小数点のある Double 型だったためと思われ、整数 (integer) 型にしてみましたが、それでも代わりませんでした。この時の感度が0.81、特異度が0.95と推定されました。\n次に、cutpointr ライブラリを使います。\nここでは、Youden index が最大になる方法でカットオフ値を求めます。\n主な引数の値\n\nmetric:\n\nyouden: Youden index (感度 + 特異度 - 1)\nsum_sens_spec: 感度 + 特異度\nprod_sens_spec: 感度 × 特異度\n\nmethod:\n\nmaximize_metric: metric を最大化します。\n\n\n\ncpROC &lt;- cutpointr::cutpointr(data = dfCutpoint, \n                x = IASQ, \n                class = Autism, \n                method = cutpointr::maximize_metric, \n                metric = cutpointr::youden)\n\nAssuming the positive class is 1\n\n\nAssuming the positive class has higher x values\n\nsummary(cpROC)\n\nMethod: maximize_metric \nPredictor: IASQ \nOutcome: Autism \nDirection: &gt;= \n\n    AUC   n n_pos n_neg\n 0.9383 145    91    54\n\n optimal_cutpoint youden    acc sensitivity specificity tp fn fp tn\n                3 0.7599 0.8966      0.9451      0.8148 86  5 10 44\n\nPredictor summary: \n    Data Min.  5% 1st Qu. Median     Mean 3rd Qu. 95% Max.       SD NAs\n Overall    0 0.0       1      6 4.710345       8   9   10 3.395089   0\n       0    0 0.0       0      0 1.314815       2   7    7 2.230357   0\n       1    0 2.5       6      7 6.725275       8   9   10 2.119046   0\n\n\nこの場合、カットオフ値は３となりました。この時の感度は0.9451、特異度は0.8148です。 ROC曲線の AUC は 0.9383 です。\nなお、元の論文では、AUC は0.95、カットオフ値3 では、感度0.944、特異度0.800となっており、わずかですが数値が異なります。\nFigure 2 のような図を作図してみます。\n\nplot(coCutoff)\n\n\n\n\n\n\n\n\nOptimalCutpoints は機能が多そうですが、エラーが出てうまくいきませんでした。",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
+    ]
+  },
+  {
+    "objectID": "screening_r.html#サンプルサイズ",
+    "href": "screening_r.html#サンプルサイズ",
+    "title": "9  R でスクリーニング評価",
+    "section": "9.5 サンプルサイズ",
+    "text": "9.5 サンプルサイズ\n感度・特異度や ROC 曲線による解析は、サンプルサイズ計算はあまりされていないようです。ただし、R で計算を行うことも可能ですので、研究計画に盛り込んでおくと良いでしょう。\nサーバー側で R を使ってサンプルサイズ計算ができるサイトがあります。このサイトでは、必要な引数を設定することで、R コードも表示されます。\nhttps://shiny.ctu.unibe.ch/app_direct/presize/\nたとえば、感度 0.8、その95%信頼区間の幅を 0.1 (0.75-0.85) とする場合、 n = 244.154 が必要であることが示されます。\n\npresize::prec_sens(sens = 0.8, \n                   conf.width = 0.1, \n                   conf.level = 0.95, \n                   round = 'ceiling', \n                   method = 'wilson')\n\n\n     sample size for a sensitivity with Wilson confidence interval. \n\n  sens  sensadj       n prev ntot conf.width conf.level      lwr      upr\n1  0.8 0.795353 244.154   NA   NA        0.1       0.95 0.745353 0.845353\n\nNOTE: sensadj is the adjusted sensitivity, from which the ci is calculated.\n      n is the number of positives, ntot the full sample\n\n\nBrown LD, Cai TT, DasGupta A (2001) Interval Estimation for a Binomial Proportion, Statistical Science , 16:2, 101-117, doi:10.1214/ss/1009213286\nBujang MA & Adnan TH (2016) Requirements for minimum sample size for sensitivity and specificity analysis. Journal of clinical and diagnostic research: JCDR, 10(10), YE01.",
+    "crumbs": [
+      "観察研究",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>R でスクリーニング評価</span>"
     ]
   },
   {
@@ -488,133 +554,133 @@
   {
     "objectID": "protocol.html",
     "href": "protocol.html",
-    "title": "9  プロトコル",
+    "title": "10  プロトコル",
     "section": "",
-    "text": "9.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。",
+    "text": "10.1 プロトコルとは\n医学研究における「プロトコル」とは、研究の計画書や実施手順をまとめた文書のことを指します。研究を正確かつ倫理的に行うために不可欠なもので、研究の設計図のような役割を果たします。\n基礎研究の場合には、実験プロトコルもあります。ここでは実験プロトコルは扱いません。\n研究プロトコルの目的には、以下のようなことがあります。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#プロトコルとは",
     "href": "protocol.html#プロトコルとは",
-    "title": "9  プロトコル",
+    "title": "10  プロトコル",
     "section": "",
     "text": "研究の質を保つ。バイアスを最小限にする\n再現性を確保する\n倫理性を担保する\n査読や登録、承認の基盤となる (例: 臨床試験登録、倫理審査委員会の審査)",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#倫理審査",
     "href": "protocol.html#倫理審査",
-    "title": "9  プロトコル",
-    "section": "9.2 倫理審査",
-    "text": "9.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。",
+    "title": "10  プロトコル",
+    "section": "10.2 倫理審査",
+    "text": "10.2 倫理審査\n倫理審査においては、研究プロトコルを審査します。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "protocol.html#臨床試験登録",
     "href": "protocol.html#臨床試験登録",
-    "title": "9  プロトコル",
-    "section": "9.3 臨床試験登録",
-    "text": "9.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。",
+    "title": "10  プロトコル",
+    "section": "10.3 臨床試験登録",
+    "text": "10.3 臨床試験登録\n研究プロトコルや進捗状況を臨床試験登録に登録します。\n日本では、大学病院医療情報ネットワークセンター (University hospital Medical Information Netowork, UMIN) と臨床研究等提出・公開システム (Japan Registry of Clinical Trials, jRCT) などがあります。\n\njRCT: 臨床研究法に基づく臨床研究\nUMIN: 学術研究機関で実施される研究のうち、臨床研究法に基づく臨床研究を除いたもの。手術・手技の臨床研究や観察研究など。\nJAPIC: 治験\n日本医師会治験促進センター: 医師主導治験等\n\nアメリカの臨床試験データベースは ClinicalTrials.gov です。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>プロトコル</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>プロトコル</span>"
     ]
   },
   {
     "objectID": "statement.html",
     "href": "statement.html",
-    "title": "10  声明",
+    "title": "11  声明",
     "section": "",
-    "text": "10.1 声明\n臨床論文は、書き方がある程度規定されています。\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。",
+    "text": "11.1 声明\n臨床論文は、書き方がある程度規定されています。\n声明は、EQUATOR Network (https://www.equator-network.org/) が主導し、以下のようなものがあります。\nその他、症例報告 (CARE)、質的研究 (SRQR/COREQ)、診断精度研究 (STARD)、研究計画書 (SPIRIT/PRISMA-P) などがあります。\n歴史的にみると、1993年ころからランダム化比較試験の標準項目が、1996年ころからメタ分析の標準項目が議論され始めました。1999年に、メタ分析の標準項目 QUOROM、2001年にランダム化比較試験の標準項目 CONSORT ができました。",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "statement.html#sec-statement-1",
     "href": "statement.html#sec-statement-1",
-    "title": "10  声明",
+    "title": "11  声明",
     "section": "",
     "text": "International Committee of Medical Journal Editors (ICMJE)\nアメリカ医学会 Manual of Style: A guide for Authors and Editors\n各ジャーナルの Authors Guideline など\n研究デザインごとの声明 (Statement)\n\n\n\n\n\n研究デザイン\nガイドライン\n\n\n\n\nシステマティックレビュー メタアナリシス\nPRISMA\n\n\nランダム化比較試験\nCONSORT\n\n\n非ランダム化比較試験\nTREND\n\n\n分析疫学的研究 (コホート研究や症例対照研究)\nSTROBE",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "statement.html#チェックリスト",
     "href": "statement.html#チェックリスト",
-    "title": "10  声明",
-    "section": "10.2 チェックリスト",
-    "text": "10.2 チェックリスト\n\n10.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups.",
+    "title": "11  声明",
+    "section": "11.2 チェックリスト",
+    "text": "11.2 チェックリスト\n\n11.2.1 STROBE\n\nSTROBE checklist\n\n\n\n\n\n\n\nItem No\nRecommendation\nPage No\n\n\n\n\nTitle and abstract 1\n(a) Indicate the study’s design with a commonly used term in the title or the abstract\n\n\n\n\n(b) Provide in the abstract an informative and balanced summary of what was done and what was found\n\n\n\nIntroduction\n\n\n\n\nBackground/rationale 2\nExplain the scientific background and rationale for the investigation being reported\n\n\n\nObjectives 3\nState specific objectives, including any prespecified hypotheses\n\n\n\nMethods\n\n\n\n\nStudy design 4\nPresent key elements of study design early in the paper\n\n\n\nSetting 5\nDescribe the setting, locations, and relevant dates, including periods of recruitment, exposure, follow-up, and data collection\n\n\n\nParticipants 6\n(a) Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up\n\n\n\n\n(b) For matched studies, give matching criteria and number of exposed and unexposed\n\n\n\nVariables 7\nClearly define all outcomes, exposures, predictors, potential confounders, and effect modifiers. Give diagnostic criteria, if applicable\n\n\n\nData sources/ measurement 8*\nFor each variable of interest, give sources of data and details of methods of assessment (measurement). Describe comparability of assessment methods if there is more than one group\n\n\n\nBias 9\nDescribe any efforts to address potential sources of bias\n\n\n\nStudy size 10\nExplain how the study size was arrived at\n\n\n\nQuantitative variables 11\nExplain how quantitative variables were handled in the analyses. If applicable, describe which groupings were chosen and why\n\n\n\nStatistical methods 12\n(a) Describe all statistical methods, including those used to control for confounding\n\n\n\n\n(b) Describe any methods used to examine subgroups and interactions\n\n\n\n\n(c) Explain how missing data were addressed\n\n\n\n\n(d) If applicable, explain how loss to follow-up was addressed\n\n\n\n\n(e) Describe any sensitivity analyses\n\n\n\nResults\n\n\n\n\nParticipants 13*\n(a) Report numbers of individuals at each stage of study—eg numbers potentially eligible, examined for eligibility, confirmed eligible, included in the study, completing follow-up, and analysed\n\n\n\n\n(b) Give reasons for non-participation at each stage\n\n\n\n\n(c) Consider use of a flow diagram\n\n\n\nDescriptive data 14*\n(a) Give characteristics of study participants (eg demographic, clinical, social) and information on exposures and potential confounders\n\n\n\n\n(b) Indicate number of participants with missing data for each variable of interest\n\n\n\n\n(c) Summarise follow-up time (eg, average and total amount)\n\n\n\nOutcome data 15*\nReport numbers of outcome events or summary measures over time\n\n\n\nMain results 16\n(a) Give unadjusted estimates and, if applicable, confounder-adjusted estimates and their precision (eg, 95% confidence interval). Make clear which confounders were adjusted for and why they were included\n\n\n\n\n(b) Report category boundaries when continuous variables were categorized\n\n\n\n\n(c) If relevant, consider translating estimates of relative risk into absolute risk for a meaningful time period\n\n\n\nOther analyses 17\nReport other analyses done—eg analyses of subgroups and interactions, and sensitivity analyses\n\n\n\nDiscussion\n\n\n\n\nKey results 18\nSummarise key results with reference to study objectives\n\n\n\nLimitations 19\nDiscuss limitations of the study, taking into account sources of potential bias or imprecision. Discuss both direction and magnitude of any potential bias\n\n\n\nInterpretation 20\nGive a cautious overall interpretation of results considering objectives, limitations, multiplicity of analyses, results from similar studies, and other relevant evidence\n\n\n\nGeneralisability 21\nDiscuss the generalisability (external validity) of the study results\n\n\n\nOther information\n\n\n\n\nFunding 22\nGive the source of funding and the role of the funders for the present study and, if applicable, for the original study on which the present article is based\n\n\n\n\n*Give information separately for exposed and unexposed groups.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>声明</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>声明</span>"
     ]
   },
   {
     "objectID": "letter.html",
     "href": "letter.html",
-    "title": "11  レター",
+    "title": "12  レター",
     "section": "",
-    "text": "11.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント",
+    "text": "12.1 批判的吟味 (Critical Reading)\n臨床論文を読む際は、批判的に読む姿勢が必要になります。ここでは、このような姿勢・方法論を批判的吟味 (Critical Reading) といいます。\n批判的吟味では、臨床論文に書かれたことをよく吟味しながら読みます。「批判的」というのは、必ずしも「否定的」という意味ではありません。\n誹謗中傷ではなく、論文がより良くなる建設的な質問・コメント",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#批判的吟味-critical-reading",
     "href": "letter.html#批判的吟味-critical-reading",
-    "title": "11  レター",
+    "title": "12  レター",
     "section": "",
     "text": "Introduction については聞かない (理由: 著者の意見というよりは、すでに受け入れられている他者の論文)\nLimitations に書かれていることは指摘しない",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#自動翻訳",
     "href": "letter.html#自動翻訳",
-    "title": "11  レター",
-    "section": "11.2 自動翻訳",
-    "text": "11.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved.",
+    "title": "12  レター",
+    "section": "12.2 自動翻訳",
+    "text": "12.2 自動翻訳\nDeepL: https://www.deepl.com/\nみらい翻訳: https://miraitranslate.com/trial/\n例文: バーセルインデックスが有意に改善することが明らかになった。\nDeepL: A significant improvement in the bar-cell index was found.\nみらい: It was clarified that the Barthel index was significantly improved.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#文法チェック",
     "href": "letter.html#文法チェック",
-    "title": "11  レター",
-    "section": "11.3 文法チェック",
-    "text": "11.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/",
+    "title": "12  レター",
+    "section": "12.3 文法チェック",
+    "text": "12.3 文法チェック\nDeepL Write: https://www.deepl.com/ja/write#en/\nGrammarly: https://www.grammarly.com/",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {
     "objectID": "letter.html#書き換えツール",
     "href": "letter.html#書き換えツール",
-    "title": "11  レター",
-    "section": "11.4 書き換えツール",
-    "text": "11.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved.",
+    "title": "12  レター",
+    "section": "12.4 書き換えツール",
+    "text": "12.4 書き換えツール\nQuillBot: https://quillbot.com/\nLanguage Tool: https://languagetool.org/\n例文: It was clarified that the Barthel index was significantly improved.\nQuillbot: (Standard) It was made clear that there was a notable improvement in the Barthel index.\nLanguage Tool: (Formal) It was clarified that the Barthel index had been significantly improved.",
     "crumbs": [
       "批判的吟味",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>レター</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>レター</span>"
     ]
   },
   {

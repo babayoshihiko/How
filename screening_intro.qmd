@@ -227,7 +227,12 @@ ggplot(roc_df, aes(FPR, TPR)) +
 
 ## カットオフ値
 
-カットオフ値は
+カットオフ値の決め方には、以下のようなものがあります。
+
+- Younde Index: 感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)
+- 左上からの距離が最小の点 (closest.topleft, ROC01, roc01)
+- 感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)
+- その他
 
 ### 論文の例
 

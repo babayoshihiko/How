@@ -25,6 +25,7 @@ book:
         - crosssectional_intro.qmd
         - cohort_intro.qmd
         - screening_intro.qmd
+        - screening_r.qmd
     - part: critical.qmd
       chapters: 
         - protocol.qmd

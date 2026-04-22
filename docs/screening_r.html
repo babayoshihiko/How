@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; スクリーニング – 医学英語：臨床論文の読み方</title>
+<title>9&nbsp; R でスクリーニング評価 – 医学英語：臨床論文の読み方</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./screening_r.html" rel="next">
-<link href="./cohort_intro.html" rel="prev">
+<link href="./critical.html" rel="next">
+<link href="./screening_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -70,6 +105,26 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
 
 
 <link rel="stylesheet" href="style.css">
@@ -84,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_intro.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">スクリーニング</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_r.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R でスクリーニング評価</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -192,13 +247,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./screening_intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./screening_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./screening_r.html" class="sidebar-item-text sidebar-link">
+  <a href="./screening_r.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R でスクリーニング評価</span></span></a>
   </div>
 </li>
@@ -249,26 +304,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-screening-keyword" id="toc-sec-screening-keyword" class="nav-link active" data-scroll-target="#sec-screening-keyword"><span class="header-section-number">8.1</span> キーワード</a></li>
-  <li><a href="#感度と特異度" id="toc-感度と特異度" class="nav-link" data-scroll-target="#感度と特異度"><span class="header-section-number">8.2</span> 感度と特異度</a>
-  <ul class="collapse">
-  <li><a href="#感度" id="toc-感度" class="nav-link" data-scroll-target="#感度"><span class="header-section-number">8.2.1</span> 感度</a></li>
-  <li><a href="#特異度" id="toc-特異度" class="nav-link" data-scroll-target="#特異度"><span class="header-section-number">8.2.2</span> 特異度</a></li>
-  </ul></li>
-  <li><a href="#roc-曲線" id="toc-roc-曲線" class="nav-link" data-scroll-target="#roc-曲線"><span class="header-section-number">8.3</span> ROC 曲線</a></li>
-  <li><a href="#カットオフ値" id="toc-カットオフ値" class="nav-link" data-scroll-target="#カットオフ値"><span class="header-section-number">8.4</span> カットオフ値</a>
-  <ul class="collapse">
-  <li><a href="#論文の例" id="toc-論文の例" class="nav-link" data-scroll-target="#論文の例"><span class="header-section-number">8.4.1</span> 論文の例</a></li>
-  </ul></li>
+  <li><a href="#はじめに" id="toc-はじめに" class="nav-link active" data-scroll-target="#はじめに"><span class="header-section-number">9.1</span> はじめに</a></li>
+  <li><a href="#データの読み込み" id="toc-データの読み込み" class="nav-link" data-scroll-target="#データの読み込み"><span class="header-section-number">9.2</span> データの読み込み</a></li>
+  <li><a href="#roc-曲線" id="toc-roc-曲線" class="nav-link" data-scroll-target="#roc-曲線"><span class="header-section-number">9.3</span> ROC 曲線</a></li>
+  <li><a href="#カットオフ値" id="toc-カットオフ値" class="nav-link" data-scroll-target="#カットオフ値"><span class="header-section-number">9.4</span> カットオフ値</a></li>
+  <li><a href="#サンプルサイズ" id="toc-サンプルサイズ" class="nav-link" data-scroll-target="#サンプルサイズ"><span class="header-section-number">9.5</span> サンプルサイズ</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_intro.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">スクリーニング</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./observation.html">観察研究</a></li><li class="breadcrumb-item"><a href="./screening_r.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R でスクリーニング評価</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-screening-intro" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">スクリーニング</span></span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R でスクリーニング評価</span></h1>
 </div>
 
 
@@ -285,139 +334,188 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sec-screening-keyword" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="sec-screening-keyword"><span class="header-section-number">8.1</span> キーワード</h2>
-<p>感度 (sensitivity) と特異度 (specificity)</p>
-<p>ROC 曲線 (Receiver Operating Characteristic curve)</p>
-<p>カットオフ値:</p>
+<section id="はじめに" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="はじめに"><span class="header-section-number">9.1</span> はじめに</h2>
+<p>ROC 曲線の描き方</p>
 <ul>
-<li>感度 - (1 - 特異度) が最大の点 (Youden Index)</li>
-<li>左上からの距離が最小の点 (Closest topleft)</li>
-<li>感度 × 特異度が最大の点 (Product of Sensitivity and Specificity)</li>
-<li>その他</li>
+<li>x軸を 偽陽性率 (1-特異度)、y軸を感度とする。</li>
+<li>検査値ごとの感度、特異度をプロットする。</li>
+<li>点をつなぐ（これを、Receiver Operator Curve, ROC という)</li>
 </ul>
+<p>スクリーニングツールとしての評価</p>
+<ul>
+<li>全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。</li>
+</ul>
+<p>以下の方式で、最適なカットオフ値を求める (カッコ内は pROC の print.thres.best.method, OptimalCutpoints での methods, cutpointr の metric)</p>
+<ul>
+<li>感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)</li>
+<li>左上からの距離が最小の点 (closest.topleft, ROC01, roc01)</li>
+<li>感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)</li>
+<li>その他多数（CRAN パッケージ内の説明を参照）</li>
+</ul>
+<p>以下の論文で、実際にスクリーニングツールを評価してみましょう。</p>
+<p>Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … &amp; Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970</p>
+<p>著者は13人いて、10人がニューデリーの機関に所属、3人は米国 Pittsuburgh の大学及び大学病院所属。</p>
+<p>自閉症スペクトラム障がいの検査には時間がかかり、また検査ができるようにするための訓練にも時間がかかります。さらに、現状では乳幼児を対象にしたものがほとんどで、成人などを対象としたスクリーニングツールがありませんでした。一般に、自閉症の有病率は1〜2%と言われていますが、インドにおける先行研究ではこれより低い値で、著者らはスクリーニングツールにも問題があるのではないかという疑問があったようです。</p>
+<p>筆者らは、2009年に40項目、5 段階のツールを作りました (ISAA、40〜200点)。しかし、これはまだ検査者にトレーニングを要するなど、使いやすいものではありません。そこで、現在使われている検査の中から10の質問項目を抽出し、簡単にできるものを開発しました (IASQ、0〜10点)。このツールが有効であるかどうかを研究した論文です。</p>
+<p>研究参加者は、自閉症または他の精神障害を診断されている、3〜18歳の人の親または介護者。</p>
+<p>カットオフ値を 1 とすると感度 99%、特異度 62%。カットオフ値を 2 とすると感度 98%、特異度 71%です。</p>
+<p>カットオフ値は、最終的に 1 としたようです。これはつまり、10 項目中 1 項目でも当てはまれば、自閉症の可能性があるということになります。スクリーニングツールとしては、カットオフ値 1 点というのはどうなのか？とも思いますが、現状自閉症の可能性のある人を十分診断できていないという問題点から、低めに設定したのかもしれません。</p>
 </section>
-<section id="感度と特異度" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="感度と特異度"><span class="header-section-number">8.2</span> 感度と特異度</h2>
-<p>たとえば、100 人に認知症スクリーニング検査をしたとします。このスクリーニングツールは 30 点満点で、23 点以下が検査陽性であったとします。</p>
-<p>実際の診断結果 (真実) は次の通りだったとします。</p>
-<ul>
-<li>実際に病気あり: 20人</li>
-<li>実際に病気なし: 80人</li>
-</ul>
-<p>検査結果はこうでした。</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: right;">実際に病気あり</th>
-<th style="text-align: right;">実際に病気なし</th>
-<th style="text-align: right;">合計</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>検査陽性</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="even">
-<td>検査陰性</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">72</td>
-</tr>
-<tr class="odd">
-<td>合計</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">100</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>真陽性 (True Positive) 病気ありを正しく陽性 18</li>
-<li>偽陽性 (False Positive) 病気なしを誤って陽性 10</li>
-<li>真陰性 (True Negative) 病気なしを正しく陰性 70</li>
-<li>偽陰性 (False Negative) 病気ありを見逃し陰性 2</li>
-</ul>
-<section id="感度" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="感度"><span class="header-section-number">8.2.1</span> 感度</h3>
-<p>感度は、スクリーニングツールで本当に病気の人をどれだけ正しく見つけられるか、です。</p>
-<p>式は 感度 = TP / ( TP + FN )</p>
-<p>感度 = 18 / (18 + 2 ) = 90%</p>
-<p>意味は、このスクリーニングツールで、病気の人 20 人のうち 18 人を正しく陽性と判定した、ということです。その一方で、2 人の病気の人は拾えていません。</p>
-<p>また、10 人の病気でない人も陽性となっています。この情報は感度には入りません。</p>
-</section>
-<section id="特異度" class="level3" data-number="8.2.2">
-<h3 data-number="8.2.2" class="anchored" data-anchor-id="特異度"><span class="header-section-number">8.2.2</span> 特異度</h3>
-<p>特異度は、病気でない人をどれだけ正しく陰性にできるか、です。</p>
-<p>式は 特異度 = TN / (TN+FP)</p>
-<p>特異度 = 70/(70 + 10) = 87.5%</p>
-<p>意味は、このスクリーニングツール・カットオフ値で、病気でない 80 人のうち 70 人を正しく陰性と判定した、です。一方で、10 人の病人も陰性と判定してしまいました。</p>
-<p>また、2 人の病気の人も陰性となっています。この情報は特異度には入りません。</p>
-</section>
-</section>
-<section id="roc-曲線" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="roc-曲線"><span class="header-section-number">8.3</span> ROC 曲線</h2>
-<p>ROC 曲線は、連続値の検査スコアで、どのカットオフ値がよいかを評価するための図です。 前回の感度・特異度の話とつながるので、MMSE を例に説明します。</p>
-<p>たとえば、30点満点のスクリーニングテストで病気を判定するとします。</p>
-<p>一般に</p>
-<ul>
-<li>点数が低いほど有病</li>
-<li>点数が高いほど正常</li>
-</ul>
-<p>です。例えばカットオフ値を 23 点以下 = 有病疑いとすると、感度・特異度を計算できます。ただし、カットオフは 23 点だけではありません。</p>
-<ul>
-<li>21点以下</li>
-<li>22点以下</li>
-<li>23点以下</li>
-<li>24点以下</li>
-</ul>
-<p>など、いろいろ試せます。</p>
-<p>ROC 曲線は、全てのカットオフ値での感度・特異度をまとめて可視化したものです。</p>
+<section id="データの読み込み" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="データの読み込み"><span class="header-section-number">9.2</span> データの読み込み</h2>
+<p>今回は、エクセルデータです。まずダウンロードしてから読み込みます。2 度目以降はダウンロード済みなので、1 行目は不要になります。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>curl<span class="sc">::</span><span class="fu">curl_download</span>(<span class="st">"https://doi.org/10.1371/journal.pone.0249970.s005"</span>, <span class="st">"ROC.xlsx"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dfCutpoint <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"ROC.xlsx"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>Type 'citation("pROC")' for a citation.</code></pre>
+<pre><code>New names:
+• `Family ID` -&gt; `Family ID...2`
+• `Family ID` -&gt; `Family ID...10`</code></pre>
+</div>
+</div>
+<p>Excel 表の列名が長いので、短く変更しておきます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dfCutpoint<span class="sc">$</span>Autism <span class="ot">&lt;-</span> dfCutpoint<span class="sc">$</span><span class="st">`</span><span class="at">Clinical Diagnosis of child autism 1, no autism 0</span><span class="st">`</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dfCutpoint<span class="sc">$</span>IASQ <span class="ot">&lt;-</span> dfCutpoint<span class="sc">$</span><span class="st">`</span><span class="at">Total Score of IASQ</span><span class="st">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="roc-曲線" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="roc-曲線"><span class="header-section-number">9.3</span> ROC 曲線</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dfCutpoint<span class="sc">$</span>Autism <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(dfCutpoint<span class="sc">$</span>Autism)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>pROC<span class="sc">::</span><span class="fu">plot.roc</span>(dfCutpoint<span class="sc">$</span>Autism, dfCutpoint<span class="sc">$</span>IASQ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting levels: control = 0, case = 1</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'pROC'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    cov, smooth, var</code></pre>
+<pre><code>Setting direction: controls &lt; cases</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="screening_intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="screening_r_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>縦軸は 感度(Sensitivity)、つまり縦 = 見逃さない割合です。横軸は 1−特異度(Specificity) 、つまり誤って陽性にする割合です。</p>
-<p>点線の対角線は、ランダム判定です。この線に近いほど性能が悪いです。</p>
+<p>ROC曲線は描くことができました。しかし、x軸、y軸の範囲など直すところが多そうです。</p>
 </section>
-<section id="カットオフ値" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="カットオフ値"><span class="header-section-number">8.4</span> カットオフ値</h2>
-<p>カットオフ値の決め方には、以下のようなものがあります。</p>
+<section id="カットオフ値" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="カットオフ値"><span class="header-section-number">9.4</span> カットオフ値</h2>
+<p>次に、カットオフ値を求めます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rocCutoff <span class="ot">&lt;-</span> pROC<span class="sc">::</span><span class="fu">roc</span>(<span class="at">response =</span> dfCutpoint<span class="sc">$</span>Autism,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">predictor =</span> dfCutpoint<span class="sc">$</span>IASQ, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> dfCutpoint)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting levels: control = 0, case = 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting direction: controls &lt; cases</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>coCutoff <span class="ot">&lt;-</span> pROC<span class="sc">::</span><span class="fu">coords</span>(<span class="at">roc =</span> rocCutoff,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="st">"best"</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">best.method =</span> <span class="st">"youden"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(coCutoff)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-1916b601dadf0a665b0f" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1916b601dadf0a665b0f">{"x":{"filter":"none","vertical":false,"data":[["1"],[2.5],[0.8148148148148148],[0.945054945054945]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>threshold<\/th>\n      <th>specificity<\/th>\n      <th>sensitivity<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"threshold","targets":1},{"name":"specificity","targets":2},{"name":"sensitivity","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>結果が 2.5 となりました。</p>
+<p>IASQ はこの数値は小数点のある Double 型だったためと思われ、整数 (integer) 型にしてみましたが、それでも代わりませんでした。この時の感度が0.81、特異度が0.95と推定されました。</p>
+<p>次に、cutpointr ライブラリを使います。</p>
+<p>ここでは、Youden index が最大になる方法でカットオフ値を求めます。</p>
+<p>主な引数の値</p>
 <ul>
-<li>Younde Index: 感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)</li>
-<li>左上からの距離が最小の点 (closest.topleft, ROC01, roc01)</li>
-<li>感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)</li>
-<li>その他</li>
-</ul>
-<section id="論文の例" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="論文の例"><span class="header-section-number">8.4.1</span> 論文の例</h3>
+<li>metric:
 <ul>
-<li>Wang ZT, F, Y, Zhang YR <em>et al.</em> (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. <em>Translational Psychiatry</em>, 12(1), 509.</li>
+<li>youden: Youden index (感度 + 特異度 - 1)</li>
+<li>sum_sens_spec: 感度 + 特異度</li>
+<li>prod_sens_spec: 感度 × 特異度</li>
+</ul></li>
+<li>method:
+<ul>
+<li>maximize_metric: metric を最大化します。</li>
+</ul></li>
 </ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cpROC <span class="ot">&lt;-</span> cutpointr<span class="sc">::</span><span class="fu">cutpointr</span>(<span class="at">data =</span> dfCutpoint, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">x =</span> IASQ, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">class =</span> Autism, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> cutpointr<span class="sc">::</span>maximize_metric, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">metric =</span> cutpointr<span class="sc">::</span>youden)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Assuming the positive class is 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Assuming the positive class has higher x values</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cpROC)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Method: maximize_metric 
+Predictor: IASQ 
+Outcome: Autism 
+Direction: &gt;= 
+
+    AUC   n n_pos n_neg
+ 0.9383 145    91    54
+
+ optimal_cutpoint youden    acc sensitivity specificity tp fn fp tn
+                3 0.7599 0.8966      0.9451      0.8148 86  5 10 44
+
+Predictor summary: 
+    Data Min.  5% 1st Qu. Median     Mean 3rd Qu. 95% Max.       SD NAs
+ Overall    0 0.0       1      6 4.710345       8   9   10 3.395089   0
+       0    0 0.0       0      0 1.314815       2   7    7 2.230357   0
+       1    0 2.5       6      7 6.725275       8   9   10 2.119046   0</code></pre>
+</div>
+</div>
+<p>この場合、カットオフ値は３となりました。この時の感度は0.9451、特異度は0.8148です。 ROC曲線の AUC は 0.9383 です。</p>
+<p>なお、元の論文では、AUC は0.95、カットオフ値3 では、感度0.944、特異度0.800となっており、わずかですが数値が異なります。</p>
+<p>Figure 2 のような図を作図してみます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(coCutoff)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="screening_r_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>OptimalCutpoints</code> は機能が多そうですが、エラーが出てうまくいきませんでした。</p>
+</section>
+<section id="サンプルサイズ" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="サンプルサイズ"><span class="header-section-number">9.5</span> サンプルサイズ</h2>
+<p>感度・特異度や ROC 曲線による解析は、サンプルサイズ計算はあまりされていないようです。ただし、R で計算を行うことも可能ですので、研究計画に盛り込んでおくと良いでしょう。</p>
+<p>サーバー側で R を使ってサンプルサイズ計算ができるサイトがあります。このサイトでは、必要な引数を設定することで、R コードも表示されます。</p>
+<p>https://shiny.ctu.unibe.ch/app_direct/presize/</p>
+<p>たとえば、感度 0.8、その95%信頼区間の幅を 0.1 (0.75-0.85) とする場合、 n = 244.154 が必要であることが示されます。</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>presize<span class="sc">::</span><span class="fu">prec_sens</span>(<span class="at">sens =</span> <span class="fl">0.8</span>, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">conf.width =</span> <span class="fl">0.1</span>, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">conf.level =</span> <span class="fl">0.95</span>, </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">round =</span> <span class="st">'ceiling'</span>, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">method =</span> <span class="st">'wilson'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     sample size for a sensitivity with Wilson confidence interval. 
+
+  sens  sensadj       n prev ntot conf.width conf.level      lwr      upr
+1  0.8 0.795353 244.154   NA   NA        0.1       0.95 0.745353 0.845353
+
+NOTE: sensadj is the adjusted sensitivity, from which the ci is calculated.
+      n is the number of positives, ntot the full sample</code></pre>
+</div>
+</div>
+<p>Brown LD, Cai TT, DasGupta A (2001) Interval Estimation for a Binomial Proportion, Statistical Science , 16:2, 101-117, doi:10.1214/ss/1009213286</p>
+<p>Bujang MA &amp; Adnan TH (2016) Requirements for minimum sample size for sensitivity and specificity analysis. Journal of clinical and diagnostic research: JCDR, 10(10), YE01.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -865,13 +963,13 @@ Attaching package: 'pROC'</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./cohort_intro.html" class="pagination-link" aria-label="縦断研究">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">縦断研究</span></span>
+      <a href="./screening_intro.html" class="pagination-link" aria-label="スクリーニング">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">スクリーニング</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./screening_r.html" class="pagination-link" aria-label="R でスクリーニング評価">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">R でスクリーニング評価</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./critical.html" class="pagination-link" aria-label="批判的吟味">
+        <span class="nav-page-text">批判的吟味</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
