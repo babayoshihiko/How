@@ -1,25 +1,37 @@
-<a href="https://saturdaymorning.connpass.com/" target="_blank"
-   style="
+<div id="popup-container" class="no-print" style="
      position:fixed;
      bottom:20px;
      right:20px;
      z-index:9999;
-     text-decoration:none;
+     width: 280px;
+     padding:15px;
+     background-color:#f8dfe7;
+     border-radius:15px;
+     box-shadow:0 4px 15px rgba(0,0,0,0.2);
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
    ">
-  <div style="
-    padding:0.8em 1em;
-    background-color:#f8dfe7;
-    border-radius:10px;
-    color:#333;
-    font-weight:bold;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
-    transition:0.2s;
-  "
-  onmouseover="this.style.transform='scale(1.05)';this.style.opacity=1"
-  onmouseout="this.style.transform='scale(1)';this.style.opacity=0.85"
-  >
-    ▶ 毎週水曜 AM 7:00-8:00<br />
-    ZOOM 勉強会開催中!<br />
-    2026年春～夏はロジスティック回帰
-  </div>
-</a>
+
+  <div id="score" style="background: rgba(255,255,255,0.5); border-radius:10px;">
+    </div>
+
+  <a href="https://us02web.zoom.us/j/87873508375" 
+     target="_blank" 
+     style="text-decoration:none; color:inherit;">
+    <div style="
+        padding:10px;
+        background-color:rgba(255,255,255,0.8);
+        border-radius:8px;
+        font-size: 0.85rem;
+        font-weight:bold;
+        transition: 0.2s;
+      "
+      onmouseover="this.style.backgroundColor='#fff'"
+      onmouseout="this.style.backgroundColor='rgba(255,255,255,0.8)'">
+      ▶ 毎週水曜 AM 7:00-8:00<br />
+      ZOOM 勉強会開催中!<br />
+      <span style="font-size: 0.75rem; color: #666;">ID: 878 7350 8375 / パス: 朝の英語</span>
+    </div>
+  </a>
+</div>

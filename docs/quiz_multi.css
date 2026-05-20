@@ -1,0 +1,120 @@
+/* クイズアイテムの塊 */
+.quiz-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 全て左寄せ */
+}
+
+/* 選択肢ボタンの基本スタイル */
+.choice-btn {
+  display: block;
+  width: 100%;
+  max-width: 500px; /* 少し幅を広げると見やすいです */
+  margin: 8px 0;
+  padding: 12px 14px;
+  background-color: #ffffff;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+/* マウスを乗せた時 */
+.choice-btn:hover {
+  background-color: #f8f9fa;
+  border-color: #007bff;
+  transform: translateY(-1px);
+}
+
+/* 【重要】選択された時の色（青系） */
+.choice-btn.selected {
+  background-color: #e7f3ff;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* 回答確定後の表示 */
+.choice-btn.reveal-correct {
+  background-color: #d4edda !important;
+  border-color: #28a745 !important;
+  color: #155724;
+  font-weight: bold;
+}
+
+.choice-btn.reveal-wrong {
+  background-color: #f8d7da !important;
+  border-color: #dc3545 !important;
+  color: #721c24;
+  text-decoration: line-through;
+}
+
+/* 確定ボタン（左寄せ・独自デザイン） */
+.submit-btn {
+  display: inline-block; /* blockではなくinline-blockで左寄せを安定化 */
+  margin: 15px 0;
+  padding: 12px 32px;
+  background-color: #495057; /* 落ち着いたダークグレー */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  appearance: none;
+}
+
+.submit-btn:hover {
+  background-color: #343a40;
+}
+
+.submit-btn:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* 選択肢のコンテナ */
+.choices-container {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* 結果と解説 */
+.result {
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.correct-text { color: #28a745; }
+.wrong-text { color: #dc3545; }
+
+.explanation {
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+  margin-top: 10px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ルビ設定 */
+ruby { ruby-position: over; }
+rt { font-size: 0.6em; color: #555; }
+
+/* 印刷用設定 */
+@media print {
+  #score, .submit-btn, .result, .explanation, #popup-container, .no-print, .choice-btn {
+    display: none !important;
+  }
+  
+  /* 印刷時はボタンではなくテキストとして選択肢を出したい場合などはJS側で制御 */
+  body { color: #000; background: #fff; }
+  .quiz-item { page-break-inside: avoid; }
+}

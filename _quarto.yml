@@ -5,6 +5,11 @@ project:
 execute:
   freeze: auto
 
+resources:
+  - Baba.png
+  - crosssectional_intro.json
+  - meta_intro.json
+
 book:
   title: "医学英語：臨床論文の読み方"
   author: "馬場 美彦"
@@ -38,9 +43,15 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-    css: style.css
+    css: quiz_multi.css
     grid:
       margin-width: 350px
+    include-in-header:
+      - text: |
+          <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+          <script src="quiz_multi.js"></script>
     include-after-body: header.html
 
 reference-location: margin

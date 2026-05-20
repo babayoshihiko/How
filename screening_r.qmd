@@ -15,24 +15,24 @@ library(presize)
 
 ROC 曲線の描き方
 
-- x軸を 偽陽性率 (1-特異度)、y軸を感度とする。
-- 検査値ごとの感度、特異度をプロットする。
-- 点をつなぐ（これを、Receiver Operator Curve, ROC という)
+-   x軸を 偽陽性率 (1-特異度)、y軸を感度とする。
+-   検査値ごとの感度、特異度をプロットする。
+-   点をつなぐ（これを、Receiver Operator Curve, ROC という)
 
 スクリーニングツールとしての評価
 
-- 全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。
-    
+-   全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。
+
 以下の方式で、最適なカットオフ値を求める (カッコ内は pROC の print.thres.best.method, OptimalCutpoints での methods, cutpointr の metric)
 
-- 感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)
-- 左上からの距離が最小の点 (closest.topleft, ROC01, roc01)
-- 感度 × 特異度が最大の点 (…, MaxProdSpSe, prod_sens_spec)
-- その他多数（CRAN パッケージ内の説明を参照）
+-   感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)
+-   左上からの距離が最小の点 (closest.topleft, ROC01, roc01)
+-   感度 × 特異度が最大の点 (..., MaxProdSpSe, prod_sens_spec)
+-   その他多数（CRAN パッケージ内の説明を参照）
 
 以下の論文で、実際にスクリーニングツールを評価してみましょう。
 
-Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … & Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community—The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970
+Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, ... & Deshpande SN (2021) Psychometric properties of a screening tool for autism in the community---The Indian Autism Screening Questionnaire (IASQ). PLoS One, 16(4), e0249970. https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249970
 
 著者は13人いて、10人がニューデリーの機関に所属、3人は米国 Pittsuburgh の大学及び大学病院所属。
 
@@ -40,11 +40,9 @@ Chakraborty S, Bhatia T, Sharma V, Antony N, Das D, Sahu S, … & Deshpande SN (
 
 筆者らは、2009年に40項目、5 段階のツールを作りました (ISAA、40〜200点)。しかし、これはまだ検査者にトレーニングを要するなど、使いやすいものではありません。そこで、現在使われている検査の中から10の質問項目を抽出し、簡単にできるものを開発しました (IASQ、0〜10点)。このツールが有効であるかどうかを研究した論文です。
 
-
 研究参加者は、自閉症または他の精神障害を診断されている、3〜18歳の人の親または介護者。
 
 カットオフ値を 1 とすると感度 99%、特異度 62%。カットオフ値を 2 とすると感度 98%、特異度 71%です。
-
 
 カットオフ値は、最終的に 1 としたようです。これはつまり、10 項目中 1 項目でも当てはまれば、自閉症の可能性があるということになります。スクリーニングツールとしては、カットオフ値 1 点というのはどうなのか？とも思いますが、現状自閉症の可能性のある人を十分診断できていないという問題点から、低めに設定したのかもしれません。
 
@@ -101,12 +99,12 @@ IASQ はこの数値は小数点のある Double 型だったためと思われ�
 
 主な引数の値
 
-- metric:
-  - youden: Youden index (感度 + 特異度 - 1)
-  - sum_sens_spec: 感度 + 特異度
-  - prod_sens_spec: 感度 × 特異度
-- method:
-  - maximize_metric: metric を最大化します。
+-   metric:
+    -   youden: Youden index (感度 + 特異度 - 1)
+    -   sum_sens_spec: 感度 + 特異度
+    -   prod_sens_spec: 感度 × 特異度
+-   method:
+    -   maximize_metric: metric を最大化します。
 
 ```{r}
 cpROC <- cutpointr::cutpointr(data = dfCutpoint, 
@@ -147,8 +145,6 @@ presize::prec_sens(sens = 0.8,
                    method = 'wilson')
 ```
 
-
 Brown LD, Cai TT, DasGupta A (2001) Interval Estimation for a Binomial Proportion, Statistical Science , 16:2, 101-117, doi:10.1214/ss/1009213286
 
 Bujang MA & Adnan TH (2016) Requirements for minimum sample size for sensitivity and specificity analysis. Journal of clinical and diagnostic research: JCDR, 10(10), YE01.
-

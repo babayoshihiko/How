@@ -43,6 +43,8 @@
 | 暴露なし | 1人 | 99人 | 100人 | 
 | 合計 | 3人 | 197人 | 200人 | 
 
+オッズ比 = $\dfrac{ \dfrac{2}{98} }{ \dfrac{1}{99} } = 2.02$
+
 リスク比は 2.00 のままですが、オッズ比は 2.02 になります。
 
 上の表では、要因が一つ (暴露) だけでした。これを、複数に拡張したものがロジスティック回帰になります。また、2 値変数だけではなく数値も使用することができます。
@@ -108,11 +110,11 @@ $$
 
 ここで、
 
-- \(p\)：イベントが起こる確率
-- \(\frac{p}{1-p}\)：オッズ
-- \(\beta_0\)：切片
-- \(\beta_1\)：回帰係数（ベータ）
-- \(X_1\)：説明変数
+- $p$：イベントが起こる確率
+- $\frac{p}{1-p}$：オッズ
+- $\beta_0$：切片
+- $\beta_1$：回帰係数（ベータ）
+- $X_1$：説明変数
 
 を表します。
 
@@ -167,4 +169,33 @@ $$
 ### 論文の例
 
 - Liu W, Puts M, Jian F et al. (2020) Physical frailty and its associated factors among elderly nursing home residents in China. *BMC Geriatrics*, 20(1), 1-9.
+
+
+<div id="quiz"></div>
+
+<script>
+window.noShuffleQuestions = true; // true はシャッフル、false はしない
+window.kakomonNChoice = 3;
+window.quizConfig = {
+  // "カテゴリ名": 出題数
+  "横断研究": 2,
+};
+
+// --- 実行例 ---
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById("quiz");
+  try {
+    // 1. データの読み込み
+    const data = await loadData('crosssectional_intro.json'); 
+    
+    // 2. データの描画
+    // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
+    renderQuiz(data);
+    
+  } catch (err) {
+    console.error("データの読み込みに失敗しました:", err);
+    container.innerHTML = `<p style="color:red;">エラー: ${err.message}</p>`;
+  }
+});
+</script>
 

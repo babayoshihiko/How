@@ -1,0 +1,41 @@
+[
+  {
+    "category": "メタ分析",
+    "question": "地域在住高齢者の認知症をシステマティックレビューしたい。検索キーワードはどれが適切か?",
+    "correct": "'community-dwelling' AND dementia",
+    "wrongs": [
+      "'community-dwelling' OR dementia",
+      "'community-dwelling' & dementia",
+      "'nursing home' OR dementia",
+      "'nursing home' AND dementia"
+    ],
+    "explanation": "地域在住 は 'community-dwelling'、認知症は dementia。これを AND で繋ぎます。",
+    "ref": "問題1"
+  },
+  {
+    "category": "メタ分析",
+    "question": "メタ分析を行う際のガイドラインはどれか?",
+    "correct": "PRISMA (Preferred Reporting Items for Systematic reviews and Meta-Analyses)",
+    "wrongs": [
+      "CONSORT (Consolidated Standards of Reporting Trials)",
+      "STROBE (Strengthening the Reporting of Observational Studies in Epidemiology) ",
+      "Authors Guideline",
+      "ガイドラインはない"
+    ],
+    "explanation": "PRISMA です。",
+    "ref": "問題2"
+  },
+  {
+    "category": "メタ分析",
+    "question": "有病率を報告している 3 つの研究をプールしたい。どれが最も異質 (heterogeneous) か?",
+    "correct": "A: 95%, B: 50%, C: 5%",
+    "wrongs": [
+      "A: 45%, B: 50%, C: 55%",
+      "A: 5%, B: 5%, C: 5%",
+      "A: 90%, B: 90%, C: 90%",
+      "A: 45%, B: 47%, C: 52%。"
+    ],
+    "explanation": "数値がバラバラなものが「異質」です。",
+    "ref": "問題3"
+  }
+]

@@ -161,3 +161,30 @@ Ofori-Asenso R, Chin KL, Mazidi M, Zomer E, Ilomaki J, Zullo AR, ... & Liew D (2
 
 Wilkinson, C., Todd, O., Clegg, A., Gale, C. P., & Hall, M. (2019). Management of atrial fibrillation for older people with frailty: a systematic review and meta-analysis. Age and ageing, 48(2), 196-203.
 
+<div id="quiz"></div>
+
+<script>
+window.noShuffleQuestions = true; // true はシャッフル、false はしない
+window.kakomonNChoice = 3;
+window.quizConfig = {
+  // "カテゴリ名": 出題数
+  "メタ分析": 2,
+};
+
+// --- 実行例 ---
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById("quiz");
+  try {
+    // 1. データの読み込み
+    const data = await loadData('meta_intro.json'); 
+    
+    // 2. データの描画
+    // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
+    renderQuiz(data);
+    
+  } catch (err) {
+    console.error("データの読み込みに失敗しました:", err);
+    container.innerHTML = `<p style="color:red;">エラー: ${err.message}</p>`;
+  }
+});
+</script>
