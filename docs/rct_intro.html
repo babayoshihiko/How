@@ -476,6 +476,34 @@ Style Committee, AMA Manual of et al. 2020. <em>AMA Manual of Style: A Guide for
 <p>Teh R, Barnett D, Edlin R, Kerse N, Waters DL, Hale L, … &amp; Pillai A (2022) Effectiveness of a complex intervention of group-based nutrition and physical activity to prevent frailty in pre-frail older adults (SUPER): A randomised controlled trial. <em>The Lancet Healthy Longevity</em>, 3(8), e519-e530.</p>
 <p>Jiayuan Z, Xiang-Zi J, Li-Na M, Jin-Wei Y, &amp; Xue Y (2022) Effects of mindfulness-based tai chi Chuan on physical performance and cognitive function among cognitive frailty older adults: a six-month follow-up of a randomized controlled trial. <em>The Journal of Prevention of Alzheimer’s Disease</em>, 9(1), 104-112.</p>
 <p>Walters K, Frost R, Avgerinou C, <em>et al.</em> (2025) Clinical and cost-effectiveness of a home-based health promotion intervention for older people with mild frailty in England: a multicentre, parallel-group, randomised controlled trial. The Lancet Healthy Longevity, 6(2).</p>
+<div id="quiz">
+
+</div>
+<script>
+window.noShuffleQuestions = true; // true はシャッフル、false はしない
+window.kakomonNChoice = 3;
+window.quizConfig = {
+  // "カテゴリ名": 出題数
+  "RCT": 2,
+};
+
+// --- 実行例 ---
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById("quiz");
+  try {
+    // 1. データの読み込み
+    const data = await loadData('rct_intro.json'); 
+    
+    // 2. データの描画
+    // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
+    renderQuiz(data);
+    
+  } catch (err) {
+    console.error("データの読み込みに失敗しました:", err);
+    container.innerHTML = `<p style="color:red;">エラー: ${err.message}</p>`;
+  }
+});
+</script>
 
 
 

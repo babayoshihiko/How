@@ -9,6 +9,10 @@ resources:
   - Baba.png
   - crosssectional_intro.json
   - meta_intro.json
+  - rct_intro.json
+  - crosssectional_intro.json
+  - screening_intro.json
+  - statement.json
 
 book:
   title: "医学英語：臨床論文の読み方"

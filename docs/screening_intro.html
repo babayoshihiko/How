@@ -377,6 +377,34 @@ Attaching package: 'pROC'</code></pre>
 <ul>
 <li>Wang ZT, F, Y, Zhang YR <em>et al.</em> (2022). Modified dementia risk score as a tool for the prediction of dementia: a prospective cohort study of 239745 participants. <em>Translational Psychiatry</em>, 12(1), 509.</li>
 </ul>
+<div id="quiz">
+
+</div>
+<script>
+window.noShuffleQuestions = true; // true はシャッフル、false はしない
+window.kakomonNChoice = 3;
+window.quizConfig = {
+  // "カテゴリ名": 出題数
+  "スクリーニング": 2,
+};
+
+// --- 実行例 ---
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById("quiz");
+  try {
+    // 1. データの読み込み
+    const data = await loadData('meta_intro.json'); 
+    
+    // 2. データの描画
+    // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
+    renderQuiz(data);
+    
+  } catch (err) {
+    console.error("データの読み込みに失敗しました:", err);
+    container.innerHTML = `<p style="color:red;">エラー: ${err.message}</p>`;
+  }
+});
+</script>
 
 
 </section>

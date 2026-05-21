@@ -1,0 +1,31 @@
+[
+  {
+    "category": "宣言",
+    "question": "論文ガイドライン（宣言）について、正しいものを選びなさい。",
+    "correct": "ランダム化比較試験では、CONSORT が参照されることが多い。",
+    "wrongs": [
+      "メタ分析では、CONSORT を参照する。",
+      "コホート研究では、CONSORT を参照する。",
+      "症例報告では、CONSORT を参照する。",
+      "CONSORT は研究報告には使われない。"
+    ],
+    "explanation": "CONSORT は、ランダム化比較試験で参照される宣言です。",
+    "ref": "問題1"
+  },
+  {
+    "category": "宣言",
+    "question": "論文ガイドライン（宣言）について、正しいものを選びなさい。",
+    "correct": [
+      "Title または Abstract に研究デザインを明記する方が良い。",
+      "資金提供者 (Funder) について明記する方が良い。"
+      ],
+    "wrongs": [
+      "Results に研究デザインを明記しなければならない。",
+      "資金提供者 (Funder) は書いてはならない。",
+      "Abstract は構造化 (Structured) でなければならない。",
+      "Abstract は構造化 (Structured) にしてはならない。"
+    ],
+    "explanation": "多くの宣言が、Title または Abstract に研究デザインを明記することを求めています。Abstract は構造かされている方が好まれます。資金提供者 (Funder) は書くべきとされています。",
+    "ref": ""
+  }
+]

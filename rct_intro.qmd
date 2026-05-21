@@ -189,3 +189,31 @@ Jiayuan Z, Xiang-Zi J, Li-Na M, Jin-Wei Y, & Xue Y (2022) Effects of mindfulness
 Walters K, Frost R, Avgerinou C, *et al.* (2025) Clinical and cost-effectiveness of a home-based health promotion intervention for older people with mild frailty in England: a multicentre, parallel-group, randomised controlled trial. The Lancet Healthy Longevity, 6(2).
 
 
+<div id="quiz"></div>
+
+<script>
+window.noShuffleQuestions = true; // true はシャッフル、false はしない
+window.kakomonNChoice = 3;
+window.quizConfig = {
+  // "カテゴリ名": 出題数
+  "RCT": 2,
+};
+
+// --- 実行例 ---
+window.addEventListener('DOMContentLoaded', async () => {
+  const container = document.getElementById("quiz");
+  try {
+    // 1. データの読み込み
+    const data = await loadData('rct_intro.json'); 
+    
+    // 2. データの描画
+    // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
+    renderQuiz(data);
+    
+  } catch (err) {
+    console.error("データの読み込みに失敗しました:", err);
+    container.innerHTML = `<p style="color:red;">エラー: ${err.message}</p>`;
+  }
+});
+</script>
+
