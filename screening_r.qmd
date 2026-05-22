@@ -15,20 +15,20 @@ library(presize)
 
 ROC 曲線の描き方
 
--   x軸を 偽陽性率 (1-特異度)、y軸を感度とする。
--   検査値ごとの感度、特異度をプロットする。
--   点をつなぐ（これを、Receiver Operator Curve, ROC という)
+- x軸を 偽陽性率 (1-特異度)、y軸を感度とする。
+- 検査値ごとの感度、特異度をプロットする。
+- 点をつなぐ（これを、Receiver Operator Curve, ROC という)
 
 スクリーニングツールとしての評価
 
--   全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。
+- 全体の面積を1としたときの ROC の下の面積 (Area Under the Curve, AUC) が、0.7以上であればスクリーニングとして適すると判断する。
 
 以下の方式で、最適なカットオフ値を求める (カッコ内は pROC の print.thres.best.method, OptimalCutpoints での methods, cutpointr の metric)
 
--   感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)
--   左上からの距離が最小の点 (closest.topleft, ROC01, roc01)
--   感度 × 特異度が最大の点 (..., MaxProdSpSe, prod_sens_spec)
--   その他多数（CRAN パッケージ内の説明を参照）
+- 感度 - (1 - 特異度) が最大の点 (youden, Youden, youden)
+- 左上からの距離が最小の点 (closest.topleft, ROC01, roc01)
+- 感度 × 特異度が最大の点 (..., MaxProdSpSe, prod_sens_spec)
+- その他多数（CRAN パッケージ内の説明を参照）
 
 以下の論文で、実際にスクリーニングツールを評価してみましょう。
 
@@ -99,12 +99,12 @@ IASQ はこの数値は小数点のある Double 型だったためと思われ�
 
 主な引数の値
 
--   metric:
-    -   youden: Youden index (感度 + 特異度 - 1)
-    -   sum_sens_spec: 感度 + 特異度
-    -   prod_sens_spec: 感度 × 特異度
--   method:
-    -   maximize_metric: metric を最大化します。
+- metric:
+  - youden: Youden index (感度 + 特異度 - 1)
+  - sum_sens_spec: 感度 + 特異度
+  - prod_sens_spec: 感度 × 特異度
+- method:
+  - maximize_metric: metric を最大化します。
 
 ```{r}
 cpROC <- cutpointr::cutpointr(data = dfCutpoint, 

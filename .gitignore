@@ -12,3 +12,4 @@ _freeze
 **/*.quarto_ipynb
 
 ROC.xlsx
+.positai
