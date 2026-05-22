@@ -547,7 +547,7 @@ window.noShuffleQuestions = true; // true はシャッフル、false はしな�
 window.kakomonNChoice = 3;
 window.quizConfig = {
   // "カテゴリ名": 出題数
-  "宣言": 2,
+  "声明": 2,
 };
 
 // --- 実行例 ---
@@ -555,7 +555,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const container = document.getElementById("quiz");
   try {
     // 1. データの読み込み
-    const data = await loadData('meta_intro.json'); 
+    const data = await loadData('statement.json'); 
     
     // 2. データの描画
     // ※ quiz-engine.js 内に renderQuiz 関数があることが前提
